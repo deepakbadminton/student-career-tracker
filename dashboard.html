@@ -51,16 +51,22 @@
             color: #3730a3;
         }
 
-        /* ROADMAP */
+        /* ================= ROADMAP ================= */
 
         .roadmap-step {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             padding: 15px;
             margin: 10px 0;
             background: #f8fafc;
             border-radius: 10px;
+        }
+
+        .roadmap-step input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
         }
 
         .roadmap-number {
@@ -75,9 +81,39 @@
             font-weight: bold;
         }
 
-        .roadmap-step span {
+        .roadmap-text {
+            flex: 1;
             font-size: 16px;
         }
+
+        .roadmap-step.completed .roadmap-text {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .roadmap-progress-container {
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 24px;
+            margin: 15px 0 10px;
+        }
+
+        .roadmap-progress {
+            height: 100%;
+            width: 0%;
+            background: #2563eb;
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+
+        .roadmap-progress-text {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* ================= SKILLS ================= */
 
         .skill {
             margin: 20px 0;
@@ -114,9 +150,13 @@
             transition: width 0.3s;
         }
 
+        /* ================= GOALS ================= */
+
         .goal {
             margin: 12px 0;
         }
+
+        /* ================= COURSES ================= */
 
         .course {
             margin: 12px 0;
@@ -159,7 +199,7 @@
     <h1>Student Career Dashboard</h1>
 
 
-    <!-- PROFILE -->
+    <!-- ================= PROFILE ================= -->
 
     <div class="card">
 
@@ -198,7 +238,7 @@
     </div>
 
 
-    <!-- PERSONALIZED ROADMAP -->
+    <!-- ================= ROADMAP ================= -->
 
     <div class="card">
 
@@ -208,12 +248,38 @@
             Your roadmap will be based on your selected career.
         </p>
 
+
+        <p>
+            <strong>Roadmap Progress</strong>
+        </p>
+
+
+        <div class="roadmap-progress-container">
+
+            <div
+                class="roadmap-progress"
+                id="roadmapProgress">
+
+            </div>
+
+        </div>
+
+
+        <p
+            class="roadmap-progress-text"
+            id="roadmapProgressText">
+
+            0% completed
+
+        </p>
+
+
         <div id="roadmapList"></div>
 
     </div>
 
 
-    <!-- SKILLS -->
+    <!-- ================= SKILLS ================= -->
 
     <div class="card">
 
@@ -241,6 +307,7 @@
 
             </div>
 
+
             <div class="progress-container">
 
                 <div
@@ -251,6 +318,7 @@
                 </div>
 
             </div>
+
 
             <p id="pythonText">
                 Beginner - 20%
@@ -280,6 +348,7 @@
 
             </div>
 
+
             <div class="progress-container">
 
                 <div
@@ -290,6 +359,7 @@
                 </div>
 
             </div>
+
 
             <p id="cText">
                 Beginner - 20%
@@ -319,6 +389,7 @@
 
             </div>
 
+
             <div class="progress-container">
 
                 <div
@@ -330,6 +401,7 @@
 
             </div>
 
+
             <p id="javaText">
                 Beginner - 20%
             </p>
@@ -339,43 +411,77 @@
     </div>
 
 
-    <!-- CAREER GOALS -->
+    <!-- ================= GOALS ================= -->
 
     <div class="card">
 
         <h2>🎯 Career Goals</h2>
 
+
         <div class="goal">
+
             <label>
-                <input type="checkbox" class="goalCheck">
+
+                <input
+                    type="checkbox"
+                    class="goalCheck">
+
                 Learn Python
+
             </label>
+
         </div>
 
+
         <div class="goal">
+
             <label>
-                <input type="checkbox" class="goalCheck">
+
+                <input
+                    type="checkbox"
+                    class="goalCheck">
+
                 Complete a coding project
+
             </label>
+
         </div>
 
+
         <div class="goal">
+
             <label>
-                <input type="checkbox" class="goalCheck">
+
+                <input
+                    type="checkbox"
+                    class="goalCheck">
+
                 Learn Artificial Intelligence
+
             </label>
+
         </div>
 
+
         <div class="goal">
+
             <label>
-                <input type="checkbox" class="goalCheck">
+
+                <input
+                    type="checkbox"
+                    class="goalCheck">
+
                 Get an internship
+
             </label>
+
         </div>
+
 
         <p>
             <strong>Overall Progress</strong>
         </p>
+
 
         <div class="progress-container">
 
@@ -388,9 +494,11 @@
 
         </div>
 
+
         <p id="progressText">
             0% completed
         </p>
+
 
         <p
             class="message"
@@ -403,11 +511,12 @@
     </div>
 
 
-    <!-- LEARNING -->
+    <!-- ================= LEARNING ================= -->
 
     <div class="card">
 
         <h2>📚 Recommended Learning</h2>
+
 
         <div class="course">
 
@@ -471,7 +580,7 @@
     </div>
 
 
-    <!-- PROJECTS -->
+    <!-- ================= PROJECTS ================= -->
 
     <div class="card">
 
@@ -520,29 +629,40 @@ const careerPath =
 
 
 if (name) {
+
     document.getElementById("userName")
         .textContent = name;
+
 }
 
 if (branch) {
+
     document.getElementById("userBranch")
         .textContent = branch;
+
 }
 
 if (year) {
+
     document.getElementById("userYear")
         .textContent = year;
+
 }
 
 if (skills) {
+
     document.getElementById("userSkills")
         .textContent = skills;
+
 }
 
 if (careerPath) {
+
     document.getElementById("userCareerPath")
         .textContent = careerPath;
+
 }
+
 
 
 // ========================================
@@ -651,46 +771,190 @@ const roadmaps = {
 const roadmapList =
     document.getElementById("roadmapList");
 
+const roadmapProgress =
+    document.getElementById("roadmapProgress");
+
+const roadmapProgressText =
+    document.getElementById("roadmapProgressText");
+
 const roadmapIntro =
     document.getElementById("roadmapIntro");
+
+
+let roadmapChecks = [];
+
+const savedRoadmap =
+    JSON.parse(
+        localStorage.getItem("roadmapProgress")
+    ) || [];
+
+
+
+function updateRoadmapProgress() {
+
+    let completed = 0;
+
+    roadmapChecks.forEach(
+        function(check) {
+
+            if (check.checked) {
+
+                completed++;
+
+            }
+
+        }
+    );
+
+
+    const percentage =
+        Math.round(
+            (completed / roadmapChecks.length) * 100
+        );
+
+
+    roadmapProgress.style.width =
+        percentage + "%";
+
+
+    roadmapProgressText.textContent =
+        percentage + "% completed";
+
+
+    const status = [];
+
+    roadmapChecks.forEach(
+        function(check) {
+
+            status.push(check.checked);
+
+        }
+    );
+
+
+    localStorage.setItem(
+        "roadmapProgress",
+        JSON.stringify(status)
+    );
+
+}
+
 
 
 if (careerPath && roadmaps[careerPath]) {
 
     roadmapIntro.textContent =
-        "Here is a suggested roadmap for becoming a " +
+        "Complete each step to build your career toward " +
         careerPath + ".";
 
 
     roadmaps[careerPath].forEach(
         function(step, index) {
 
+
             const stepDiv =
                 document.createElement("div");
+
 
             stepDiv.className =
                 "roadmap-step";
 
 
-            stepDiv.innerHTML = `
+            const number =
+                document.createElement("div");
 
-                <div class="roadmap-number">
-                    ${index + 1}
-                </div>
 
-                <span>
-                    ${step}
-                </span>
+            number.className =
+                "roadmap-number";
 
-            `;
+
+            number.textContent =
+                index + 1;
+
+
+            const checkbox =
+                document.createElement("input");
+
+
+            checkbox.type =
+                "checkbox";
+
+
+            if (savedRoadmap[index] === true) {
+
+                checkbox.checked = true;
+
+            }
+
+
+            const text =
+                document.createElement("span");
+
+
+            text.className =
+                "roadmap-text";
+
+
+            text.textContent =
+                step;
+
+
+            if (checkbox.checked) {
+
+                stepDiv.classList.add(
+                    "completed"
+                );
+
+            }
+
+
+            checkbox.addEventListener(
+                "change",
+                function() {
+
+                    if (checkbox.checked) {
+
+                        stepDiv.classList.add(
+                            "completed"
+                        );
+
+                    } else {
+
+                        stepDiv.classList.remove(
+                            "completed"
+                        );
+
+                    }
+
+
+                    updateRoadmapProgress();
+
+                }
+            );
+
+
+            stepDiv.appendChild(number);
+
+            stepDiv.appendChild(checkbox);
+
+            stepDiv.appendChild(text);
 
 
             roadmapList.appendChild(stepDiv);
 
+
+            roadmapChecks.push(
+                checkbox
+            );
+
         }
     );
 
+
+    updateRoadmapProgress();
+
 }
+
 
 
 // ========================================
@@ -724,6 +988,7 @@ function getLevelName(value) {
     }
 
     return "Expert";
+
 }
 
 
@@ -781,6 +1046,7 @@ pythonLevel.addEventListener(
 );
 
 
+
 // C
 
 const cLevel =
@@ -825,6 +1091,7 @@ cLevel.addEventListener(
 );
 
 
+
 // Java
 
 const javaLevel =
@@ -858,8 +1125,6 @@ function updateJava() {
     skillData.java =
         Number(value);
 
-    saveSkills();
-
 }
 
 
@@ -867,6 +1132,7 @@ javaLevel.addEventListener(
     "change",
     updateJava
 );
+
 
 
 // ========================================
@@ -909,7 +1175,7 @@ function updateProgress() {
 
     let completed = 0;
 
-    let goalStatus = [];
+    const goalStatus = [];
 
 
     goalChecks.forEach(
@@ -984,6 +1250,7 @@ goalChecks.forEach(
 
     }
 );
+
 
 
 // ========================================
