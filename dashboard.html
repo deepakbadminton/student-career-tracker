@@ -2,8 +2,11 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Student Career Dashboard</title>
 
@@ -46,6 +49,34 @@
             font-size: 18px;
             font-weight: bold;
             color: #3730a3;
+        }
+
+        /* ROADMAP */
+
+        .roadmap-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .roadmap-number {
+            min-width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #2563eb;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        .roadmap-step span {
+            font-size: 16px;
         }
 
         .skill {
@@ -155,8 +186,6 @@
         </div>
 
 
-        <!-- CAREER PATH -->
-
         <div class="career-path">
 
             🎯 Career Path:
@@ -165,6 +194,21 @@
             </span>
 
         </div>
+
+    </div>
+
+
+    <!-- PERSONALIZED ROADMAP -->
+
+    <div class="card">
+
+        <h2>🗺️ Your Career Roadmap</h2>
+
+        <p id="roadmapIntro">
+            Your roadmap will be based on your selected career.
+        </p>
+
+        <div id="roadmapList"></div>
 
     </div>
 
@@ -188,26 +232,14 @@
                     class="skill-select"
                     id="pythonLevel">
 
-                    <option value="20">
-                        Beginner
-                    </option>
-
-                    <option value="50">
-                        Intermediate
-                    </option>
-
-                    <option value="80">
-                        Advanced
-                    </option>
-
-                    <option value="100">
-                        Expert
-                    </option>
+                    <option value="20">Beginner</option>
+                    <option value="50">Intermediate</option>
+                    <option value="80">Advanced</option>
+                    <option value="100">Expert</option>
 
                 </select>
 
             </div>
-
 
             <div class="progress-container">
 
@@ -239,26 +271,14 @@
                     class="skill-select"
                     id="cLevel">
 
-                    <option value="20">
-                        Beginner
-                    </option>
-
-                    <option value="50">
-                        Intermediate
-                    </option>
-
-                    <option value="80">
-                        Advanced
-                    </option>
-
-                    <option value="100">
-                        Expert
-                    </option>
+                    <option value="20">Beginner</option>
+                    <option value="50">Intermediate</option>
+                    <option value="80">Advanced</option>
+                    <option value="100">Expert</option>
 
                 </select>
 
             </div>
-
 
             <div class="progress-container">
 
@@ -290,26 +310,14 @@
                     class="skill-select"
                     id="javaLevel">
 
-                    <option value="20">
-                        Beginner
-                    </option>
-
-                    <option value="50">
-                        Intermediate
-                    </option>
-
-                    <option value="80">
-                        Advanced
-                    </option>
-
-                    <option value="100">
-                        Expert
-                    </option>
+                    <option value="20">Beginner</option>
+                    <option value="50">Intermediate</option>
+                    <option value="80">Advanced</option>
+                    <option value="100">Expert</option>
 
                 </select>
 
             </div>
-
 
             <div class="progress-container">
 
@@ -337,71 +345,37 @@
 
         <h2>🎯 Career Goals</h2>
 
-
         <div class="goal">
-
             <label>
-
-                <input
-                    type="checkbox"
-                    class="goalCheck">
-
+                <input type="checkbox" class="goalCheck">
                 Learn Python
-
             </label>
-
         </div>
 
-
         <div class="goal">
-
             <label>
-
-                <input
-                    type="checkbox"
-                    class="goalCheck">
-
+                <input type="checkbox" class="goalCheck">
                 Complete a coding project
-
             </label>
-
         </div>
 
-
         <div class="goal">
-
             <label>
-
-                <input
-                    type="checkbox"
-                    class="goalCheck">
-
+                <input type="checkbox" class="goalCheck">
                 Learn Artificial Intelligence
-
             </label>
-
         </div>
-
 
         <div class="goal">
-
             <label>
-
-                <input
-                    type="checkbox"
-                    class="goalCheck">
-
+                <input type="checkbox" class="goalCheck">
                 Get an internship
-
             </label>
-
         </div>
-
 
         <p>
             <strong>Overall Progress</strong>
         </p>
-
 
         <div class="progress-container">
 
@@ -414,11 +388,9 @@
 
         </div>
 
-
         <p id="progressText">
             0% completed
         </p>
-
 
         <p
             class="message"
@@ -436,7 +408,6 @@
     <div class="card">
 
         <h2>📚 Recommended Learning</h2>
-
 
         <div class="course">
 
@@ -463,8 +434,8 @@
             <h3>🤖 Learn Artificial Intelligence</h3>
 
             <p>
-                Understand the basics of
-                AI and machine learning.
+                Understand the basics of AI
+                and machine learning.
             </p>
 
             <a
@@ -528,9 +499,9 @@
 <script>
 
 
-// ===============================
+// ========================================
 // PROFILE INFORMATION
-// ===============================
+// ========================================
 
 const name =
     localStorage.getItem("name");
@@ -548,48 +519,183 @@ const careerPath =
     localStorage.getItem("careerPath");
 
 
-// Display profile
-
 if (name) {
-
     document.getElementById("userName")
         .textContent = name;
-
 }
 
 if (branch) {
-
     document.getElementById("userBranch")
         .textContent = branch;
-
 }
 
 if (year) {
-
     document.getElementById("userYear")
         .textContent = year;
-
 }
 
 if (skills) {
-
     document.getElementById("userSkills")
         .textContent = skills;
-
 }
 
 if (careerPath) {
-
     document.getElementById("userCareerPath")
         .textContent = careerPath;
+}
+
+
+// ========================================
+// CAREER ROADMAP
+// ========================================
+
+const roadmaps = {
+
+    "Software Developer": [
+
+        "Learn programming fundamentals",
+
+        "Master one programming language",
+
+        "Learn Data Structures and Algorithms",
+
+        "Build real-world projects",
+
+        "Learn Git and GitHub",
+
+        "Build your portfolio",
+
+        "Prepare for internships"
+
+    ],
+
+
+    "AI / ML": [
+
+        "Learn Python fundamentals",
+
+        "Learn NumPy and Pandas",
+
+        "Learn basic mathematics for ML",
+
+        "Learn Machine Learning fundamentals",
+
+        "Build ML projects",
+
+        "Create an AI/ML portfolio",
+
+        "Prepare for internships"
+
+    ],
+
+
+    "Web Developer": [
+
+        "Learn HTML",
+
+        "Learn CSS",
+
+        "Learn JavaScript",
+
+        "Learn Git and GitHub",
+
+        "Build websites",
+
+        "Learn a frontend framework",
+
+        "Build your portfolio"
+
+    ],
+
+
+    "Data Analyst": [
+
+        "Learn Python fundamentals",
+
+        "Learn Excel",
+
+        "Learn SQL",
+
+        "Learn Pandas and data analysis",
+
+        "Learn data visualization",
+
+        "Build data analysis projects",
+
+        "Create your portfolio"
+
+    ],
+
+
+    "Cybersecurity": [
+
+        "Learn computer fundamentals",
+
+        "Learn networking basics",
+
+        "Learn Linux",
+
+        "Learn cybersecurity fundamentals",
+
+        "Practice security labs",
+
+        "Build cybersecurity projects",
+
+        "Prepare for internships"
+
+    ]
+
+};
+
+
+const roadmapList =
+    document.getElementById("roadmapList");
+
+const roadmapIntro =
+    document.getElementById("roadmapIntro");
+
+
+if (careerPath && roadmaps[careerPath]) {
+
+    roadmapIntro.textContent =
+        "Here is a suggested roadmap for becoming a " +
+        careerPath + ".";
+
+
+    roadmaps[careerPath].forEach(
+        function(step, index) {
+
+            const stepDiv =
+                document.createElement("div");
+
+            stepDiv.className =
+                "roadmap-step";
+
+
+            stepDiv.innerHTML = `
+
+                <div class="roadmap-number">
+                    ${index + 1}
+                </div>
+
+                <span>
+                    ${step}
+                </span>
+
+            `;
+
+
+            roadmapList.appendChild(stepDiv);
+
+        }
+    );
 
 }
 
 
-
-// ===============================
+// ========================================
 // SKILL TRACKING
-// ===============================
+// ========================================
 
 const skillData =
     JSON.parse(
@@ -597,12 +703,38 @@ const skillData =
     ) || {
 
         python: 20,
-
         c: 20,
-
         java: 20
 
     };
+
+
+function getLevelName(value) {
+
+    if (value == 20) {
+        return "Beginner";
+    }
+
+    if (value == 50) {
+        return "Intermediate";
+    }
+
+    if (value == 80) {
+        return "Advanced";
+    }
+
+    return "Expert";
+}
+
+
+function saveSkills() {
+
+    localStorage.setItem(
+        "skillLevels",
+        JSON.stringify(skillData)
+    );
+
+}
 
 
 // Python
@@ -649,7 +781,6 @@ pythonLevel.addEventListener(
 );
 
 
-
 // C
 
 const cLevel =
@@ -692,7 +823,6 @@ cLevel.addEventListener(
     "change",
     updateC
 );
-
 
 
 // Java
@@ -739,51 +869,9 @@ javaLevel.addEventListener(
 );
 
 
-
-// Skill level name
-
-function getLevelName(value) {
-
-    if (value == 20) {
-
-        return "Beginner";
-
-    }
-
-    if (value == 50) {
-
-        return "Intermediate";
-
-    }
-
-    if (value == 80) {
-
-        return "Advanced";
-
-    }
-
-    return "Expert";
-
-}
-
-
-
-// Save skill levels
-
-function saveSkills() {
-
-    localStorage.setItem(
-        "skillLevels",
-        JSON.stringify(skillData)
-    );
-
-}
-
-
-
-// ===============================
+// ========================================
 // CAREER GOALS
-// ===============================
+// ========================================
 
 const goalChecks =
     document.querySelectorAll(".goalCheck");
@@ -898,7 +986,9 @@ goalChecks.forEach(
 );
 
 
-// Load saved information
+// ========================================
+// LOAD SAVED DATA
+// ========================================
 
 updatePython();
 
