@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Student Career Dashboard</title>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
 
         body {
             font-family: Arial, sans-serif;
             background: #f4f7fb;
             margin: 0;
-            padding: 40px;
+            padding: 20px;
+            color: #1f2937;
         }
 
         .container {
-            max-width: 850px;
+            max-width: 900px;
             margin: auto;
         }
 
@@ -25,1362 +29,840 @@
             color: #2563eb;
         }
 
-        h2 {
-            color: #1f2937;
-            margin-top: 25px;
-        }
-
         .card {
             background: white;
-            padding: 25px;
-            margin-top: 20px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .info {
-            font-size: 18px;
-            margin: 15px 0;
+            line-height: 1.8;
         }
-
-        .label {
-            font-weight: bold;
-            color: #555;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid #e5e7eb;
-            margin: 30px 0;
-        }
-
-        /* ROADMAP */
-
-        .roadmap-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: #f8fafc;
-            padding: 18px;
-            border-radius: 12px;
-        }
-
-        .roadmap-content {
-            flex: 1;
-        }
-
-        .roadmap-content h3 {
-            margin: 0 0 6px 0;
-            color: #1f2937;
-        }
-
-        .roadmap-content p {
-            margin: 0;
-            color: #666;
-        }
-
-        .roadmap-checkbox {
-            width: 22px;
-            height: 22px;
-            cursor: pointer;
-        }
-
-        .roadmap-checkbox:checked + .roadmap-content h3 {
-            text-decoration: line-through;
-            color: #888;
-        }
-
-        .roadmap-line {
-            height: 25px;
-            width: 3px;
-            background: #dbeafe;
-            margin-left: 21px;
-        }
-
-        /* PROGRESS */
-
-        .progress-background {
-            width: 100%;
-            height: 25px;
-            background: #e5e7eb;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        .roadmap-progress {
-            margin-top: 20px;
-        }
-
-        .roadmap-progress-bar {
-            width: 0%;
-            height: 100%;
-            background: #2563eb;
-            color: white;
-            text-align: center;
-            line-height: 25px;
-            font-size: 13px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .roadmap-progress-text,
-        .progress-text {
-            text-align: center;
-            color: #666;
-        }
-
-        /* SKILLS */
 
         .skill {
-            background: #f8fafc;
-            padding: 15px;
-            margin: 12px 0;
-            border-radius: 10px;
+            margin: 20px 0;
         }
 
         .skill-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-            font-weight: bold;
+            align-items: center;
         }
 
-        .skill-progress {
-            width: 100%;
-            height: 20px;
+        .skill-header h3 {
+            margin: 0;
+        }
+
+        .skill-select {
+            padding: 7px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+        }
+
+        .progress-container {
             background: #e5e7eb;
             border-radius: 10px;
             overflow: hidden;
+            height: 20px;
+            margin-top: 8px;
         }
 
-        .skill-bar {
+        .progress {
             height: 100%;
             background: #2563eb;
-            text-align: center;
-            color: white;
-            font-size: 12px;
-            line-height: 20px;
-            transition: 0.3s;
-        }
-
-        .skill-buttons {
-            margin-top: 10px;
-            display: flex;
-            gap: 8px;
-        }
-
-        .skill-buttons button {
-            border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            background: #e5e7eb;
-        }
-
-        .no-skills {
-            color: #777;
-            background: #f8fafc;
-            padding: 15px;
             border-radius: 10px;
+            transition: width 0.3s;
         }
-
-        /* GOALS */
 
         .goal {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: #f8fafc;
-            padding: 14px;
-            margin: 10px 0;
-            border-radius: 10px;
-            font-size: 17px;
+            margin: 12px 0;
         }
-
-        .goal input {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-
-        .goal input:checked + span {
-            text-decoration: line-through;
-            color: #888;
-        }
-
-        /* OVERALL */
-
-        .overall-progress {
-            width: 100%;
-            height: 28px;
-            background: #e5e7eb;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        .overall-bar {
-            width: 0%;
-            height: 100%;
-            background: #2563eb;
-            color: white;
-            text-align: center;
-            line-height: 28px;
-            font-weight: bold;
-        }
-
-        /* COURSES */
 
         .course {
-            background: #f8fafc;
-            padding: 18px;
             margin: 12px 0;
-            border-radius: 10px;
-            border-left: 5px solid #2563eb;
-        }
-
-        .course-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 6px;
-        }
-
-        .course-description {
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        .course-checkbox {
-            margin-right: 8px;
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-
-        .course label {
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .course input:checked + label {
-            text-decoration: line-through;
-            color: #888;
-        }
-
-        /* PROJECT BUTTON */
-
-        .projects-button {
-            display: block;
-            width: 100%;
             padding: 15px;
-            margin-top: 25px;
+            border: 1px solid #e5e7eb;
             border-radius: 10px;
+        }
+
+        .course a,
+        .project-button {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 9px 14px;
             background: #2563eb;
             color: white;
-            font-size: 17px;
-            font-weight: bold;
-            text-align: center;
             text-decoration: none;
+            border-radius: 7px;
         }
 
-        .projects-button:hover {
+        .course a:hover,
+        .project-button:hover {
             background: #1d4ed8;
         }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 20px;
-            }
-
-            .card {
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 28px;
-            }
+        .message {
+            font-weight: bold;
+            margin-top: 10px;
         }
+
     </style>
+
 </head>
+
 
 <body>
 
 <div class="container">
 
-    <h1>Welcome, <span id="name"></span>! 👋</h1>
+
+    <h1>Student Career Dashboard</h1>
+
+
+    <!-- PROFILE -->
 
     <div class="card">
 
-        <!-- PROFILE -->
-
-        <h2>👤 My Profile</h2>
-
-        <div class="info">
-            <span class="label">Branch:</span>
-            <span id="branch"></span>
-        </div>
+        <h2>
+            Welcome,
+            <span id="userName">Student</span>! 👋
+        </h2>
 
         <div class="info">
-            <span class="label">Year:</span>
-            <span id="year"></span>
+
+            <strong>Branch:</strong>
+            <span id="userBranch"></span>
+
+            <br>
+
+            <strong>Year:</strong>
+            <span id="userYear"></span>
+
+            <br>
+
+            <strong>Skills:</strong>
+            <span id="userSkills"></span>
+
         </div>
 
-        <div class="info">
-            <span class="label">Skills:</span>
-            <span id="skills"></span>
-        </div>
+    </div>
 
-        <div class="info">
-            <span class="label">Career Goal:</span>
-            <span id="careerGoal"></span>
-        </div>
 
-        <hr>
+    <!-- SKILLS -->
 
-        <!-- ROADMAP -->
+    <div class="card">
 
-        <h2>🎯 Your Personalized Career Roadmap</h2>
+        <h2>📊 My Skills</h2>
 
-        <p>Complete each step as you progress toward your career.</p>
 
-        <div id="roadmap"></div>
+        <!-- PYTHON -->
 
-        <div class="roadmap-progress">
+        <div class="skill">
 
-            <div class="progress-background">
-                <div class="roadmap-progress-bar" id="roadmapProgressBar">
-                    0%
-                </div>
+            <div class="skill-header">
+
+                <h3>🐍 Python</h3>
+
+                <select
+                    class="skill-select"
+                    id="pythonLevel">
+
+                    <option value="20">
+                        Beginner
+                    </option>
+
+                    <option value="50">
+                        Intermediate
+                    </option>
+
+                    <option value="80">
+                        Advanced
+                    </option>
+
+                    <option value="100">
+                        Expert
+                    </option>
+
+                </select>
+
             </div>
 
-            <p class="roadmap-progress-text" id="roadmapProgressText">
-                Start your roadmap! 🚀
+
+            <div class="progress-container">
+
+                <div
+                    class="progress"
+                    id="pythonProgress"
+                    style="width: 20%;">
+
+                </div>
+
+            </div>
+
+            <p id="pythonText">
+                Beginner - 20%
             </p>
 
         </div>
 
-        <hr>
 
-        <!-- SKILLS -->
+        <!-- C -->
 
-        <h2>💻 My Skills</h2>
+        <div class="skill">
 
-        <p>Track your progress in the skills you know.</p>
+            <div class="skill-header">
 
-        <div id="skillsContainer"></div>
+                <h3>💻 C</h3>
 
-        <hr>
+                <select
+                    class="skill-select"
+                    id="cLevel">
 
-        <!-- CAREER GOALS -->
+                    <option value="20">
+                        Beginner
+                    </option>
+
+                    <option value="50">
+                        Intermediate
+                    </option>
+
+                    <option value="80">
+                        Advanced
+                    </option>
+
+                    <option value="100">
+                        Expert
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div
+                    class="progress"
+                    id="cProgress"
+                    style="width: 20%;">
+
+                </div>
+
+            </div>
+
+            <p id="cText">
+                Beginner - 20%
+            </p>
+
+        </div>
+
+
+        <!-- JAVA -->
+
+        <div class="skill">
+
+            <div class="skill-header">
+
+                <h3>☕ Java</h3>
+
+                <select
+                    class="skill-select"
+                    id="javaLevel">
+
+                    <option value="20">
+                        Beginner
+                    </option>
+
+                    <option value="50">
+                        Intermediate
+                    </option>
+
+                    <option value="80">
+                        Advanced
+                    </option>
+
+                    <option value="100">
+                        Expert
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div
+                    class="progress"
+                    id="javaProgress"
+                    style="width: 20%;">
+
+                </div>
+
+            </div>
+
+            <p id="javaText">
+                Beginner - 20%
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- CAREER GOALS -->
+
+    <div class="card">
 
         <h2>🎯 Career Goals</h2>
 
-        <div class="goal">
-            <input type="checkbox" data-goal="Learn Python">
-            <span>Learn Python</span>
-        </div>
 
         <div class="goal">
-            <input type="checkbox" data-goal="Complete a coding project">
-            <span>Complete a coding project</span>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    class="goalCheck">
+
+                Learn Python
+
+            </label>
+
         </div>
+
 
         <div class="goal">
-            <input type="checkbox" data-goal="Learn Artificial Intelligence">
-            <span>Learn Artificial Intelligence</span>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    class="goalCheck">
+
+                Complete a coding project
+
+            </label>
+
         </div>
+
 
         <div class="goal">
-            <input type="checkbox" data-goal="Get an internship">
-            <span>Get an internship</span>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    class="goalCheck">
+
+                Learn Artificial Intelligence
+
+            </label>
+
         </div>
 
-        <hr>
 
-        <!-- OVERALL PROGRESS -->
+        <div class="goal">
 
-        <h2>📈 Overall Progress</h2>
+            <label>
 
-        <div class="overall-progress">
-            <div class="overall-bar" id="overallBar">
-                0%
-            </div>
+                <input
+                    type="checkbox"
+                    class="goalCheck">
+
+                Get an internship
+
+            </label>
+
         </div>
 
-        <p class="progress-text" id="progressText">
-            Start completing your goals! 🚀
+
+        <p>
+            <strong>Overall Progress</strong>
         </p>
 
-        <hr>
 
-        <!-- PERSONALIZED COURSES -->
+        <div class="progress-container">
+
+            <div
+                class="progress"
+                id="goalProgress"
+                style="width: 0%;">
+
+            </div>
+
+        </div>
+
+
+        <p id="progressText">
+            0% completed
+        </p>
+
+
+        <p
+            class="message"
+            id="progressMessage">
+
+            Start completing your goals! 🚀
+
+        </p>
+
+    </div>
+
+
+    <!-- LEARNING -->
+
+    <div class="card">
 
         <h2>📚 Recommended Learning</h2>
 
-        <p id="courseIntro">
-            Resources selected for your career goal.
+
+        <div class="course">
+
+            <h3>🐍 Learn Python</h3>
+
+            <p>
+                Start with Python basics,
+                variables, conditions, loops and functions.
+            </p>
+
+            <a
+                href="https://www.python.org/about/gettingstarted/"
+                target="_blank">
+
+                Start Learning →
+
+            </a>
+
+        </div>
+
+
+        <div class="course">
+
+            <h3>🤖 Learn Artificial Intelligence</h3>
+
+            <p>
+                Understand the basics of
+                AI and machine learning.
+            </p>
+
+            <a
+                href="https://developers.google.com/machine-learning/intro-to-ml"
+                target="_blank">
+
+                Start Learning →
+
+            </a>
+
+        </div>
+
+
+        <div class="course">
+
+            <h3>🌐 Learn Web Development</h3>
+
+            <p>
+                Learn HTML, CSS and JavaScript
+                to build websites.
+            </p>
+
+            <a
+                href="https://developer.mozilla.org/en-US/docs/Learn"
+                target="_blank">
+
+                Start Learning →
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- PROJECTS -->
+
+    <div class="card">
+
+        <h2>🚀 My Projects</h2>
+
+        <p>
+            Track the projects you are building
+            and show your progress.
         </p>
 
-        <div id="coursesContainer"></div>
+        <a
+            href="projects.html"
+            class="project-button">
 
-        <a href="projects.html" class="projects-button">
-            🚀 My Projects
+            Open My Projects →
+
         </a>
 
     </div>
+
 
 </div>
 
 
 <script>
 
-/* =================================
-   STUDENT INFORMATION
-================================= */
+
+// ===============================
+// PROFILE INFORMATION
+// ===============================
 
 const name =
-    localStorage.getItem("name") || "Student";
+    localStorage.getItem("name");
 
 const branch =
-    localStorage.getItem("branch") || "Not specified";
+    localStorage.getItem("branch");
 
 const year =
-    localStorage.getItem("year") || "Not specified";
+    localStorage.getItem("year");
 
 const skills =
-    localStorage.getItem("skills") || "";
-
-const careerGoal =
-    localStorage.getItem("careerGoal") || "Not specified";
+    localStorage.getItem("skills");
 
 
-document.getElementById("name").textContent = name;
-document.getElementById("branch").textContent = branch;
-document.getElementById("year").textContent = year;
-document.getElementById("careerGoal").textContent = careerGoal;
+if (name) {
 
-document.getElementById("skills").textContent =
-    skills || "No skills added";
+    document.getElementById("userName")
+        .textContent = name;
 
+}
 
-/* =================================
-   CAREER ROADMAPS
-================================= */
+if (branch) {
 
-const roadmaps = {
+    document.getElementById("userBranch")
+        .textContent = branch;
 
-    "Software Developer": [
-        "Programming Fundamentals",
-        "Data Structures & Algorithms",
-        "Git & GitHub",
-        "SQL & Databases",
-        "Build Real Projects",
-        "Internship & Interview Preparation"
-    ],
+}
 
-    "Web Developer": [
-        "HTML, CSS & JavaScript",
-        "Responsive Web Design",
-        "Git & GitHub",
-        "Frontend Frameworks",
-        "Backend & APIs",
-        "Full-Stack Projects & Internships"
-    ],
+if (year) {
 
-    "AI / ML Engineer": [
-        "Learn Python",
-        "Mathematics & Statistics",
-        "NumPy & Pandas",
-        "Machine Learning",
-        "Deep Learning",
-        "AI Projects & Internships"
-    ],
+    document.getElementById("userYear")
+        .textContent = year;
 
-    "Data Scientist": [
-        "Learn Python",
-        "Statistics",
-        "SQL & Databases",
-        "Pandas & NumPy",
-        "Data Visualization",
-        "Machine Learning & Data Projects"
-    ],
+}
 
-    "Cybersecurity": [
-        "Computer Networking",
-        "Linux Fundamentals",
-        "Cybersecurity Fundamentals",
-        "Web Security",
-        "Ethical Hacking & Security Tools",
-        "Security Projects & Internships"
-    ],
+if (skills) {
 
-    "App Developer": [
-        "Programming Fundamentals",
-        "UI/UX Basics",
-        "Android / Flutter / React Native",
-        "APIs & Databases",
-        "Build Mobile Apps",
-        "Publishing & Internship Preparation"
-    ],
+    document.getElementById("userSkills")
+        .textContent = skills;
 
-    "Cloud / DevOps Engineer": [
-        "Linux Fundamentals",
-        "Computer Networking",
-        "Git & GitHub",
-        "Cloud Fundamentals",
-        "Docker & CI/CD",
-        "Cloud & DevOps Projects"
-    ],
-
-    "Not Sure Yet": [
-        "Learn Programming Basics",
-        "Explore Different Career Paths",
-        "Build Small Projects",
-        "Choose a Career Direction",
-        "Build Required Skills",
-        "Prepare for Internships"
-    ]
-};
+}
 
 
-/* =================================
-   ROADMAP
-================================= */
 
-const roadmapContainer =
-    document.getElementById("roadmap");
+// ===============================
+// SKILL TRACKING
+// ===============================
 
-const selectedRoadmap =
-    roadmaps[careerGoal];
-
-const roadmapKey =
-    "roadmapProgress_" + careerGoal;
-
-let savedRoadmap =
+const skillData =
     JSON.parse(
-        localStorage.getItem(roadmapKey)
+        localStorage.getItem("skillLevels")
+    ) || {
+
+        python: 20,
+
+        c: 20,
+
+        java: 20
+
+    };
+
+
+// Python
+
+const pythonLevel =
+    document.getElementById("pythonLevel");
+
+const pythonProgress =
+    document.getElementById("pythonProgress");
+
+const pythonText =
+    document.getElementById("pythonText");
+
+
+pythonLevel.value =
+    skillData.python;
+
+
+function updatePython() {
+
+    const value =
+        pythonLevel.value;
+
+    pythonProgress.style.width =
+        value + "%";
+
+    pythonText.textContent =
+        getLevelName(value) + " - " + value + "%";
+
+    skillData.python =
+        Number(value);
+
+    saveSkills();
+
+}
+
+
+pythonLevel.addEventListener(
+    "change",
+    updatePython
+);
+
+
+
+// C
+
+const cLevel =
+    document.getElementById("cLevel");
+
+const cProgress =
+    document.getElementById("cProgress");
+
+const cText =
+    document.getElementById("cText");
+
+
+cLevel.value =
+    skillData.c;
+
+
+function updateC() {
+
+    const value =
+        cLevel.value;
+
+    cProgress.style.width =
+        value + "%";
+
+    cText.textContent =
+        getLevelName(value) + " - " + value + "%";
+
+    skillData.c =
+        Number(value);
+
+    saveSkills();
+
+}
+
+
+cLevel.addEventListener(
+    "change",
+    updateC
+);
+
+
+
+// Java
+
+const javaLevel =
+    document.getElementById("javaLevel");
+
+const javaProgress =
+    document.getElementById("javaProgress");
+
+const javaText =
+    document.getElementById("javaText");
+
+
+javaLevel.value =
+    skillData.java;
+
+
+function updateJava() {
+
+    const value =
+        javaLevel.value;
+
+    javaProgress.style.width =
+        value + "%";
+
+    javaText.textContent =
+        getLevelName(value) + " - " + value + "%";
+
+    skillData.java =
+        Number(value);
+
+    saveSkills();
+
+}
+
+
+javaLevel.addEventListener(
+    "change",
+    updateJava
+);
+
+
+
+// Level name
+
+function getLevelName(value) {
+
+    if (value == 20) {
+        return "Beginner";
+    }
+
+    if (value == 50) {
+        return "Intermediate";
+    }
+
+    if (value == 80) {
+        return "Advanced";
+    }
+
+    return "Expert";
+
+}
+
+
+
+// Save skills
+
+function saveSkills() {
+
+    localStorage.setItem(
+        "skillLevels",
+        JSON.stringify(skillData)
+    );
+
+}
+
+
+
+// ===============================
+// CAREER GOALS
+// ===============================
+
+const goalChecks =
+    document.querySelectorAll(".goalCheck");
+
+const goalProgress =
+    document.getElementById("goalProgress");
+
+const progressText =
+    document.getElementById("progressText");
+
+const progressMessage =
+    document.getElementById("progressMessage");
+
+
+const savedGoals =
+    JSON.parse(
+        localStorage.getItem("careerGoals")
     ) || [];
 
 
-if (selectedRoadmap) {
+goalChecks.forEach(
+    function(goal, index) {
 
-    selectedRoadmap.forEach(
-        (step, index) => {
+        if (savedGoals[index] === true) {
 
-            const item =
-                document.createElement("div");
+            goal.checked = true;
 
-            item.className =
-                "roadmap-item";
+        }
 
-
-            const checkbox =
-                document.createElement("input");
-
-            checkbox.type =
-                "checkbox";
-
-            checkbox.className =
-                "roadmap-checkbox";
-
-            checkbox.checked =
-                savedRoadmap[index] === true;
+    }
+);
 
 
-            const content =
-                document.createElement("div");
+function updateProgress() {
 
-            content.className =
-                "roadmap-content";
+    let completed = 0;
 
-
-            const heading =
-                document.createElement("h3");
-
-            heading.textContent =
-                step;
+    let goalStatus = [];
 
 
-            const description =
-                document.createElement("p");
+    goalChecks.forEach(
+        function(goal) {
 
-            description.textContent =
-                "Step " +
-                (index + 1) +
-                " of your career journey";
+            if (goal.checked) {
 
+                completed++;
 
-            content.appendChild(heading);
-            content.appendChild(description);
+                goalStatus.push(true);
 
-            item.appendChild(checkbox);
-            item.appendChild(content);
+            } else {
 
-            roadmapContainer.appendChild(item);
-
-
-            checkbox.addEventListener(
-                "change",
-                function () {
-
-                    saveRoadmapProgress();
-
-                    updateRoadmapProgress();
-
-                }
-            );
-
-
-            if (
-                index <
-                selectedRoadmap.length - 1
-            ) {
-
-                const line =
-                    document.createElement("div");
-
-                line.className =
-                    "roadmap-line";
-
-                roadmapContainer.appendChild(line);
+                goalStatus.push(false);
 
             }
 
         }
     );
-}
 
-
-function saveRoadmapProgress() {
-
-    const checkboxes =
-        document.querySelectorAll(
-            ".roadmap-checkbox"
-        );
-
-    const progress =
-        [...checkboxes].map(
-            checkbox =>
-                checkbox.checked
-        );
 
     localStorage.setItem(
-        roadmapKey,
-        JSON.stringify(progress)
+        "careerGoals",
+        JSON.stringify(goalStatus)
     );
-}
 
-
-function updateRoadmapProgress() {
-
-    const checkboxes =
-        document.querySelectorAll(
-            ".roadmap-checkbox"
-        );
-
-    if (checkboxes.length === 0) {
-        return;
-    }
-
-    const completed =
-        [...checkboxes].filter(
-            checkbox =>
-                checkbox.checked
-        ).length;
 
     const percentage =
-        Math.round(
-            (completed /
-                checkboxes.length) *
-            100
-        );
+        (completed / goalChecks.length) * 100;
 
 
-    const progressBar =
-        document.getElementById(
-            "roadmapProgressBar"
-        );
-
-    const progressText =
-        document.getElementById(
-            "roadmapProgressText"
-        );
-
-
-    progressBar.style.width =
+    goalProgress.style.width =
         percentage + "%";
 
-    progressBar.textContent =
-        percentage + "%";
+
+    progressText.textContent =
+        Math.round(percentage) +
+        "% completed";
 
 
     if (percentage === 0) {
 
-        progressText.textContent =
-            "Start your roadmap! 🚀";
-
-    }
-
-    else if (percentage === 100) {
-
-        progressText.textContent =
-            "Roadmap completed! 🎉";
-
-    }
-
-    else {
-
-        progressText.textContent =
-            completed +
-            " of " +
-            checkboxes.length +
-            " steps completed. Keep going! 🚀";
-
-    }
-}
-
-
-updateRoadmapProgress();
-
-
-/* =================================
-   SKILLS TRACKER
-================================= */
-
-const skillsContainer =
-    document.getElementById(
-        "skillsContainer"
-    );
-
-
-const skillList =
-    skills
-        .split(",")
-        .map(
-            skill =>
-                skill.trim()
-        )
-        .filter(
-            skill =>
-                skill !== ""
-        );
-
-
-let skillProgress =
-    JSON.parse(
-        localStorage.getItem(
-            "skillProgress"
-        )
-    ) || {};
-
-
-function displaySkills() {
-
-    skillsContainer.innerHTML = "";
-
-
-    if (skillList.length === 0) {
-
-        skillsContainer.innerHTML =
-            `<div class="no-skills">
-                No skills added yet.
-                Go back to your profile and add some skills.
-            </div>`;
-
-        return;
-    }
-
-
-    skillList.forEach(
-        skill => {
-
-            if (
-                skillProgress[skill] ===
-                undefined
-            ) {
-
-                skillProgress[skill] = 0;
-
-            }
-
-
-            const skillDiv =
-                document.createElement("div");
-
-            skillDiv.className =
-                "skill";
-
-
-            const header =
-                document.createElement("div");
-
-            header.className =
-                "skill-header";
-
-
-            header.innerHTML =
-                `<span>${skill}</span>
-                 <span>${skillProgress[skill]}%</span>`;
-
-
-            const progress =
-                document.createElement("div");
-
-            progress.className =
-                "skill-progress";
-
-
-            const bar =
-                document.createElement("div");
-
-            bar.className =
-                "skill-bar";
-
-            bar.style.width =
-                skillProgress[skill] + "%";
-
-            bar.textContent =
-                skillProgress[skill] + "%";
-
-
-            progress.appendChild(bar);
-
-
-            const buttons =
-                document.createElement("div");
-
-            buttons.className =
-                "skill-buttons";
-
-
-            const decrease =
-                document.createElement("button");
-
-            decrease.textContent =
-                "− 10%";
-
-
-            const increase =
-                document.createElement("button");
-
-            increase.textContent =
-                "+ 10%";
-
-
-            decrease.onclick =
-                function () {
-
-                    changeSkillProgress(
-                        skill,
-                        -10
-                    );
-
-                };
-
-
-            increase.onclick =
-                function () {
-
-                    changeSkillProgress(
-                        skill,
-                        10
-                    );
-
-                };
-
-
-            buttons.appendChild(decrease);
-            buttons.appendChild(increase);
-
-
-            skillDiv.appendChild(header);
-            skillDiv.appendChild(progress);
-            skillDiv.appendChild(buttons);
-
-            skillsContainer.appendChild(
-                skillDiv
-            );
-
-        }
-    );
-
-
-    localStorage.setItem(
-        "skillProgress",
-        JSON.stringify(
-            skillProgress
-        )
-    );
-}
-
-
-function changeSkillProgress(
-    skill,
-    amount
-) {
-
-    let current =
-        skillProgress[skill] || 0;
-
-
-    current += amount;
-
-
-    if (current < 0) {
-        current = 0;
-    }
-
-
-    if (current > 100) {
-        current = 100;
-    }
-
-
-    skillProgress[skill] =
-        current;
-
-
-    localStorage.setItem(
-        "skillProgress",
-        JSON.stringify(
-            skillProgress
-        )
-    );
-
-
-    displaySkills();
-}
-
-
-displaySkills();
-
-
-/* =================================
-   CAREER GOALS
-================================= */
-
-const goals =
-    document.querySelectorAll(
-        '.goal input[type="checkbox"]'
-    );
-
-
-const goalsKey =
-    "careerGoals_" +
-    careerGoal;
-
-
-let savedGoals =
-    JSON.parse(
-        localStorage.getItem(
-            goalsKey
-        )
-    ) || {};
-
-
-goals.forEach(
-    goal => {
-
-        const goalName =
-            goal.dataset.goal;
-
-        goal.checked =
-            savedGoals[goalName] === true;
-
-    }
-);
-
-
-function saveGoals() {
-
-    const goalProgress = {};
-
-
-    goals.forEach(
-        goal => {
-
-            const goalName =
-                goal.dataset.goal;
-
-            goalProgress[goalName] =
-                goal.checked;
-
-        }
-    );
-
-
-    localStorage.setItem(
-        goalsKey,
-        JSON.stringify(
-            goalProgress
-        )
-    );
-}
-
-
-const overallBar =
-    document.getElementById(
-        "overallBar"
-    );
-
-const progressText =
-    document.getElementById(
-        "progressText"
-    );
-
-
-function updateGoalProgress() {
-
-    const completed =
-        [...goals].filter(
-            goal =>
-                goal.checked
-        ).length;
-
-
-    const progress =
-        Math.round(
-            (completed /
-                goals.length) *
-            100
-        );
-
-
-    overallBar.style.width =
-        progress + "%";
-
-    overallBar.textContent =
-        progress + "%";
-
-
-    if (progress === 0) {
-
-        progressText.textContent =
+        progressMessage.textContent =
             "Start completing your goals! 🚀";
 
     }
 
-    else if (progress === 100) {
+    else if (percentage < 100) {
 
-        progressText.textContent =
-            "Amazing! You completed all your goals! 🎉";
+        progressMessage.textContent =
+            "Keep going! You are making progress. 💪";
 
     }
 
     else {
 
-        progressText.textContent =
-            completed +
-            " of " +
-            goals.length +
-            " goals completed. Keep going! 🚀";
+        progressMessage.textContent =
+            "Amazing! All goals completed! 🎉";
 
     }
+
 }
 
 
-goals.forEach(
-    goal => {
+goalChecks.forEach(
+    function(goal) {
 
         goal.addEventListener(
             "change",
-            function () {
-
-                saveGoals();
-
-                updateGoalProgress();
-
-            }
+            updateProgress
         );
 
     }
 );
 
 
-updateGoalProgress();
+updateProgress();
 
 
-/* =================================
-   PERSONALIZED COURSES
-================================= */
+// Show saved skill values
 
-const courseContainer =
-    document.getElementById(
-        "coursesContainer"
-    );
+updatePython();
 
+updateC();
 
-const courseIntro =
-    document.getElementById(
-        "courseIntro"
-    );
+updateJava();
 
-
-const courses = {
-
-    "Software Developer": [
-        {
-            title: "Programming Fundamentals",
-            description: "Build strong programming basics."
-        },
-        {
-            title: "Data Structures & Algorithms",
-            description: "Learn the concepts needed for coding interviews."
-        },
-        {
-            title: "Git & GitHub",
-            description: "Learn how developers manage and share code."
-        },
-        {
-            title: "SQL & Databases",
-            description: "Learn how applications store and manage data."
-        }
-    ],
-
-    "Web Developer": [
-        {
-            title: "HTML & CSS",
-            description: "Learn how websites are created and designed."
-        },
-        {
-            title: "JavaScript",
-            description: "Make websites interactive and dynamic."
-        },
-        {
-            title: "React",
-            description: "Learn a popular frontend development framework."
-        },
-        {
-            title: "Backend Development",
-            description: "Learn servers, APIs and databases."
-        }
-    ],
-
-    "AI / ML Engineer": [
-        {
-            title: "Python",
-            description: "Build the programming foundation for AI and ML."
-        },
-        {
-            title: "NumPy & Pandas",
-            description: "Learn the tools used for working with data."
-        },
-        {
-            title: "Machine Learning",
-            description: "Learn how machines learn from data."
-        },
-        {
-            title: "Deep Learning",
-            description: "Explore neural networks and modern AI."
-        }
-    ],
-
-    "Data Scientist": [
-        {
-            title: "Python for Data Science",
-            description: "Learn Python for analysing data."
-        },
-        {
-            title: "Statistics",
-            description: "Build the mathematical foundation for data science."
-        },
-        {
-            title: "SQL",
-            description: "Learn how to work with databases."
-        },
-        {
-            title: "Pandas & Data Visualization",
-            description: "Analyse and visualize real-world datasets."
-        }
-    ],
-
-    "Cybersecurity": [
-        {
-            title: "Computer Networking",
-            description: "Understand how computers communicate."
-        },
-        {
-            title: "Linux Fundamentals",
-            description: "Learn the Linux skills used in cybersecurity."
-        },
-        {
-            title: "Cybersecurity Fundamentals",
-            description: "Understand common threats and security concepts."
-        },
-        {
-            title: "Web Security",
-            description: "Learn the basics of securing websites and applications."
-        }
-    ],
-
-    "App Developer": [
-        {
-            title: "Programming Fundamentals",
-            description: "Build a strong coding foundation."
-        },
-        {
-            title: "UI/UX Basics",
-            description: "Learn how to design better mobile experiences."
-        },
-        {
-            title: "Flutter / React Native",
-            description: "Learn modern mobile app development."
-        },
-        {
-            title: "APIs & Databases",
-            description: "Connect your mobile apps to real data."
-        }
-    ],
-
-    "Cloud / DevOps Engineer": [
-        {
-            title: "Linux Fundamentals",
-            description: "Learn the operating system skills used in DevOps."
-        },
-        {
-            title: "Computer Networking",
-            description: "Understand networks and communication."
-        },
-        {
-            title: "Git & GitHub",
-            description: "Learn version control and collaboration."
-        },
-        {
-            title: "Docker & CI/CD",
-            description: "Learn modern application deployment practices."
-        }
-    ],
-
-    "Not Sure Yet": [
-        {
-            title: "Programming Basics",
-            description: "Start learning the fundamentals of coding."
-        },
-        {
-            title: "Web Development",
-            description: "Try building websites."
-        },
-        {
-            title: "Artificial Intelligence",
-            description: "Explore the basics of AI."
-        },
-        {
-            title: "Build Small Projects",
-            description: "Discover what type of development you enjoy."
-        }
-    ]
-};
-
-
-const selectedCourses =
-    courses[careerGoal] ||
-    courses["Not Sure Yet"];
-
-
-courseIntro.textContent =
-    "Courses recommended for " +
-    careerGoal +
-    ".";
-
-
-const courseKey =
-    "courseProgress_" +
-    careerGoal;
-
-
-let savedCourses =
-    JSON.parse(
-        localStorage.getItem(
-            courseKey
-        )
-    ) || {};
-
-
-selectedCourses.forEach(
-    (course, index) => {
-
-        const courseDiv =
-            document.createElement("div");
-
-        courseDiv.className =
-            "course";
-
-
-        const checkbox =
-            document.createElement("input");
-
-        checkbox.type =
-            "checkbox";
-
-        checkbox.className =
-            "course-checkbox";
-
-        checkbox.id =
-            "course" + index;
-
-
-        checkbox.checked =
-            savedCourses[index] === true;
-
-
-        const label =
-            document.createElement("label");
-
-        label.htmlFor =
-            "course" + index;
-
-        label.textContent =
-            " " + course.title;
-
-
-        const titleDiv =
-            document.createElement("div");
-
-        titleDiv.className =
-            "course-title";
-
-
-        const description =
-            document.createElement("div");
-
-        description.className =
-            "course-description";
-
-        description.textContent =
-            course.description;
-
-
-        titleDiv.appendChild(checkbox);
-        titleDiv.appendChild(label);
-
-
-        courseDiv.appendChild(titleDiv);
-        courseDiv.appendChild(description);
-
-
-        courseContainer.appendChild(
-            courseDiv
-        );
-
-
-        checkbox.addEventListener(
-            "change",
-            function () {
-
-                savedCourses[index] =
-                    checkbox.checked;
-
-                localStorage.setItem(
-                    courseKey,
-                    JSON.stringify(
-                        savedCourses
-                    )
-                );
-
-            }
-        );
-
-    }
-);
 
 </script>
 
