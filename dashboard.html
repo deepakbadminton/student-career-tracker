@@ -2,11 +2,8 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Student Career Dashboard</title>
 
@@ -39,6 +36,16 @@
 
         .info {
             line-height: 1.8;
+        }
+
+        .career-path {
+            background: #eef2ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #3730a3;
         }
 
         .skill {
@@ -144,6 +151,18 @@
 
             <strong>Skills:</strong>
             <span id="userSkills"></span>
+
+        </div>
+
+
+        <!-- CAREER PATH -->
+
+        <div class="career-path">
+
+            🎯 Career Path:
+            <span id="userCareerPath">
+                Not selected
+            </span>
 
         </div>
 
@@ -525,6 +544,11 @@ const year =
 const skills =
     localStorage.getItem("skills");
 
+const careerPath =
+    localStorage.getItem("careerPath");
+
+
+// Display profile
 
 if (name) {
 
@@ -551,6 +575,13 @@ if (skills) {
 
     document.getElementById("userSkills")
         .textContent = skills;
+
+}
+
+if (careerPath) {
+
+    document.getElementById("userCareerPath")
+        .textContent = careerPath;
 
 }
 
@@ -599,7 +630,10 @@ function updatePython() {
         value + "%";
 
     pythonText.textContent =
-        getLevelName(value) + " - " + value + "%";
+        getLevelName(value) +
+        " - " +
+        value +
+        "%";
 
     skillData.python =
         Number(value);
@@ -641,7 +675,10 @@ function updateC() {
         value + "%";
 
     cText.textContent =
-        getLevelName(value) + " - " + value + "%";
+        getLevelName(value) +
+        " - " +
+        value +
+        "%";
 
     skillData.c =
         Number(value);
@@ -683,7 +720,10 @@ function updateJava() {
         value + "%";
 
     javaText.textContent =
-        getLevelName(value) + " - " + value + "%";
+        getLevelName(value) +
+        " - " +
+        value +
+        "%";
 
     skillData.java =
         Number(value);
@@ -700,20 +740,26 @@ javaLevel.addEventListener(
 
 
 
-// Level name
+// Skill level name
 
 function getLevelName(value) {
 
     if (value == 20) {
+
         return "Beginner";
+
     }
 
     if (value == 50) {
+
         return "Intermediate";
+
     }
 
     if (value == 80) {
+
         return "Advanced";
+
     }
 
     return "Expert";
@@ -722,7 +768,7 @@ function getLevelName(value) {
 
 
 
-// Save skills
+// Save skill levels
 
 function saveSkills() {
 
@@ -852,10 +898,7 @@ goalChecks.forEach(
 );
 
 
-updateProgress();
-
-
-// Show saved skill values
+// Load saved information
 
 updatePython();
 
@@ -863,8 +906,11 @@ updateC();
 
 updateJava();
 
+updateProgress();
+
 
 </script>
+
 
 </body>
 
