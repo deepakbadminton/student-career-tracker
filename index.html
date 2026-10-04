@@ -1,48 +1,493 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Student Career Tracker</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: #f4f7fb;
-            padding-top: 100px;
+
+        * {
+            box-sizing: border-box;
         }
 
-        h1 {
-            font-size: 45px;
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
             color: #1f2937;
         }
 
-        p {
-            font-size: 20px;
-            color: #555;
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
         }
 
-        button {
-            padding: 12px 25px;
-            font-size: 18px;
-            border: none;
-            border-radius: 8px;
+        /* NAVBAR */
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .nav-button {
+            text-decoration: none;
             background: #2563eb;
             color: white;
-            cursor: pointer;
+            padding: 9px 16px;
+            border-radius: 7px;
         }
 
-        button:hover {
+        .nav-button:hover {
             background: #1d4ed8;
         }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #2563eb;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+
+        .main-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 25px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .main-button:hover {
+            background: #1d4ed8;
+        }
+
+        /* FEATURES */
+
+        .section-title {
+            text-align: center;
+            margin: 50px 0 25px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+        }
+
+        .section-title p {
+            color: #6b7280;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .feature {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 35px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* HOW IT WORKS */
+
+        .steps {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .step {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #2563eb;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        /* FINAL SECTION */
+
+        .cta {
+            text-align: center;
+            background: white;
+            padding: 50px 20px;
+            margin: 60px 0 30px;
+            border-radius: 15px;
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .cta h2 {
+            font-size: 30px;
+        }
+
+        .cta p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #6b7280;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero h2 {
+                font-size: 23px;
+            }
+
+            .hero {
+                padding: 50px 10px;
+            }
+
+            nav {
+                padding: 10px 0;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <h1>Student Career Tracker 🚀</h1>
 
-    <p>Build your skills. Track your progress. Build your future.</p>
+<div class="container">
 
-    <button onclick="window.location.href='profile.html'">Get Started</button>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">
+            🎓 Career Tracker
+        </div>
+
+        <a
+            href="profile.html"
+            class="nav-button">
+
+            Get Started
+
+        </a>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>
+            Student Career Tracker 🚀
+        </h1>
+
+        <h2>
+            Build your skills. Track your progress. Build your future.
+        </h2>
+
+        <p>
+            A simple platform for students to plan their career,
+            track their skills, follow a personalized roadmap,
+            manage projects and work toward their goals.
+        </p>
+
+        <a
+            href="profile.html"
+            class="main-button">
+
+            Start Your Career Journey →
+
+        </a>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section>
+
+        <div class="section-title">
+
+            <h2>
+                Everything You Need in One Place
+            </h2>
+
+            <p>
+                Keep track of your career journey without confusion.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🗺️
+                </div>
+
+                <h3>
+                    Career Roadmap
+                </h3>
+
+                <p>
+                    Follow a step-by-step roadmap
+                    based on your chosen career.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Skill Tracking
+                </h3>
+
+                <p>
+                    Track your progress and
+                    understand which skills you need to improve.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🎯
+                </div>
+
+                <h3>
+                    Career Goals
+                </h3>
+
+                <p>
+                    Set goals and track how much
+                    of your career plan you have completed.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🚀
+                </div>
+
+                <h3>
+                    Project Tracking
+                </h3>
+
+                <p>
+                    Keep all your projects organized
+                    and monitor their progress.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+
+    <section>
+
+        <div class="section-title">
+
+            <h2>
+                How It Works
+            </h2>
+
+            <p>
+                Start tracking your career in three simple steps.
+            </p>
+
+        </div>
+
+
+        <div class="steps">
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <h3>
+                    Create Your Profile
+                </h3>
+
+                <p>
+                    Tell us about your branch,
+                    year, skills and career goal.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <h3>
+                    Follow Your Roadmap
+                </h3>
+
+                <p>
+                    Complete career steps and
+                    track your progress.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <h3>
+                    Build Your Future
+                </h3>
+
+                <p>
+                    Build projects, improve skills
+                    and prepare for opportunities.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL CTA -->
+
+    <section class="cta">
+
+        <h2>
+            Your Career Journey Starts Here 🚀
+        </h2>
+
+        <p>
+            Build your skills, complete projects,
+            follow your roadmap and prepare for your future.
+        </p>
+
+    </section>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 Student Career Tracker
+
+</footer>
+
+
 </body>
+
 </html>
