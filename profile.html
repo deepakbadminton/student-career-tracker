@@ -8,203 +8,84 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Create Your Profile | Student Career Tracker</title>
-
+    <title>Student Profile | Student Career Tracker</title>
 
     <style>
 
-        * {
-            box-sizing: border-box;
-        }
-
-
         body {
-
             font-family: Arial, sans-serif;
-
-            min-height: 100vh;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #eef2ff,
-                    #f8fafc
-                );
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            padding: 30px;
-
+            background: #f4f7fb;
+            margin: 0;
+            padding: 20px;
+            color: #1f2937;
         }
-
 
         .container {
+            max-width: 600px;
+            margin: 40px auto;
+        }
 
-            width: 100%;
-
-            max-width: 520px;
-
+        .card {
             background: white;
-
-            padding: 40px;
-
-            border-radius: 24px;
-
-            box-shadow:
-                0 15px 40px
-                rgba(0, 0, 0, 0.08);
-
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
-
-
-        .logo {
-
-            text-align: center;
-
-            font-size: 42px;
-
-            margin-bottom: 10px;
-
-        }
-
 
         h1 {
-
+            color: #2563eb;
             text-align: center;
-
-            font-size: 30px;
-
-            color: #111827;
-
-            margin-bottom: 10px;
-
         }
 
-
-        .subtitle {
-
-            text-align: center;
-
-            color: #6b7280;
-
-            margin-bottom: 30px;
-
-            line-height: 1.5;
-
+        h2 {
+            margin-top: 0;
         }
-
-
-        .form-group {
-
-            margin-bottom: 20px;
-
-        }
-
 
         label {
-
             display: block;
-
-            font-size: 14px;
-
+            margin-top: 18px;
             font-weight: bold;
-
-            color: #374151;
-
-            margin-bottom: 8px;
-
         }
-
 
         input,
         select {
-
             width: 100%;
-
-            padding: 14px 16px;
-
+            box-sizing: border-box;
+            padding: 11px;
+            margin-top: 7px;
             border: 1px solid #d1d5db;
-
-            border-radius: 12px;
-
+            border-radius: 7px;
             font-size: 15px;
-
-            outline: none;
-
-            background: white;
-
         }
-
-
-        input:focus,
-        select:focus {
-
-            border-color: #6366f1;
-
-            box-shadow:
-                0 0 0 3px
-                rgba(99, 102, 241, 0.12);
-
-        }
-
-
-        .hint {
-
-            font-size: 12px;
-
-            color: #9ca3af;
-
-            margin-top: 6px;
-
-        }
-
 
         button {
-
             width: 100%;
-
-            padding: 15px;
-
-            margin-top: 10px;
-
-            border: none;
-
-            border-radius: 12px;
-
-            background: #4f46e5;
-
+            margin-top: 25px;
+            padding: 12px;
+            background: #2563eb;
             color: white;
-
-            font-size: 17px;
-
-            font-weight: bold;
-
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
             cursor: pointer;
-
         }
-
 
         button:hover {
-
-            background: #4338ca;
-
+            background: #1d4ed8;
         }
 
-
-        .footer {
-
+        .back-button {
+            display: block;
             text-align: center;
+            margin-top: 15px;
+            color: #2563eb;
+            text-decoration: none;
+        }
 
-            margin-top: 22px;
-
-            font-size: 13px;
-
-            color: #9ca3af;
-
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
         }
 
     </style>
@@ -214,209 +95,175 @@
 
 <body>
 
-
 <div class="container">
 
+    <div class="card">
 
-    <div class="logo">
-        🚀
-    </div>
+        <h1>🎓 Student Career Tracker</h1>
 
+        <h2>👤 Your Profile</h2>
 
-    <h1>
-        Create Your Profile
-    </h1>
-
-
-    <p class="subtitle">
-
-        Tell us about yourself and we'll help
-        you build your career roadmap.
-
-    </p>
+        <p>
+            Enter your details to personalize your career dashboard.
+        </p>
 
 
-    <form onsubmit="goToDashboard(event)">
+        <form id="profileForm">
 
 
-        <!-- NAME -->
+            <!-- NAME -->
 
-        <div class="form-group">
-
-            <label>
-                Your Name
+            <label for="name">
+                Name
             </label>
 
             <input
                 type="text"
                 id="name"
                 placeholder="Enter your name"
-                required
-            >
-
-        </div>
+                required>
 
 
-        <!-- BRANCH -->
+            <!-- BRANCH -->
 
-        <div class="form-group">
-
-            <label>
+            <label for="branch">
                 Branch
             </label>
 
-            <select
-                id="branch"
-                required>
+            <select id="branch" required>
 
                 <option value="">
-                    Choose your branch
+                    Select your branch
                 </option>
 
-                <option>
+                <option value="CSE">
                     CSE
                 </option>
 
-                <option>
+                <option value="AIML">
                     AIML
                 </option>
 
-                <option>
+                <option value="ISE">
                     ISE
                 </option>
 
-                <option>
+                <option value="ECE">
                     ECE
                 </option>
 
-                <option>
+                <option value="Other">
                     Other
                 </option>
 
             </select>
 
-        </div>
 
+            <!-- YEAR -->
 
-        <!-- YEAR -->
-
-        <div class="form-group">
-
-            <label>
-                Year of Study
+            <label for="year">
+                Year
             </label>
 
-            <select
-                id="year"
-                required>
+            <select id="year" required>
 
                 <option value="">
-                    Choose your year
+                    Select your year
                 </option>
 
-                <option>
+                <option value="1st Year">
                     1st Year
                 </option>
 
-                <option>
+                <option value="2nd Year">
                     2nd Year
                 </option>
 
-                <option>
+                <option value="3rd Year">
                     3rd Year
                 </option>
 
-                <option>
+                <option value="4th Year">
                     4th Year
                 </option>
 
             </select>
 
-        </div>
 
+            <!-- SKILLS -->
 
-        <!-- SKILLS -->
-
-        <div class="form-group">
-
-            <label>
-                Skills You Know
+            <label for="skills">
+                Skills
             </label>
 
             <input
                 type="text"
                 id="skills"
-                placeholder="Example: Python, C, Java"
-            >
-
-            <p class="hint">
-
-                You can add more skills later.
-
-            </p>
-
-        </div>
+                placeholder="Example: Python, C, Java">
 
 
-        <!-- CAREER PATH -->
+            <!-- CAREER PATH -->
 
-        <div class="form-group">
-
-            <label>
-                Career Path
+            <label for="careerPath">
+                🎯 Career Path
             </label>
 
-            <select
-                id="careerPath"
-                required>
+            <select id="careerPath" required>
 
                 <option value="">
-                    Choose your career path
+                    Select your career path
                 </option>
 
                 <option value="Software Developer">
-                    💻 Software Developer
+                    Software Developer
                 </option>
 
                 <option value="AI / ML">
-                    🤖 AI / ML
+                    AI / ML
                 </option>
 
                 <option value="Web Developer">
-                    🌐 Web Developer
+                    Web Developer
                 </option>
 
                 <option value="Data Analyst">
-                    📊 Data Analyst
+                    Data Analyst
                 </option>
 
                 <option value="Cybersecurity">
-                    🔐 Cybersecurity
+                    Cybersecurity
                 </option>
 
             </select>
 
-        </div>
+
+            <!-- SAVE -->
+
+            <button type="submit">
+
+                Save Profile & Continue 🚀
+
+            </button>
 
 
-        <!-- SUBMIT -->
-
-        <button type="submit">
-
-            Continue to Dashboard →
-
-        </button>
+        </form>
 
 
-    </form>
+        <p
+            id="message"
+            class="message">
+        </p>
 
 
-    <p class="footer">
+        <a
+            href="dashboard.html"
+            class="back-button">
 
-        Your career journey starts here.
+            ← Back to Dashboard
 
-    </p>
+        </a>
 
+    </div>
 
 </div>
 
@@ -424,67 +271,163 @@
 <script>
 
 
-function goToDashboard(event) {
+// ========================================
+// LOAD EXISTING PROFILE
+// ========================================
 
-    event.preventDefault();
+const savedName =
+    localStorage.getItem("name");
 
+const savedBranch =
+    localStorage.getItem("branch");
 
-    // Get profile information
+const savedYear =
+    localStorage.getItem("year");
 
-    const name =
-        document.getElementById("name").value;
+const savedSkills =
+    localStorage.getItem("skills");
 
-    const branch =
-        document.getElementById("branch").value;
-
-    const year =
-        document.getElementById("year").value;
-
-    const skills =
-        document.getElementById("skills").value;
-
-    const careerPath =
-        document.getElementById("careerPath").value;
+const savedCareerPath =
+    localStorage.getItem("careerPath");
 
 
-    // Save profile information
+// Put saved information into the form
 
-    localStorage.setItem(
-        "name",
-        name
-    );
+if (savedName) {
 
-
-    localStorage.setItem(
-        "branch",
-        branch
-    );
-
-
-    localStorage.setItem(
-        "year",
-        year
-    );
-
-
-    localStorage.setItem(
-        "skills",
-        skills
-    );
-
-
-    localStorage.setItem(
-        "careerPath",
-        careerPath
-    );
-
-
-    // Go to dashboard
-
-    window.location.href =
-        "dashboard.html";
+    document.getElementById("name").value =
+        savedName;
 
 }
+
+if (savedBranch) {
+
+    document.getElementById("branch").value =
+        savedBranch;
+
+}
+
+if (savedYear) {
+
+    document.getElementById("year").value =
+        savedYear;
+
+}
+
+if (savedSkills) {
+
+    document.getElementById("skills").value =
+        savedSkills;
+
+}
+
+if (savedCareerPath) {
+
+    document.getElementById("careerPath").value =
+        savedCareerPath;
+
+}
+
+
+// ========================================
+// SAVE PROFILE
+// ========================================
+
+const profileForm =
+    document.getElementById("profileForm");
+
+
+profileForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        // Get values
+
+        const name =
+            document.getElementById("name")
+            .value.trim();
+
+
+        const branch =
+            document.getElementById("branch")
+            .value;
+
+
+        const year =
+            document.getElementById("year")
+            .value;
+
+
+        const skills =
+            document.getElementById("skills")
+            .value.trim();
+
+
+        const careerPath =
+            document.getElementById("careerPath")
+            .value;
+
+
+        // Save values
+
+        localStorage.setItem(
+            "name",
+            name
+        );
+
+
+        localStorage.setItem(
+            "branch",
+            branch
+        );
+
+
+        localStorage.setItem(
+            "year",
+            year
+        );
+
+
+        localStorage.setItem(
+            "skills",
+            skills
+        );
+
+
+        localStorage.setItem(
+            "careerPath",
+            careerPath
+        );
+
+
+        // Show message
+
+        const message =
+            document.getElementById("message");
+
+
+        message.textContent =
+            "Profile saved successfully! 🚀";
+
+
+        // Go to dashboard
+
+        setTimeout(
+            function() {
+
+                window.location.href =
+                    "dashboard.html";
+
+            },
+            700
+        );
+
+    }
+);
+
 
 </script>
 
