@@ -195,7 +195,6 @@
 
 <div class="container">
 
-
     <h1>Student Career Dashboard</h1>
 
 
@@ -234,6 +233,57 @@
             </span>
 
         </div>
+
+    </div>
+
+
+    <!-- ================= CAREER PROGRESS SUMMARY ================= -->
+
+    <div class="card">
+
+        <h2>📈 Career Progress Summary</h2>
+
+        <p>
+            🗺️ Roadmap Progress:
+            <strong id="summaryRoadmap">0%</strong>
+        </p>
+
+        <p>
+            🎯 Goals Progress:
+            <strong id="summaryGoals">0%</strong>
+        </p>
+
+        <p>
+            💻 Average Skill Level:
+            <strong id="summarySkills">20%</strong>
+        </p>
+
+        <p>
+            <strong>⭐ Overall Career Progress</strong>
+        </p>
+
+        <div class="progress-container">
+
+            <div
+                class="progress"
+                id="summaryProgress"
+                style="width: 0%;">
+
+            </div>
+
+        </div>
+
+        <p id="summaryOverall">
+            0% overall progress
+        </p>
+
+        <p
+            class="message"
+            id="summaryMessage">
+
+            Keep working on your career! 🚀
+
+        </p>
 
     </div>
 
@@ -601,7 +651,6 @@
 
     </div>
 
-
 </div>
 
 
@@ -664,7 +713,6 @@ if (careerPath) {
 }
 
 
-
 // ========================================
 // CAREER ROADMAP
 // ========================================
@@ -674,17 +722,11 @@ const roadmaps = {
     "Software Developer": [
 
         "Learn programming fundamentals",
-
         "Master one programming language",
-
         "Learn Data Structures and Algorithms",
-
         "Build real-world projects",
-
         "Learn Git and GitHub",
-
         "Build your portfolio",
-
         "Prepare for internships"
 
     ],
@@ -693,17 +735,11 @@ const roadmaps = {
     "AI / ML": [
 
         "Learn Python fundamentals",
-
         "Learn NumPy and Pandas",
-
         "Learn basic mathematics for ML",
-
         "Learn Machine Learning fundamentals",
-
         "Build ML projects",
-
         "Create an AI/ML portfolio",
-
         "Prepare for internships"
 
     ],
@@ -712,17 +748,11 @@ const roadmaps = {
     "Web Developer": [
 
         "Learn HTML",
-
         "Learn CSS",
-
         "Learn JavaScript",
-
         "Learn Git and GitHub",
-
         "Build websites",
-
         "Learn a frontend framework",
-
         "Build your portfolio"
 
     ],
@@ -731,17 +761,11 @@ const roadmaps = {
     "Data Analyst": [
 
         "Learn Python fundamentals",
-
         "Learn Excel",
-
         "Learn SQL",
-
         "Learn Pandas and data analysis",
-
         "Learn data visualization",
-
         "Build data analysis projects",
-
         "Create your portfolio"
 
     ],
@@ -750,17 +774,11 @@ const roadmaps = {
     "Cybersecurity": [
 
         "Learn computer fundamentals",
-
         "Learn networking basics",
-
         "Learn Linux",
-
         "Learn cybersecurity fundamentals",
-
         "Practice security labs",
-
         "Build cybersecurity projects",
-
         "Prepare for internships"
 
     ]
@@ -783,11 +801,11 @@ const roadmapIntro =
 
 let roadmapChecks = [];
 
+
 const savedRoadmap =
     JSON.parse(
         localStorage.getItem("roadmapProgress")
     ) || [];
-
 
 
 function updateRoadmapProgress() {
@@ -807,10 +825,17 @@ function updateRoadmapProgress() {
     );
 
 
-    const percentage =
-        Math.round(
-            (completed / roadmapChecks.length) * 100
-        );
+    let percentage = 0;
+
+
+    if (roadmapChecks.length > 0) {
+
+        percentage =
+            Math.round(
+                (completed / roadmapChecks.length) * 100
+            );
+
+    }
 
 
     roadmapProgress.style.width =
@@ -822,6 +847,7 @@ function updateRoadmapProgress() {
 
 
     const status = [];
+
 
     roadmapChecks.forEach(
         function(check) {
@@ -840,7 +866,6 @@ function updateRoadmapProgress() {
 }
 
 
-
 if (careerPath && roadmaps[careerPath]) {
 
     roadmapIntro.textContent =
@@ -850,7 +875,6 @@ if (careerPath && roadmaps[careerPath]) {
 
     roadmaps[careerPath].forEach(
         function(step, index) {
-
 
             const stepDiv =
                 document.createElement("div");
@@ -929,6 +953,8 @@ if (careerPath && roadmaps[careerPath]) {
 
                     updateRoadmapProgress();
 
+                    updateCareerSummary();
+
                 }
             );
 
@@ -954,7 +980,6 @@ if (careerPath && roadmaps[careerPath]) {
     updateRoadmapProgress();
 
 }
-
 
 
 // ========================================
@@ -1023,8 +1048,10 @@ function updatePython() {
     const value =
         pythonLevel.value;
 
+
     pythonProgress.style.width =
         value + "%";
+
 
     pythonText.textContent =
         getLevelName(value) +
@@ -1032,19 +1059,14 @@ function updatePython() {
         value +
         "%";
 
+
     skillData.python =
         Number(value);
+
 
     saveSkills();
 
 }
-
-
-pythonLevel.addEventListener(
-    "change",
-    updatePython
-);
-
 
 
 // C
@@ -1068,8 +1090,10 @@ function updateC() {
     const value =
         cLevel.value;
 
+
     cProgress.style.width =
         value + "%";
+
 
     cText.textContent =
         getLevelName(value) +
@@ -1077,19 +1101,14 @@ function updateC() {
         value +
         "%";
 
+
     skillData.c =
         Number(value);
+
 
     saveSkills();
 
 }
-
-
-cLevel.addEventListener(
-    "change",
-    updateC
-);
-
 
 
 // Java
@@ -1113,8 +1132,10 @@ function updateJava() {
     const value =
         javaLevel.value;
 
+
     javaProgress.style.width =
         value + "%";
+
 
     javaText.textContent =
         getLevelName(value) +
@@ -1122,17 +1143,14 @@ function updateJava() {
         value +
         "%";
 
+
     skillData.java =
         Number(value);
 
+
+    saveSkills();
+
 }
-
-
-javaLevel.addEventListener(
-    "change",
-    updateJava
-);
-
 
 
 // ========================================
@@ -1203,8 +1221,15 @@ function updateProgress() {
     );
 
 
-    const percentage =
-        (completed / goalChecks.length) * 100;
+    let percentage = 0;
+
+
+    if (goalChecks.length > 0) {
+
+        percentage =
+            (completed / goalChecks.length) * 100;
+
+    }
 
 
     goalProgress.style.width =
@@ -1240,17 +1265,234 @@ function updateProgress() {
 }
 
 
+// ========================================
+// CAREER PROGRESS SUMMARY
+// ========================================
+
+const summaryRoadmap =
+    document.getElementById("summaryRoadmap");
+
+const summaryGoals =
+    document.getElementById("summaryGoals");
+
+const summarySkills =
+    document.getElementById("summarySkills");
+
+const summaryProgress =
+    document.getElementById("summaryProgress");
+
+const summaryOverall =
+    document.getElementById("summaryOverall");
+
+const summaryMessage =
+    document.getElementById("summaryMessage");
+
+
+function updateCareerSummary() {
+
+    // Roadmap percentage
+
+    let roadmapCompleted = 0;
+
+
+    roadmapChecks.forEach(
+        function(check) {
+
+            if (check.checked) {
+
+                roadmapCompleted++;
+
+            }
+
+        }
+    );
+
+
+    let roadmapPercentage = 0;
+
+
+    if (roadmapChecks.length > 0) {
+
+        roadmapPercentage =
+            Math.round(
+                (roadmapCompleted / roadmapChecks.length) * 100
+            );
+
+    }
+
+
+    // Goals percentage
+
+    let goalsCompleted = 0;
+
+
+    goalChecks.forEach(
+        function(goal) {
+
+            if (goal.checked) {
+
+                goalsCompleted++;
+
+            }
+
+        }
+    );
+
+
+    let goalsPercentage = 0;
+
+
+    if (goalChecks.length > 0) {
+
+        goalsPercentage =
+            Math.round(
+                (goalsCompleted / goalChecks.length) * 100
+            );
+
+    }
+
+
+    // Skills percentage
+
+    const skillsPercentage =
+        Math.round(
+            (
+                skillData.python +
+                skillData.c +
+                skillData.java
+            ) / 3
+        );
+
+
+    // Overall percentage
+
+    const overallPercentage =
+        Math.round(
+            (
+                roadmapPercentage +
+                goalsPercentage +
+                skillsPercentage
+            ) / 3
+        );
+
+
+    // Display values
+
+    summaryRoadmap.textContent =
+        roadmapPercentage + "%";
+
+
+    summaryGoals.textContent =
+        goalsPercentage + "%";
+
+
+    summarySkills.textContent =
+        skillsPercentage + "%";
+
+
+    summaryProgress.style.width =
+        overallPercentage + "%";
+
+
+    summaryOverall.textContent =
+        overallPercentage +
+        "% overall progress";
+
+
+    // Message
+
+    if (overallPercentage === 0) {
+
+        summaryMessage.textContent =
+            "Start building your career! 🚀";
+
+    }
+
+    else if (overallPercentage < 50) {
+
+        summaryMessage.textContent =
+            "Good start! Keep going. 💪";
+
+    }
+
+    else if (overallPercentage < 100) {
+
+        summaryMessage.textContent =
+            "Great progress! Keep pushing. 🔥";
+
+    }
+
+    else {
+
+        summaryMessage.textContent =
+            "Amazing! You are doing great! 🎉";
+
+    }
+
+}
+
+
+// ========================================
+// EVENT LISTENERS
+// ========================================
+
+
+// Goals
+
 goalChecks.forEach(
     function(goal) {
 
         goal.addEventListener(
             "change",
-            updateProgress
+            function() {
+
+                updateProgress();
+
+                updateCareerSummary();
+
+            }
         );
 
     }
 );
 
+
+// Skills
+
+pythonLevel.addEventListener(
+    "change",
+    function() {
+
+        updatePython();
+
+        updateCareerSummary();
+
+    }
+);
+
+
+cLevel.addEventListener(
+    "change",
+    function() {
+
+        updateC();
+
+        updateCareerSummary();
+
+    }
+);
+
+
+javaLevel.addEventListener(
+    "change",
+    function() {
+
+        updateJava();
+
+        updateCareerSummary();
+
+    }
+);
 
 
 // ========================================
@@ -1264,6 +1506,8 @@ updateC();
 updateJava();
 
 updateProgress();
+
+updateCareerSummary();
 
 
 </script>
