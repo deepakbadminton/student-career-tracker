@@ -2,10 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Projects</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Projects | Student Career Tracker</title>
 
     <style>
 
@@ -34,13 +37,18 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
         input,
         textarea,
         select {
             width: 100%;
             padding: 10px;
-            margin-top: 6px;
-            margin-bottom: 15px;
+            margin-top: 7px;
             border: 1px solid #d1d5db;
             border-radius: 7px;
             box-sizing: border-box;
@@ -52,24 +60,49 @@
             resize: vertical;
         }
 
-        button {
+        button,
+        .back-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 16px;
             background: #2563eb;
             color: white;
             border: none;
-            padding: 11px 16px;
             border-radius: 7px;
             cursor: pointer;
+            text-decoration: none;
         }
 
-        button:hover {
+        button:hover,
+        .back-button:hover {
             background: #1d4ed8;
+        }
+
+        .stats {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            flex: 1;
+            min-width: 180px;
+            background: #eef2ff;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat h2 {
+            margin: 5px 0;
+            color: #2563eb;
         }
 
         .project {
             border: 1px solid #e5e7eb;
+            border-radius: 10px;
             padding: 18px;
             margin-top: 15px;
-            border-radius: 10px;
         }
 
         .project h3 {
@@ -78,23 +111,27 @@
         }
 
         .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 6px;
+            background: #eef2ff;
             font-weight: bold;
+            font-size: 14px;
         }
 
         .delete-button {
             background: #dc2626;
-            margin-top: 10px;
+            margin-left: 8px;
         }
 
         .delete-button:hover {
             background: #b91c1c;
         }
 
-        .back-button {
-            display: inline-block;
-            margin-bottom: 10px;
-            color: #2563eb;
-            text-decoration: none;
+        .empty-message {
+            color: #6b7280;
+            text-align: center;
+            padding: 20px;
         }
 
     </style>
@@ -106,132 +143,221 @@
 
 <div class="container">
 
+
+    <h1>🚀 My Projects</h1>
+
+
+    <!-- BACK TO DASHBOARD -->
+
     <a href="dashboard.html" class="back-button">
         ← Back to Dashboard
     </a>
 
 
-    <h1>🚀 My Projects</h1>
-
-
-    <!-- Add Project -->
+    <!-- PROJECT STATISTICS -->
 
     <div class="card">
 
-        <h2>Add New Project</h2>
+        <h2>📊 Project Summary</h2>
 
-        <label>
-            Project Name
-        </label>
+        <div class="stats">
 
-        <input
-            type="text"
-            id="projectName"
-            placeholder="Example: Student Career Tracker"
-        >
+            <div class="stat">
 
+                <p>Total Projects</p>
 
-        <label>
-            Description
-        </label>
+                <h2 id="totalProjects">0</h2>
 
-        <textarea
-            id="projectDescription"
-            placeholder="Describe what your project does"
-        ></textarea>
+            </div>
 
 
-        <label>
-            Technologies Used
-        </label>
+            <div class="stat">
 
-        <input
-            type="text"
-            id="projectTechnologies"
-            placeholder="Example: HTML, CSS, JavaScript"
-        >
+                <p>Completed</p>
+
+                <h2 id="completedProjects">0</h2>
+
+            </div>
 
 
-        <label>
-            Status
-        </label>
+            <div class="stat">
 
-        <select id="projectStatus">
+                <p>In Progress</p>
 
-            <option value="Planning">
-                Planning
-            </option>
+                <h2 id="activeProjects">0</h2>
 
-            <option value="In Progress">
-                In Progress
-            </option>
-
-            <option value="Completed">
-                Completed
-            </option>
-
-        </select>
-
-
-        <button onclick="addProject()">
-            ➕ Add Project
-        </button>
-
-    </div>
-
-
-    <!-- Projects List -->
-
-    <div class="card">
-
-        <h2>My Projects</h2>
-
-        <div id="projectsList">
-
-            <p>No projects added yet.</p>
+            </div>
 
         </div>
 
     </div>
+
+
+    <!-- ADD PROJECT -->
+
+    <div class="card">
+
+        <h2>➕ Add New Project</h2>
+
+
+        <form id="projectForm">
+
+
+            <label for="projectName">
+                Project Name
+            </label>
+
+            <input
+                type="text"
+                id="projectName"
+                placeholder="Example: Student Career Tracker"
+                required>
+
+
+            <label for="projectDescription">
+                Description
+            </label>
+
+            <textarea
+                id="projectDescription"
+                placeholder="What is your project about?"
+                required></textarea>
+
+
+            <label for="projectTech">
+                Technologies Used
+            </label>
+
+            <input
+                type="text"
+                id="projectTech"
+                placeholder="Example: HTML, CSS, JavaScript"
+                required>
+
+
+            <label for="projectStatus">
+                Status
+            </label>
+
+            <select id="projectStatus">
+
+                <option value="Planning">
+                    Planning
+                </option>
+
+                <option value="In Progress">
+                    In Progress
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+            </select>
+
+
+            <button type="submit">
+                Add Project 🚀
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- PROJECT LIST -->
+
+    <div class="card">
+
+        <h2>📁 My Projects</h2>
+
+        <div id="projectList">
+
+            <p class="empty-message">
+                No projects added yet.
+            </p>
+
+        </div>
+
+    </div>
+
 
 </div>
 
 
 <script>
 
-    // Get saved projects
-    let projects =
-        JSON.parse(localStorage.getItem("projects")) || [];
+
+// ========================================
+// LOAD PROJECTS
+// ========================================
+
+let projects =
+    JSON.parse(
+        localStorage.getItem("studentProjects")
+    ) || [];
 
 
-    // Display projects
-    function displayProjects() {
+// ========================================
+// ELEMENTS
+// ========================================
 
-        const projectsList =
-            document.getElementById("projectsList");
+const projectForm =
+    document.getElementById("projectForm");
+
+const projectList =
+    document.getElementById("projectList");
+
+const totalProjects =
+    document.getElementById("totalProjects");
+
+const completedProjects =
+    document.getElementById("completedProjects");
+
+const activeProjects =
+    document.getElementById("activeProjects");
 
 
-        // If there are no projects
-        if (projects.length === 0) {
+// ========================================
+// SAVE PROJECTS
+// ========================================
 
-            projectsList.innerHTML =
-                "<p>No projects added yet.</p>";
+function saveProjects() {
 
-            return;
-        }
+    localStorage.setItem(
+        "studentProjects",
+        JSON.stringify(projects)
+    );
+
+}
 
 
-        // Clear old projects
-        projectsList.innerHTML = "";
+// ========================================
+// DISPLAY PROJECTS
+// ========================================
+
+function displayProjects() {
+
+    projectList.innerHTML = "";
 
 
-        // Display every project
-        projects.forEach(function(project, index) {
+    if (projects.length === 0) {
+
+        projectList.innerHTML =
+            '<p class="empty-message">No projects added yet.</p>';
+
+    }
+
+
+    projects.forEach(
+        function(project, index) {
+
 
             const projectDiv =
                 document.createElement("div");
 
-            projectDiv.className = "project";
+            projectDiv.className =
+                "project";
 
 
             projectDiv.innerHTML = `
@@ -245,125 +371,171 @@
 
                 <p>
                     <strong>Technologies:</strong>
-                    ${project.technologies}
+                    ${project.technology}
                 </p>
 
-                <p class="status">
-                    Status: ${project.status}
+                <p>
+                    <strong>Status:</strong>
+                    <span class="status">
+                        ${project.status}
+                    </span>
                 </p>
 
                 <button
                     class="delete-button"
                     onclick="deleteProject(${index})">
-                    🗑️ Delete Project
+
+                    🗑️ Delete
+
                 </button>
 
             `;
 
 
-            projectsList.appendChild(projectDiv);
+            projectList.appendChild(projectDiv);
 
-        });
+        }
+    );
 
-    }
+
+    updateStatistics();
+
+}
 
 
-    // Add a project
-    function addProject() {
+// ========================================
+// ADD PROJECT
+// ========================================
+
+projectForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
 
         const name =
-            document.getElementById("projectName").value.trim();
+            document.getElementById("projectName")
+            .value.trim();
+
 
         const description =
-            document.getElementById("projectDescription").value.trim();
+            document.getElementById("projectDescription")
+            .value.trim();
 
-        const technologies =
-            document.getElementById("projectTechnologies").value.trim();
+
+        const technology =
+            document.getElementById("projectTech")
+            .value.trim();
+
 
         const status =
-            document.getElementById("projectStatus").value;
+            document.getElementById("projectStatus")
+            .value;
 
 
-        // Check if project name is empty
-        if (name === "") {
-
-            alert("Please enter a project name.");
-
-            return;
-        }
-
-
-        // Create project
         const newProject = {
 
             name: name,
 
-            description:
-                description || "No description added.",
+            description: description,
 
-            technologies:
-                technologies || "Not specified",
+            technology: technology,
 
             status: status
 
         };
 
 
-        // Add project to list
         projects.push(newProject);
 
 
-        // Save projects
-        localStorage.setItem(
-            "projects",
-            JSON.stringify(projects)
+        saveProjects();
+
+        displayProjects();
+
+
+        projectForm.reset();
+
+    }
+);
+
+
+// ========================================
+// DELETE PROJECT
+// ========================================
+
+function deleteProject(index) {
+
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to delete this project?"
         );
 
 
-        // Clear form
-        document.getElementById("projectName").value = "";
+    if (confirmDelete) {
 
-        document.getElementById("projectDescription").value = "";
+        projects.splice(index, 1);
 
-        document.getElementById("projectTechnologies").value = "";
+        saveProjects();
 
-        document.getElementById("projectStatus").value =
-            "Planning";
-
-
-        // Display projects
         displayProjects();
 
     }
 
-
-    // Delete project
-    function deleteProject(index) {
-
-        const confirmDelete =
-            confirm("Are you sure you want to delete this project?");
+}
 
 
-        if (confirmDelete) {
+// ========================================
+// PROJECT STATISTICS
+// ========================================
 
-            projects.splice(index, 1);
+function updateStatistics() {
+
+    totalProjects.textContent =
+        projects.length;
 
 
-            localStorage.setItem(
-                "projects",
-                JSON.stringify(projects)
-            );
+    let completed = 0;
+
+    let active = 0;
 
 
-            displayProjects();
+    projects.forEach(
+        function(project) {
+
+            if (project.status === "Completed") {
+
+                completed++;
+
+            }
+
+            else if (project.status === "In Progress") {
+
+                active++;
+
+            }
 
         }
+    );
 
-    }
+
+    completedProjects.textContent =
+        completed;
 
 
-    // Display saved projects when page opens
-    displayProjects();
+    activeProjects.textContent =
+        active;
+
+}
+
+
+// ========================================
+// INITIAL DISPLAY
+// ========================================
+
+displayProjects();
+
 
 </script>
 
