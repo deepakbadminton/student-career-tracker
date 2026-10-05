@@ -119,6 +119,14 @@
             font-size: 14px;
         }
 
+        .edit-button {
+            background: #16a34a;
+        }
+
+        .edit-button:hover {
+            background: #15803d;
+        }
+
         .delete-button {
             background: #dc2626;
             margin-left: 8px;
@@ -126,14 +134,6 @@
 
         .delete-button:hover {
             background: #b91c1c;
-        }
-
-        .edit-button {
-            background: #16a34a;
-        }
-
-        .edit-button:hover {
-            background: #15803d;
         }
 
         .cancel-button {
@@ -214,9 +214,7 @@
 
     <div class="card">
 
-        <h2 id="formTitle">
-            ➕ Add New Project
-        </h2>
+        <h2 id="formTitle">➕ Add New Project</h2>
 
 
         <form id="projectForm">
@@ -334,7 +332,7 @@ let projects =
 
 
 // ========================================
-// EDIT PROJECT INDEX
+// EDITING STATE
 // ========================================
 
 let editingIndex = -1;
@@ -432,7 +430,6 @@ function displayProjects() {
                     </span>
                 </p>
 
-
                 <button
                     class="edit-button"
                     onclick="editProject(${index})">
@@ -440,7 +437,6 @@ function displayProjects() {
                     ✏️ Edit
 
                 </button>
-
 
                 <button
                     class="delete-button"
@@ -508,40 +504,23 @@ projectForm.addEventListener(
         };
 
 
-        // ========================================
         // UPDATE EXISTING PROJECT
-        // ========================================
 
         if (editingIndex !== -1) {
 
             projects[editingIndex] =
                 projectData;
 
-            alert(
-                "Project updated successfully! ✅"
-            );
-
-            editingIndex = -1;
-
-            formTitle.textContent =
-                "➕ Add New Project";
-
-            submitButton.textContent =
-                "Add Project 🚀";
-
-            cancelButton.style.display =
-                "none";
-
         }
 
 
-        // ========================================
         // ADD NEW PROJECT
-        // ========================================
 
         else {
 
-            projects.push(projectData);
+            projects.push(
+                projectData
+            );
 
         }
 
@@ -550,7 +529,7 @@ projectForm.addEventListener(
 
         displayProjects();
 
-        projectForm.reset();
+        resetForm();
 
     }
 );
@@ -599,7 +578,7 @@ function editProject(index) {
 
 
     submitButton.textContent =
-        "Update Project 🚀";
+        "Update Project ✅";
 
 
     cancelButton.style.display =
@@ -622,25 +601,37 @@ cancelButton.addEventListener(
     "click",
     function() {
 
-        editingIndex = -1;
-
-
-        projectForm.reset();
-
-
-        formTitle.textContent =
-            "➕ Add New Project";
-
-
-        submitButton.textContent =
-            "Add Project 🚀";
-
-
-        cancelButton.style.display =
-            "none";
+        resetForm();
 
     }
 );
+
+
+// ========================================
+// RESET FORM
+// ========================================
+
+function resetForm() {
+
+    projectForm.reset();
+
+
+    editingIndex =
+        -1;
+
+
+    formTitle.textContent =
+        "➕ Add New Project";
+
+
+    submitButton.textContent =
+        "Add Project 🚀";
+
+
+    cancelButton.style.display =
+        "none";
+
+}
 
 
 // ========================================
