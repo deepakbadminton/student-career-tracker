@@ -119,6 +119,56 @@
             font-size: 14px;
         }
 
+        /* ==============================
+           PROJECT PROGRESS
+        ============================== */
+
+        .progress-section {
+            margin-top: 18px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .progress-percentage {
+            color: #2563eb;
+            font-size: 18px;
+        }
+
+        .progress-container {
+            background: #e5e7eb;
+            height: 18px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #2563eb;
+            border-radius: 10px;
+            transition: width 0.2s;
+        }
+
+        .progress-slider {
+            width: 100%;
+            margin-top: 12px;
+            cursor: pointer;
+            accent-color: #2563eb;
+        }
+
+        /* ==============================
+           BUTTONS
+        ============================== */
+
         .edit-button {
             background: #16a34a;
         }
@@ -214,7 +264,9 @@
 
     <div class="card">
 
-        <h2 id="formTitle">➕ Add New Project</h2>
+        <h2 id="formTitle">
+            ➕ Add New Project
+        </h2>
 
 
         <form id="projectForm">
@@ -273,6 +325,28 @@
             </select>
 
 
+            <!-- PROJECT PROGRESS -->
+
+            <label for="projectProgress">
+                Project Progress
+            </label>
+
+            <input
+                type="range"
+                id="projectProgress"
+                class="progress-slider"
+                min="0"
+                max="100"
+                value="0">
+
+            <p>
+                Progress:
+                <strong>
+                    <span id="progressValue">0</span>%
+                </strong>
+            </p>
+
+
             <button
                 type="submit"
                 id="submitButton">
@@ -291,7 +365,6 @@
                 Cancel Edit
 
             </button>
-
 
         </form>
 
@@ -366,6 +439,53 @@ const submitButton =
 const cancelButton =
     document.getElementById("cancelButton");
 
+const projectProgress =
+    document.getElementById("projectProgress");
+
+const progressValue =
+    document.getElementById("progressValue");
+
+const projectStatus =
+    document.getElementById("projectStatus");
+
+
+// ========================================
+// ADD PROJECT FORM SLIDER
+// ========================================
+
+projectProgress.addEventListener(
+    "input",
+    function() {
+
+        progressValue.textContent =
+            projectProgress.value;
+
+    }
+);
+
+
+// ========================================
+// STATUS CHANGE IN FORM
+// ========================================
+
+projectStatus.addEventListener(
+    "change",
+    function() {
+
+        if (
+            projectStatus.value ===
+            "Completed"
+        ) {
+
+            projectProgress.value = 100;
+
+            progressValue.textContent = 100;
+
+        }
+
+    }
+);
+
 
 // ========================================
 // SAVE PROJECTS
@@ -395,11 +515,76 @@ function displayProjects() {
         projectList.innerHTML =
             '<p class="empty-message">No projects added yet.</p>';
 
+        updateStatistics();
+
+        return;
+
     }
 
 
     projects.forEach(
         function(project, index) {
+
+
+            /*
+                Old projects may not have
+                a progress value.
+            */
+
+            if (
+                project.progress === undefined
+            ) {
+
+                project.progress = 0;
+
+            }
+
+
+            let progress =
+                Number(project.progress);
+
+
+            if (
+                isNaN(progress)
+            ) {
+
+                progress = 0;
+
+            }
+
+
+            if (
+                progress < 0
+            ) {
+
+                progress = 0;
+
+            }
+
+
+            if (
+                progress > 100
+            ) {
+
+                progress = 100;
+
+            }
+
+
+            /*
+                Completed projects are always 100%.
+            */
+
+            if (
+                project.status ===
+                "Completed"
+            ) {
+
+                progress = 100;
+
+                project.progress = 100;
+
+            }
 
 
             const projectDiv =
@@ -409,51 +594,362 @@ function displayProjects() {
                 "project";
 
 
-            projectDiv.innerHTML = `
+            // ========================================
+            // PROJECT NAME
+            // ========================================
 
-                <h3>🚀 ${project.name}</h3>
+            const title =
+                document.createElement("h3");
 
-                <p>
-                    <strong>Description:</strong>
-                    ${project.description}
-                </p>
-
-                <p>
-                    <strong>Technologies:</strong>
-                    ${project.technology}
-                </p>
-
-                <p>
-                    <strong>Status:</strong>
-                    <span class="status">
-                        ${project.status}
-                    </span>
-                </p>
-
-                <button
-                    class="edit-button"
-                    onclick="editProject(${index})">
-
-                    ✏️ Edit
-
-                </button>
-
-                <button
-                    class="delete-button"
-                    onclick="deleteProject(${index})">
-
-                    🗑️ Delete
-
-                </button>
-
-            `;
+            title.textContent =
+                "🚀 " + project.name;
 
 
-            projectList.appendChild(projectDiv);
+            // ========================================
+            // DESCRIPTION
+            // ========================================
+
+            const description =
+                document.createElement("p");
+
+            const descriptionLabel =
+                document.createElement("strong");
+
+            descriptionLabel.textContent =
+                "Description: ";
+
+            description.appendChild(
+                descriptionLabel
+            );
+
+            description.appendChild(
+                document.createTextNode(
+                    project.description
+                )
+            );
+
+
+            // ========================================
+            // TECHNOLOGIES
+            // ========================================
+
+            const technology =
+                document.createElement("p");
+
+            const technologyLabel =
+                document.createElement("strong");
+
+            technologyLabel.textContent =
+                "Technologies: ";
+
+            technology.appendChild(
+                technologyLabel
+            );
+
+            technology.appendChild(
+                document.createTextNode(
+                    project.technology
+                )
+            );
+
+
+            // ========================================
+            // STATUS
+            // ========================================
+
+            const statusText =
+                document.createElement("p");
+
+            const statusLabel =
+                document.createElement("strong");
+
+            statusLabel.textContent =
+                "Status: ";
+
+            const statusSpan =
+                document.createElement("span");
+
+            statusSpan.className =
+                "status";
+
+            statusSpan.textContent =
+                project.status;
+
+            statusText.appendChild(
+                statusLabel
+            );
+
+            statusText.appendChild(
+                statusSpan
+            );
+
+
+            // ========================================
+            // PROGRESS SECTION
+            // ========================================
+
+            const progressSection =
+                document.createElement("div");
+
+            progressSection.className =
+                "progress-section";
+
+
+            const progressHeader =
+                document.createElement("div");
+
+            progressHeader.className =
+                "progress-header";
+
+
+            const progressTitle =
+                document.createElement("span");
+
+            progressTitle.textContent =
+                "📊 Project Progress";
+
+
+            const percentage =
+                document.createElement("span");
+
+            percentage.className =
+                "progress-percentage";
+
+            percentage.textContent =
+                progress + "%";
+
+
+            progressHeader.appendChild(
+                progressTitle
+            );
+
+            progressHeader.appendChild(
+                percentage
+            );
+
+
+            // ========================================
+            // PROGRESS BAR
+            // ========================================
+
+            const progressContainer =
+                document.createElement("div");
+
+            progressContainer.className =
+                "progress-container";
+
+
+            const progressBar =
+                document.createElement("div");
+
+            progressBar.className =
+                "progress-bar";
+
+            progressBar.style.width =
+                progress + "%";
+
+
+            progressContainer.appendChild(
+                progressBar
+            );
+
+
+            // ========================================
+            // DIRECT PROJECT SLIDER
+            // ========================================
+
+            const slider =
+                document.createElement("input");
+
+            slider.type =
+                "range";
+
+            slider.min =
+                0;
+
+            slider.max =
+                100;
+
+            slider.value =
+                progress;
+
+            slider.className =
+                "progress-slider";
+
+
+            slider.addEventListener(
+                "input",
+                function() {
+
+                    const newProgress =
+                        Number(
+                            slider.value
+                        );
+
+
+                    project.progress =
+                        newProgress;
+
+
+                    percentage.textContent =
+                        newProgress + "%";
+
+
+                    progressBar.style.width =
+                        newProgress + "%";
+
+
+                    /*
+                        If slider reaches 100%,
+                        automatically mark the
+                        project as Completed.
+                    */
+
+                    if (
+                        newProgress === 100
+                    ) {
+
+                        project.status =
+                            "Completed";
+
+                        statusSpan.textContent =
+                            "Completed";
+
+                    }
+
+
+                    /*
+                        If progress is below 100
+                        and project was completed,
+                        change it back to
+                        In Progress.
+                    */
+
+                    else if (
+                        project.status ===
+                        "Completed"
+                    ) {
+
+                        project.status =
+                            "In Progress";
+
+                        statusSpan.textContent =
+                            "In Progress";
+
+                    }
+
+
+                    saveProjects();
+
+                    updateStatistics();
+
+                }
+            );
+
+
+            progressSection.appendChild(
+                progressHeader
+            );
+
+            progressSection.appendChild(
+                progressContainer
+            );
+
+            progressSection.appendChild(
+                slider
+            );
+
+
+            // ========================================
+            // EDIT BUTTON
+            // ========================================
+
+            const editButton =
+                document.createElement("button");
+
+            editButton.className =
+                "edit-button";
+
+            editButton.textContent =
+                "✏️ Edit";
+
+
+            editButton.addEventListener(
+                "click",
+                function() {
+
+                    editProject(index);
+
+                }
+            );
+
+
+            // ========================================
+            // DELETE BUTTON
+            // ========================================
+
+            const deleteButton =
+                document.createElement("button");
+
+            deleteButton.className =
+                "delete-button";
+
+            deleteButton.textContent =
+                "🗑️ Delete";
+
+
+            deleteButton.addEventListener(
+                "click",
+                function() {
+
+                    deleteProject(index);
+
+                }
+            );
+
+
+            // ========================================
+            // ADD EVERYTHING
+            // ========================================
+
+            projectDiv.appendChild(
+                title
+            );
+
+            projectDiv.appendChild(
+                description
+            );
+
+            projectDiv.appendChild(
+                technology
+            );
+
+            projectDiv.appendChild(
+                statusText
+            );
+
+            projectDiv.appendChild(
+                progressSection
+            );
+
+            projectDiv.appendChild(
+                editButton
+            );
+
+            projectDiv.appendChild(
+                deleteButton
+            );
+
+
+            projectList.appendChild(
+                projectDiv
+            );
 
         }
     );
 
+
+    saveProjects();
 
     updateStatistics();
 
@@ -472,23 +968,41 @@ projectForm.addEventListener(
 
 
         const name =
-            document.getElementById("projectName")
-            .value.trim();
+            document.getElementById(
+                "projectName"
+            ).value.trim();
 
 
         const description =
-            document.getElementById("projectDescription")
-            .value.trim();
+            document.getElementById(
+                "projectDescription"
+            ).value.trim();
 
 
         const technology =
-            document.getElementById("projectTech")
-            .value.trim();
+            document.getElementById(
+                "projectTech"
+            ).value.trim();
 
 
         const status =
-            document.getElementById("projectStatus")
-            .value;
+            projectStatus.value;
+
+
+        let progress =
+            Number(
+                projectProgress.value
+            );
+
+
+        if (
+            status ===
+            "Completed"
+        ) {
+
+            progress = 100;
+
+        }
 
 
         const projectData = {
@@ -499,14 +1013,20 @@ projectForm.addEventListener(
 
             technology: technology,
 
-            status: status
+            status: status,
+
+            progress: progress
 
         };
 
 
-        // UPDATE EXISTING PROJECT
+        // ========================================
+        // UPDATE
+        // ========================================
 
-        if (editingIndex !== -1) {
+        if (
+            editingIndex !== -1
+        ) {
 
             projects[editingIndex] =
                 projectData;
@@ -514,7 +1034,9 @@ projectForm.addEventListener(
         }
 
 
-        // ADD NEW PROJECT
+        // ========================================
+        // ADD
+        // ========================================
 
         else {
 
@@ -563,10 +1085,32 @@ function editProject(index) {
         project.technology;
 
 
-    document.getElementById(
-        "projectStatus"
-    ).value =
+    projectStatus.value =
         project.status;
+
+
+    let progress =
+        project.progress !== undefined
+            ? Number(project.progress)
+            : 0;
+
+
+    if (
+        project.status ===
+        "Completed"
+    ) {
+
+        progress = 100;
+
+    }
+
+
+    projectProgress.value =
+        progress;
+
+
+    progressValue.textContent =
+        progress;
 
 
     editingIndex =
@@ -586,8 +1130,11 @@ function editProject(index) {
 
 
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
 
 }
@@ -614,6 +1161,14 @@ cancelButton.addEventListener(
 function resetForm() {
 
     projectForm.reset();
+
+
+    projectProgress.value =
+        0;
+
+
+    progressValue.textContent =
+        0;
 
 
     editingIndex =
@@ -648,7 +1203,10 @@ function deleteProject(index) {
 
     if (confirmDelete) {
 
-        projects.splice(index, 1);
+        projects.splice(
+            index,
+            1
+        );
 
         saveProjects();
 
@@ -715,9 +1273,7 @@ function updateStatistics() {
 
 displayProjects();
 
-
 </script>
-
 
 </body>
 
