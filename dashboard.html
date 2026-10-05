@@ -2,7 +2,9 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Student Career Dashboard</title>
@@ -221,13 +223,68 @@ h1 {
     color: #64748b;
 }
 
+
+/* CAREER SCORE */
+
+.score-box {
+    text-align: center;
+    background: #eef2ff;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.score-number {
+    font-size: 55px;
+    font-weight: bold;
+    color: #2563eb;
+    margin: 15px 0;
+}
+
+.score-message {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.score-progress-container {
+    background: #e5e7eb;
+    height: 25px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.score-progress {
+    height: 100%;
+    width: 0%;
+    background: #2563eb;
+    border-radius: 12px;
+    transition: width 0.4s;
+}
+
+.score-details {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.score-details p {
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+}
+
+
+/* MOBILE */
+
 @media (max-width: 600px) {
+
     .summary-grid {
         grid-template-columns: 1fr;
     }
+
 }
 
 </style>
+
 </head>
 
 
@@ -274,22 +331,94 @@ Welcome,
 </div>
 
 
+<!-- CAREER PROGRESS SCORE -->
+
+<div class="card">
+
+<h2>🏆 Career Progress Score</h2>
+
+<div class="score-box">
+
+<p>
+Your overall career development score
+</p>
+
+<div
+class="score-number"
+id="careerScore">
+0%
+</div>
+
+<div class="score-progress-container">
+
+<div
+class="score-progress"
+id="scoreProgress">
+</div>
+
+</div>
+
+<div
+class="score-message"
+id="scoreMessage">
+
+Start building your career! 🚀
+
+</div>
+
+
+<div class="score-details">
+
+<p>
+🗺️ Roadmap Contribution:
+<strong id="scoreRoadmap">0%</strong>
+</p>
+
+<p>
+📊 Skills Contribution:
+<strong id="scoreSkills">0%</strong>
+</p>
+
+<p>
+🎯 Goals Contribution:
+<strong id="scoreGoals">0%</strong>
+</p>
+
+<p>
+🚀 Projects Contribution:
+<strong id="scoreProjects">0%</strong>
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
 <!-- CAREER PROGRESS SUMMARY -->
 
 <div class="card">
 
 <h2>📈 Career Progress Summary</h2>
 
-<p>Here's a quick look at your career journey.</p>
+<p>
+Here's a quick look at your career journey.
+</p>
 
 <div class="summary-grid">
+
 
 <div class="summary-box">
 
 <div class="summary-icon">🎯</div>
 
-<div class="summary-number" id="summaryOverall">
+<div
+class="summary-number"
+id="summaryOverall">
+
 0%
+
 </div>
 
 <div class="summary-label">
@@ -303,8 +432,12 @@ Overall Progress
 
 <div class="summary-icon">🗺️</div>
 
-<div class="summary-number" id="summaryRoadmap">
+<div
+class="summary-number"
+id="summaryRoadmap">
+
 0%
+
 </div>
 
 <div class="summary-label">
@@ -318,8 +451,12 @@ Roadmap Progress
 
 <div class="summary-icon">📊</div>
 
-<div class="summary-number" id="summarySkills">
+<div
+class="summary-number"
+id="summarySkills">
+
 0%
+
 </div>
 
 <div class="summary-label">
@@ -333,8 +470,12 @@ Average Skill Level
 
 <div class="summary-icon">🚀</div>
 
-<div class="summary-number" id="summaryProjects">
+<div
+class="summary-number"
+id="summaryProjects">
+
 0
+
 </div>
 
 <div class="summary-label">
@@ -374,7 +515,9 @@ id="roadmapProgress">
 <p
 class="roadmap-progress-text"
 id="roadmapProgressText">
+
 0% completed
+
 </p>
 
 <div id="roadmapList"></div>
@@ -417,7 +560,9 @@ id="pythonProgress">
 
 </div>
 
-<p id="pythonText">Beginner - 20%</p>
+<p id="pythonText">
+Beginner - 20%
+</p>
 
 </div>
 
@@ -450,7 +595,9 @@ id="cProgress">
 
 </div>
 
-<p id="cText">Beginner - 20%</p>
+<p id="cText">
+Beginner - 20%
+</p>
 
 </div>
 
@@ -483,7 +630,9 @@ id="javaProgress">
 
 </div>
 
-<p id="javaText">Beginner - 20%</p>
+<p id="javaText">
+Beginner - 20%
+</p>
 
 </div>
 
@@ -497,32 +646,64 @@ id="javaProgress">
 <h2>🎯 Career Goals</h2>
 
 <div class="goal">
+
 <label>
-<input type="checkbox" class="goalCheck">
+
+<input
+type="checkbox"
+class="goalCheck">
+
 Learn Python
+
 </label>
+
 </div>
 
+
 <div class="goal">
+
 <label>
-<input type="checkbox" class="goalCheck">
+
+<input
+type="checkbox"
+class="goalCheck">
+
 Complete a coding project
+
 </label>
+
 </div>
 
+
 <div class="goal">
+
 <label>
-<input type="checkbox" class="goalCheck">
+
+<input
+type="checkbox"
+class="goalCheck">
+
 Learn Artificial Intelligence
+
 </label>
+
 </div>
 
+
 <div class="goal">
+
 <label>
-<input type="checkbox" class="goalCheck">
+
+<input
+type="checkbox"
+class="goalCheck">
+
 Get an internship
+
 </label>
+
 </div>
+
 
 <p>
 <strong>Overall Progress</strong>
@@ -544,7 +725,9 @@ id="goalProgress">
 <p
 class="message"
 id="progressMessage">
+
 Start completing your goals! 🚀
+
 </p>
 
 </div>
@@ -555,6 +738,7 @@ Start completing your goals! 🚀
 <div class="card">
 
 <h2>📚 Recommended Learning</h2>
+
 
 <div class="course">
 
@@ -639,41 +823,53 @@ Open My Projects →
 
 </div>
 
+
 </div>
 
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener(
+"DOMContentLoaded",
+function() {
 
 
 /* PROFILE */
 
-const name = localStorage.getItem("name");
-const branch = localStorage.getItem("branch");
-const year = localStorage.getItem("year");
-const skills = localStorage.getItem("skills");
-const careerPath = localStorage.getItem("careerPath");
+const name =
+localStorage.getItem("name");
+
+const branch =
+localStorage.getItem("branch");
+
+const year =
+localStorage.getItem("year");
+
+const skills =
+localStorage.getItem("skills");
+
+const careerPath =
+localStorage.getItem("careerPath");
 
 
 if (name) {
-    document.getElementById("userName").textContent = name;
+document.getElementById("userName").textContent = name;
 }
 
 if (branch) {
-    document.getElementById("userBranch").textContent = branch;
+document.getElementById("userBranch").textContent = branch;
 }
 
 if (year) {
-    document.getElementById("userYear").textContent = year;
+document.getElementById("userYear").textContent = year;
 }
 
 if (skills) {
-    document.getElementById("userSkills").textContent = skills;
+document.getElementById("userSkills").textContent = skills;
 }
 
 if (careerPath) {
-    document.getElementById("userCareerPath").textContent = careerPath;
+document.getElementById("userCareerPath").textContent = careerPath;
 }
 
 
@@ -749,6 +945,7 @@ document.getElementById("roadmapIntro");
 
 let roadmapChecks = [];
 
+
 let savedRoadmap =
 JSON.parse(
 localStorage.getItem("roadmapProgress")
@@ -759,13 +956,15 @@ function updateRoadmapProgress() {
 
 let completed = 0;
 
-roadmapChecks.forEach(function(check) {
+roadmapChecks.forEach(
+function(check) {
 
 if (check.checked) {
 completed++;
 }
 
 });
+
 
 let percentage = 0;
 
@@ -778,6 +977,7 @@ Math.round(
 
 }
 
+
 roadmapProgress.style.width =
 percentage + "%";
 
@@ -787,9 +987,13 @@ percentage + "% completed";
 
 const status = [];
 
-roadmapChecks.forEach(function(check) {
+roadmapChecks.forEach(
+function(check) {
+
 status.push(check.checked);
+
 });
+
 
 localStorage.setItem(
 "roadmapProgress",
@@ -801,7 +1005,10 @@ updateSummary();
 }
 
 
-if (careerPath && roadmaps[careerPath]) {
+if (
+careerPath &&
+roadmaps[careerPath]
+) {
 
 roadmapIntro.textContent =
 "Complete each step to build your career toward " +
@@ -810,6 +1017,7 @@ careerPath + ".";
 
 roadmaps[careerPath].forEach(
 function(step, index) {
+
 
 const stepDiv =
 document.createElement("div");
@@ -835,8 +1043,12 @@ checkbox.type =
 "checkbox";
 
 
-if (savedRoadmap[index] === true) {
+if (
+savedRoadmap[index] === true
+) {
+
 checkbox.checked = true;
+
 }
 
 
@@ -851,7 +1063,11 @@ step;
 
 
 if (checkbox.checked) {
-stepDiv.classList.add("completed");
+
+stepDiv.classList.add(
+"completed"
+);
+
 }
 
 
@@ -859,12 +1075,23 @@ checkbox.addEventListener(
 "change",
 function() {
 
+
 if (checkbox.checked) {
-stepDiv.classList.add("completed");
+
+stepDiv.classList.add(
+"completed"
+);
+
 }
+
 else {
-stepDiv.classList.remove("completed");
+
+stepDiv.classList.remove(
+"completed"
+);
+
 }
+
 
 updateRoadmapProgress();
 
@@ -873,7 +1100,9 @@ updateRoadmapProgress();
 
 
 stepDiv.appendChild(number);
+
 stepDiv.appendChild(checkbox);
+
 stepDiv.appendChild(text);
 
 roadmapList.appendChild(stepDiv);
@@ -930,19 +1159,31 @@ const javaText =
 document.getElementById("javaText");
 
 
-pythonLevel.value = skillData.python;
-cLevel.value = skillData.c;
-javaLevel.value = skillData.java;
+pythonLevel.value =
+skillData.python;
+
+cLevel.value =
+skillData.c;
+
+javaLevel.value =
+skillData.java;
 
 
 function getLevelName(value) {
 
 value = Number(value);
 
-if (value === 20) return "Beginner";
-if (value === 50) return "Intermediate";
-if (value === 80) return "Advanced";
-if (value === 100) return "Expert";
+if (value === 20)
+return "Beginner";
+
+if (value === 50)
+return "Intermediate";
+
+if (value === 80)
+return "Advanced";
+
+if (value === 100)
+return "Expert";
 
 return "Beginner";
 
@@ -950,6 +1191,7 @@ return "Beginner";
 
 
 function updateSkills() {
+
 
 skillData.python =
 Number(pythonLevel.value);
@@ -1019,16 +1261,24 @@ updateSkills
 /* CAREER GOALS */
 
 const goalChecks =
-document.querySelectorAll(".goalCheck");
+document.querySelectorAll(
+".goalCheck"
+);
 
 const goalProgress =
-document.getElementById("goalProgress");
+document.getElementById(
+"goalProgress"
+);
 
 const progressText =
-document.getElementById("progressText");
+document.getElementById(
+"progressText"
+);
 
 const progressMessage =
-document.getElementById("progressMessage");
+document.getElementById(
+"progressMessage"
+);
 
 
 let savedGoals =
@@ -1040,8 +1290,12 @@ localStorage.getItem("careerGoals")
 goalChecks.forEach(
 function(goal, index) {
 
-if (savedGoals[index] === true) {
+if (
+savedGoals[index] === true
+) {
+
 goal.checked = true;
+
 }
 
 }
@@ -1061,9 +1315,11 @@ function(goal) {
 if (goal.checked) {
 
 completed++;
+
 goalStatus.push(true);
 
 }
+
 else {
 
 goalStatus.push(false);
@@ -1099,12 +1355,14 @@ progressMessage.textContent =
 "Start completing your goals! 🚀";
 
 }
+
 else if (percentage < 100) {
 
 progressMessage.textContent =
 "Keep going! You are making progress. 💪";
 
 }
+
 else {
 
 progressMessage.textContent =
@@ -1137,22 +1395,13 @@ updateGoals
 
 /* COMPLETED PROJECTS */
 
-/*
-IMPORTANT:
-projects.html saves projects using:
-
-studentProjects
-
-So dashboard must read:
-
-studentProjects
-*/
-
 function getCompletedProjects() {
 
 const projects =
 JSON.parse(
-localStorage.getItem("studentProjects")
+localStorage.getItem(
+"studentProjects"
+)
 ) || [];
 
 
@@ -1166,7 +1415,9 @@ function(project) {
 
 if (
 project.status &&
-String(project.status).toLowerCase() === "completed"
+String(project.status)
+.toLowerCase() ===
+"completed"
 ) {
 
 completed++;
@@ -1195,6 +1446,7 @@ return 0;
 
 let completed = 0;
 
+
 roadmapChecks.forEach(
 function(check) {
 
@@ -1222,6 +1474,7 @@ return 0;
 
 let completed = 0;
 
+
 goalChecks.forEach(
 function(goal) {
 
@@ -1247,12 +1500,16 @@ Number(skillData.python) +
 Number(skillData.c) +
 Number(skillData.java);
 
-return Math.round(total / 3);
+
+return Math.round(
+total / 3
+);
 
 }
 
 
 function updateSummary() {
+
 
 const goalPercentage =
 getGoalPercentage();
@@ -1290,6 +1547,113 @@ document.getElementById(
 ).textContent =
 completedProjects;
 
+
+/* CAREER PROGRESS SCORE */
+
+const projectPercentage =
+completedProjects > 0
+? Math.min(
+completedProjects * 25,
+100
+)
+: 0;
+
+
+const careerScore =
+Math.round(
+(
+roadmapPercentage +
+skillPercentage +
+goalPercentage +
+projectPercentage
+) / 4
+);
+
+
+document.getElementById(
+"careerScore"
+).textContent =
+careerScore + "%";
+
+
+document.getElementById(
+"scoreProgress"
+).style.width =
+careerScore + "%";
+
+
+document.getElementById(
+"scoreRoadmap"
+).textContent =
+roadmapPercentage + "%";
+
+
+document.getElementById(
+"scoreSkills"
+).textContent =
+skillPercentage + "%";
+
+
+document.getElementById(
+"scoreGoals"
+).textContent =
+goalPercentage + "%";
+
+
+document.getElementById(
+"scoreProjects"
+).textContent =
+projectPercentage + "%";
+
+
+const scoreMessage =
+document.getElementById(
+"scoreMessage"
+);
+
+
+if (careerScore === 0) {
+
+scoreMessage.textContent =
+"Start building your career! 🚀";
+
+}
+
+else if (careerScore < 25) {
+
+scoreMessage.textContent =
+"Good start! Keep going. 💪";
+
+}
+
+else if (careerScore < 50) {
+
+scoreMessage.textContent =
+"You're making progress! 🔥";
+
+}
+
+else if (careerScore < 75) {
+
+scoreMessage.textContent =
+"Great progress! Keep pushing! 🚀";
+
+}
+
+else if (careerScore < 100) {
+
+scoreMessage.textContent =
+"Excellent! You're almost there! 🏆";
+
+}
+
+else {
+
+scoreMessage.textContent =
+"Outstanding! Career goals achieved! 🎉";
+
+}
+
 }
 
 
@@ -1302,6 +1666,7 @@ updateGoals();
 updateRoadmapProgress();
 
 updateSummary();
+
 
 });
 
