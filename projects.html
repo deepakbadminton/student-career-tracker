@@ -128,6 +128,23 @@
             background: #b91c1c;
         }
 
+        .edit-button {
+            background: #16a34a;
+        }
+
+        .edit-button:hover {
+            background: #15803d;
+        }
+
+        .cancel-button {
+            background: #6b7280;
+            margin-left: 8px;
+        }
+
+        .cancel-button:hover {
+            background: #4b5563;
+        }
+
         .empty-message {
             color: #6b7280;
             text-align: center;
@@ -193,11 +210,13 @@
     </div>
 
 
-    <!-- ADD PROJECT -->
+    <!-- ADD / EDIT PROJECT -->
 
     <div class="card">
 
-        <h2>➕ Add New Project</h2>
+        <h2 id="formTitle">
+            ➕ Add New Project
+        </h2>
 
 
         <form id="projectForm">
@@ -256,9 +275,25 @@
             </select>
 
 
-            <button type="submit">
+            <button
+                type="submit"
+                id="submitButton">
+
                 Add Project 🚀
+
             </button>
+
+
+            <button
+                type="button"
+                id="cancelButton"
+                class="cancel-button"
+                style="display: none;">
+
+                Cancel Edit
+
+            </button>
+
 
         </form>
 
@@ -299,6 +334,13 @@ let projects =
 
 
 // ========================================
+// EDIT PROJECT INDEX
+// ========================================
+
+let editingIndex = -1;
+
+
+// ========================================
 // ELEMENTS
 // ========================================
 
@@ -316,6 +358,15 @@ const completedProjects =
 
 const activeProjects =
     document.getElementById("activeProjects");
+
+const formTitle =
+    document.getElementById("formTitle");
+
+const submitButton =
+    document.getElementById("submitButton");
+
+const cancelButton =
+    document.getElementById("cancelButton");
 
 
 // ========================================
@@ -381,6 +432,16 @@ function displayProjects() {
                     </span>
                 </p>
 
+
+                <button
+                    class="edit-button"
+                    onclick="editProject(${index})">
+
+                    ✏️ Edit
+
+                </button>
+
+
                 <button
                     class="delete-button"
                     onclick="deleteProject(${index})">
@@ -404,7 +465,7 @@ function displayProjects() {
 
 
 // ========================================
-// ADD PROJECT
+// ADD / UPDATE PROJECT
 // ========================================
 
 projectForm.addEventListener(
@@ -434,7 +495,7 @@ projectForm.addEventListener(
             .value;
 
 
-        const newProject = {
+        const projectData = {
 
             name: name,
 
@@ -447,15 +508,136 @@ projectForm.addEventListener(
         };
 
 
-        projects.push(newProject);
+        // ========================================
+        // UPDATE EXISTING PROJECT
+        // ========================================
+
+        if (editingIndex !== -1) {
+
+            projects[editingIndex] =
+                projectData;
+
+            alert(
+                "Project updated successfully! ✅"
+            );
+
+            editingIndex = -1;
+
+            formTitle.textContent =
+                "➕ Add New Project";
+
+            submitButton.textContent =
+                "Add Project 🚀";
+
+            cancelButton.style.display =
+                "none";
+
+        }
+
+
+        // ========================================
+        // ADD NEW PROJECT
+        // ========================================
+
+        else {
+
+            projects.push(projectData);
+
+        }
 
 
         saveProjects();
 
         displayProjects();
 
+        projectForm.reset();
+
+    }
+);
+
+
+// ========================================
+// EDIT PROJECT
+// ========================================
+
+function editProject(index) {
+
+    const project =
+        projects[index];
+
+
+    document.getElementById(
+        "projectName"
+    ).value =
+        project.name;
+
+
+    document.getElementById(
+        "projectDescription"
+    ).value =
+        project.description;
+
+
+    document.getElementById(
+        "projectTech"
+    ).value =
+        project.technology;
+
+
+    document.getElementById(
+        "projectStatus"
+    ).value =
+        project.status;
+
+
+    editingIndex =
+        index;
+
+
+    formTitle.textContent =
+        "✏️ Edit Project";
+
+
+    submitButton.textContent =
+        "Update Project 🚀";
+
+
+    cancelButton.style.display =
+        "inline-block";
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+// ========================================
+// CANCEL EDIT
+// ========================================
+
+cancelButton.addEventListener(
+    "click",
+    function() {
+
+        editingIndex = -1;
+
 
         projectForm.reset();
+
+
+        formTitle.textContent =
+            "➕ Add New Project";
+
+
+        submitButton.textContent =
+            "Add Project 🚀";
+
+
+        cancelButton.style.display =
+            "none";
 
     }
 );
@@ -504,13 +686,19 @@ function updateStatistics() {
     projects.forEach(
         function(project) {
 
-            if (project.status === "Completed") {
+            if (
+                project.status ===
+                "Completed"
+            ) {
 
                 completed++;
 
             }
 
-            else if (project.status === "In Progress") {
+            else if (
+                project.status ===
+                "In Progress"
+            ) {
 
                 active++;
 
