@@ -176,7 +176,40 @@
             transition: width 0.3s;
         }
 
-        .goals label,
+        /* GOALS */
+
+        .goals label {
+            display: block;
+            padding: 12px;
+            background: #f8fafc;
+            margin-bottom: 8px;
+            border-radius: 8px;
+        }
+
+        .goal-progress-container {
+            width: 100%;
+            height: 12px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .goal-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #2563eb;
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+
+        .goal-progress-text {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* COURSES */
+
         .courses label {
             display: block;
             padding: 10px;
@@ -194,6 +227,8 @@
         .courses a:hover {
             text-decoration: underline;
         }
+
+        /* SUMMARY */
 
         .summary-grid,
         .project-summary {
@@ -268,23 +303,46 @@
         <div class="profile-info">
 
             <div class="info-box">
+
                 <strong>Name</strong>
-                <span id="userName">Student</span>
+
+                <span id="userName">
+                    Student
+                </span>
+
             </div>
 
+
             <div class="info-box">
+
                 <strong>Branch</strong>
-                <span id="userBranch">Not provided</span>
+
+                <span id="userBranch">
+                    Not provided
+                </span>
+
             </div>
 
+
             <div class="info-box">
+
                 <strong>Year</strong>
-                <span id="userYear">Not provided</span>
+
+                <span id="userYear">
+                    Not provided
+                </span>
+
             </div>
 
+
             <div class="info-box">
+
                 <strong>Skills</strong>
-                <span id="userSkills">Not provided</span>
+
+                <span id="userSkills">
+                    Not provided
+                </span>
+
             </div>
 
         </div>
@@ -292,7 +350,9 @@
 
         <div class="career-box">
 
-            <h3>🎯 Selected Career Path</h3>
+            <h3>
+                🎯 Selected Career Path
+            </h3>
 
             <p id="userCareerPath">
                 Not selected
@@ -308,14 +368,18 @@
 
     <div class="card">
 
-        <h2>💡 Career Recommendations</h2>
+        <h2>
+            💡 Career Recommendations
+        </h2>
 
         <div class="recommendations">
 
 
             <div class="recommendation">
 
-                <h3>💻 Software Developer</h3>
+                <h3>
+                    💻 Software Developer
+                </h3>
 
                 <p>
                     Learn programming, data structures,
@@ -327,7 +391,9 @@
 
             <div class="recommendation">
 
-                <h3>🤖 AI / ML</h3>
+                <h3>
+                    🤖 AI / ML
+                </h3>
 
                 <p>
                     Learn Python, mathematics, machine learning,
@@ -339,7 +405,9 @@
 
             <div class="recommendation">
 
-                <h3>🌐 Web Developer</h3>
+                <h3>
+                    🌐 Web Developer
+                </h3>
 
                 <p>
                     Learn HTML, CSS, JavaScript, frontend development
@@ -351,7 +419,9 @@
 
             <div class="recommendation">
 
-                <h3>📊 Data Analyst</h3>
+                <h3>
+                    📊 Data Analyst
+                </h3>
 
                 <p>
                     Learn Python, Excel, SQL, statistics,
@@ -363,7 +433,9 @@
 
             <div class="recommendation">
 
-                <h3>🔐 Cybersecurity</h3>
+                <h3>
+                    🔐 Cybersecurity
+                </h3>
 
                 <p>
                     Learn networking, Linux, security concepts,
@@ -382,7 +454,9 @@
 
     <div class="card">
 
-        <h2>🗺️ Career Roadmap</h2>
+        <h2>
+            🗺️ Career Roadmap
+        </h2>
 
         <p id="roadmapIntro">
             Your roadmap will be based on your selected career path.
@@ -398,7 +472,9 @@
 
     <div class="card">
 
-        <h2>📚 Skills Progress</h2>
+        <h2>
+            📚 Skills Progress
+        </h2>
 
         <p id="skillsIntro">
             Your skills will be based on your selected career path.
@@ -413,63 +489,41 @@
 
 
 
-    <!-- CAREER GOALS -->
+    <!-- CAREER-SPECIFIC GOALS -->
 
     <div class="card">
 
-        <h2>🎯 Career Goals</h2>
+        <h2>
+            🎯 Career Goals
+        </h2>
 
-        <div class="goals">
+        <p id="goalsIntro">
+            Your goals will be based on your selected career path.
+        </p>
 
-
-            <label>
-
-                <input
-                    type="checkbox"
-                    class="goal-check"
-                    value="Learn Python">
-
-                Learn Python
-
-            </label>
+        <div
+            class="goals"
+            id="goalsContainer">
+        </div>
 
 
-            <label>
+        <div class="goal-progress-container">
 
-                <input
-                    type="checkbox"
-                    class="goal-check"
-                    value="Complete a coding project">
-
-                Complete a coding project
-
-            </label>
-
-
-            <label>
-
-                <input
-                    type="checkbox"
-                    class="goal-check"
-                    value="Learn Artificial Intelligence">
-
-                Learn Artificial Intelligence
-
-            </label>
-
-
-            <label>
-
-                <input
-                    type="checkbox"
-                    class="goal-check"
-                    value="Get an internship">
-
-                Get an internship
-
-            </label>
+            <div
+                class="goal-progress-bar"
+                id="goalProgressBar">
+            </div>
 
         </div>
+
+
+        <p
+            class="goal-progress-text"
+            id="goalProgressText">
+
+            Goal Progress: 0%
+
+        </p>
 
     </div>
 
@@ -479,7 +533,9 @@
 
     <div class="card">
 
-        <h2>🎓 Learning Courses</h2>
+        <h2>
+            🎓 Learning Courses
+        </h2>
 
         <div class="courses">
 
@@ -547,41 +603,57 @@
 
     <div class="card">
 
-        <h2>🚀 Project Progress</h2>
+        <h2>
+            🚀 Project Progress
+        </h2>
 
         <div class="project-summary">
 
 
             <div class="project-stat">
 
-                <h3>Total Projects</h3>
+                <h3>
+                    Total Projects
+                </h3>
 
-                <p id="totalProjects">0</p>
-
-            </div>
-
-
-            <div class="project-stat">
-
-                <h3>Completed Projects</h3>
-
-                <p id="completedProjects">0</p>
+                <p id="totalProjects">
+                    0
+                </p>
 
             </div>
 
 
             <div class="project-stat">
 
-                <h3>Projects In Progress</h3>
+                <h3>
+                    Completed Projects
+                </h3>
 
-                <p id="activeProjects">0</p>
+                <p id="completedProjects">
+                    0
+                </p>
 
             </div>
 
 
             <div class="project-stat">
 
-                <h3>Average Project Progress</h3>
+                <h3>
+                    Projects In Progress
+                </h3>
+
+                <p id="activeProjects">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="project-stat">
+
+                <h3>
+                    Average Project Progress
+                </h3>
 
                 <p id="averageProjectProgress">
                     0%
@@ -608,14 +680,18 @@
 
     <div class="card">
 
-        <h2>📈 Career Progress Summary</h2>
+        <h2>
+            📈 Career Progress Summary
+        </h2>
 
         <div class="summary-grid">
 
 
             <div class="summary-box">
 
-                <h3>Overall Progress</h3>
+                <h3>
+                    Overall Progress
+                </h3>
 
                 <div
                     class="summary-value"
@@ -630,7 +706,9 @@
 
             <div class="summary-box">
 
-                <h3>Roadmap Progress</h3>
+                <h3>
+                    Roadmap Progress
+                </h3>
 
                 <div
                     class="summary-value"
@@ -645,7 +723,9 @@
 
             <div class="summary-box">
 
-                <h3>Average Skill Level</h3>
+                <h3>
+                    Average Skill Level
+                </h3>
 
                 <div
                     class="summary-value"
@@ -660,7 +740,9 @@
 
             <div class="summary-box">
 
-                <h3>Completed Projects</h3>
+                <h3>
+                    Completed Projects
+                </h3>
 
                 <div
                     class="summary-value"
@@ -682,7 +764,9 @@
 
     <div class="card">
 
-        <h2>🚀 My Projects</h2>
+        <h2>
+            🚀 My Projects
+        </h2>
 
         <p>
             Track the projects you are building
@@ -733,12 +817,14 @@ if (name) {
 
 }
 
+
 if (branch) {
 
     document.getElementById("userBranch")
         .textContent = branch;
 
 }
+
 
 if (year) {
 
@@ -747,12 +833,14 @@ if (year) {
 
 }
 
+
 if (skills) {
 
     document.getElementById("userSkills")
         .textContent = skills;
 
 }
+
 
 if (careerPath) {
 
@@ -764,7 +852,7 @@ if (careerPath) {
 
 
 /* =====================================
-   FIND CAREER TYPE
+   CAREER TYPE
 ===================================== */
 
 function getCareerType() {
@@ -815,7 +903,6 @@ function getCareerType() {
     return "software";
 
 }
-
 
 
 const currentCareer =
@@ -1038,7 +1125,7 @@ const careerRoadmaps = {
 
 
 /* =====================================
-   CAREER-SPECIFIC SKILLS DATA
+   CAREER SKILLS DATA
 ===================================== */
 
 const careerSkills = {
@@ -1192,7 +1279,81 @@ const careerSkills = {
 
 
 /* =====================================
-   RENDER ROADMAP
+   CAREER-SPECIFIC GOALS DATA
+===================================== */
+
+const careerGoals = {
+
+    software: [
+
+        "Learn Programming",
+
+        "Learn Data Structures & Algorithms",
+
+        "Build a Real Project",
+
+        "Get a Software Internship"
+
+    ],
+
+
+    ai: [
+
+        "Learn Python",
+
+        "Learn Machine Learning",
+
+        "Build an AI Project",
+
+        "Get an AI/ML Internship"
+
+    ],
+
+
+    web: [
+
+        "Learn HTML & CSS",
+
+        "Learn JavaScript",
+
+        "Build a Website",
+
+        "Get a Web Development Internship"
+
+    ],
+
+
+    data: [
+
+        "Learn Python",
+
+        "Learn SQL",
+
+        "Learn Power BI",
+
+        "Build a Data Analysis Project"
+
+    ],
+
+
+    cyber: [
+
+        "Learn Networking",
+
+        "Learn Linux",
+
+        "Learn Cybersecurity",
+
+        "Build a Security Project"
+
+    ]
+
+};
+
+
+
+/* =====================================
+   ROADMAP
 ===================================== */
 
 const currentRoadmap =
@@ -1207,13 +1368,9 @@ function renderRoadmap() {
         );
 
 
-    const intro =
-        document.getElementById(
-            "roadmapIntro"
-        );
-
-
-    intro.textContent =
+    document.getElementById(
+        "roadmapIntro"
+    ).textContent =
         "Roadmap for " +
         currentRoadmap.name;
 
@@ -1290,10 +1447,6 @@ function renderRoadmap() {
 
 
 
-/* =====================================
-   ROADMAP STORAGE
-===================================== */
-
 function getRoadmapStorage() {
 
     return JSON.parse(
@@ -1308,45 +1461,39 @@ function getRoadmapStorage() {
 
 function loadRoadmap() {
 
-    const savedRoadmap =
+    const storage =
         getRoadmapStorage();
 
 
-    const careerProgress =
-        savedRoadmap[currentCareer] || {};
+    const progress =
+        storage[currentCareer] || {};
 
 
-    const roadmapChecks =
+    const checks =
         document.querySelectorAll(
             ".roadmap-check"
         );
 
 
-    roadmapChecks.forEach(
+    checks.forEach(
         function(checkbox) {
 
-            const roadmapId =
+            const id =
                 checkbox.dataset.roadmap;
 
 
-            const completed =
-                careerProgress[roadmapId] === true;
-
-
             checkbox.checked =
-                completed;
+                progress[id] === true;
 
 
-            const progressBar =
-                document.getElementById(
-                    roadmapId
-                );
+            const bar =
+                document.getElementById(id);
 
 
-            if (progressBar) {
+            if (bar) {
 
-                progressBar.style.width =
-                    completed
+                bar.style.width =
+                    checkbox.checked
                         ? "100%"
                         : "0%";
 
@@ -1356,7 +1503,7 @@ function loadRoadmap() {
     );
 
 
-    roadmapChecks.forEach(
+    checks.forEach(
         function(checkbox) {
 
             checkbox.addEventListener(
@@ -1373,43 +1520,37 @@ function loadRoadmap() {
 
 function saveRoadmap() {
 
-    const savedRoadmap =
+    const storage =
         getRoadmapStorage();
 
 
-    if (!savedRoadmap[currentCareer]) {
+    if (!storage[currentCareer]) {
 
-        savedRoadmap[currentCareer] = {};
+        storage[currentCareer] = {};
 
     }
 
 
-    const roadmapChecks =
-        document.querySelectorAll(
-            ".roadmap-check"
-        );
-
-
-    roadmapChecks.forEach(
+    document.querySelectorAll(
+        ".roadmap-check"
+    ).forEach(
         function(checkbox) {
 
-            const roadmapId =
+            const id =
                 checkbox.dataset.roadmap;
 
 
-            savedRoadmap[currentCareer][roadmapId] =
+            storage[currentCareer][id] =
                 checkbox.checked;
 
 
-            const progressBar =
-                document.getElementById(
-                    roadmapId
-                );
+            const bar =
+                document.getElementById(id);
 
 
-            if (progressBar) {
+            if (bar) {
 
-                progressBar.style.width =
+                bar.style.width =
                     checkbox.checked
                         ? "100%"
                         : "0%";
@@ -1422,9 +1563,7 @@ function saveRoadmap() {
 
     localStorage.setItem(
         "careerRoadmapProgress",
-        JSON.stringify(
-            savedRoadmap
-        )
+        JSON.stringify(storage)
     );
 
 
@@ -1436,13 +1575,13 @@ function saveRoadmap() {
 
 function getRoadmapPercentage() {
 
-    const roadmapChecks =
+    const checks =
         document.querySelectorAll(
             ".roadmap-check"
         );
 
 
-    if (roadmapChecks.length === 0) {
+    if (checks.length === 0) {
 
         return 0;
 
@@ -1452,7 +1591,7 @@ function getRoadmapPercentage() {
     let completed = 0;
 
 
-    roadmapChecks.forEach(
+    checks.forEach(
         function(checkbox) {
 
             if (checkbox.checked) {
@@ -1466,8 +1605,9 @@ function getRoadmapPercentage() {
 
 
     return Math.round(
-        (completed /
-        roadmapChecks.length) * 100
+        completed /
+        checks.length *
+        100
     );
 
 }
@@ -1475,7 +1615,7 @@ function getRoadmapPercentage() {
 
 
 /* =====================================
-   CAREER-SPECIFIC SKILLS
+   SKILLS
 ===================================== */
 
 function getSkillStorage() {
@@ -1498,17 +1638,9 @@ function renderSkills() {
         );
 
 
-    const intro =
-        document.getElementById(
-            "skillsIntro"
-        );
-
-
-    const skillsList =
-        careerSkills[currentCareer];
-
-
-    intro.textContent =
+    document.getElementById(
+        "skillsIntro"
+    ).textContent =
         "Skills for " +
         careerRoadmaps[currentCareer].name;
 
@@ -1516,40 +1648,40 @@ function renderSkills() {
     container.innerHTML = "";
 
 
-    const savedStorage =
+    const storage =
         getSkillStorage();
 
 
-    if (!savedStorage[currentCareer]) {
+    if (!storage[currentCareer]) {
 
-        savedStorage[currentCareer] = {};
+        storage[currentCareer] = {};
 
     }
 
 
-    skillsList.forEach(
+    careerSkills[currentCareer].forEach(
         function(skill) {
 
             if (
-                savedStorage[currentCareer][skill.id]
+                storage[currentCareer][skill.id]
                 === undefined
             ) {
 
-                savedStorage[currentCareer][skill.id] =
+                storage[currentCareer][skill.id] =
                     skill.default;
 
             }
 
 
-            const skillDiv =
+            const div =
                 document.createElement("div");
 
 
-            skillDiv.className =
+            div.className =
                 "skill";
 
 
-            skillDiv.innerHTML = `
+            div.innerHTML = `
 
                 <h3>
                     ${skill.name}
@@ -1589,9 +1721,7 @@ function renderSkills() {
             `;
 
 
-            container.appendChild(
-                skillDiv
-            );
+            container.appendChild(div);
 
         }
     );
@@ -1599,7 +1729,7 @@ function renderSkills() {
 
     localStorage.setItem(
         "careerSkillProgress",
-        JSON.stringify(savedStorage)
+        JSON.stringify(storage)
     );
 
 
@@ -1608,10 +1738,6 @@ function renderSkills() {
 }
 
 
-
-/* =====================================
-   LOAD SKILLS
-===================================== */
 
 function loadSkills() {
 
@@ -1623,22 +1749,18 @@ function loadSkills() {
         storage[currentCareer] || {};
 
 
-    const skillChecks =
-        document.querySelectorAll(
-            ".skill-level"
-        );
-
-
-    skillChecks.forEach(
+    document.querySelectorAll(
+        ".skill-level"
+    ).forEach(
         function(select) {
 
-            const skillId =
+            const id =
                 select.dataset.skill;
 
 
             const value =
                 Number(
-                    currentSkills[skillId] || 20
+                    currentSkills[id] || 20
                 );
 
 
@@ -1646,16 +1768,15 @@ function loadSkills() {
                 value;
 
 
-            const progressBar =
+            const bar =
                 document.getElementById(
-                    "skillProgress_" +
-                    skillId
+                    "skillProgress_" + id
                 );
 
 
-            if (progressBar) {
+            if (bar) {
 
-                progressBar.style.width =
+                bar.style.width =
                     value + "%";
 
             }
@@ -1664,7 +1785,9 @@ function loadSkills() {
     );
 
 
-    skillChecks.forEach(
+    document.querySelectorAll(
+        ".skill-level"
+    ).forEach(
         function(select) {
 
             select.addEventListener(
@@ -1679,10 +1802,6 @@ function loadSkills() {
 
 
 
-/* =====================================
-   SAVE SKILLS
-===================================== */
-
 function saveSkills() {
 
     const storage =
@@ -1696,38 +1815,29 @@ function saveSkills() {
     }
 
 
-    const skillChecks =
-        document.querySelectorAll(
-            ".skill-level"
-        );
-
-
-    skillChecks.forEach(
+    document.querySelectorAll(
+        ".skill-level"
+    ).forEach(
         function(select) {
 
-            const skillId =
+            const id =
                 select.dataset.skill;
 
 
-            const value =
+            storage[currentCareer][id] =
                 Number(select.value);
 
 
-            storage[currentCareer][skillId] =
-                value;
-
-
-            const progressBar =
+            const bar =
                 document.getElementById(
-                    "skillProgress_" +
-                    skillId
+                    "skillProgress_" + id
                 );
 
 
-            if (progressBar) {
+            if (bar) {
 
-                progressBar.style.width =
-                    value + "%";
+                bar.style.width =
+                    select.value + "%";
 
             }
 
@@ -1747,10 +1857,6 @@ function saveSkills() {
 
 
 
-/* =====================================
-   AVERAGE SKILL
-===================================== */
-
 function getAverageSkill() {
 
     const storage =
@@ -1761,11 +1867,11 @@ function getAverageSkill() {
         storage[currentCareer] || {};
 
 
-    const skillsList =
+    const list =
         careerSkills[currentCareer];
 
 
-    if (skillsList.length === 0) {
+    if (list.length === 0) {
 
         return 0;
 
@@ -1775,7 +1881,7 @@ function getAverageSkill() {
     let total = 0;
 
 
-    skillsList.forEach(
+    list.forEach(
         function(skill) {
 
             total +=
@@ -1788,7 +1894,7 @@ function getAverageSkill() {
 
 
     return Math.round(
-        total / skillsList.length
+        total / list.length
     );
 
 }
@@ -1796,35 +1902,154 @@ function getAverageSkill() {
 
 
 /* =====================================
-   CAREER GOALS
+   CAREER-SPECIFIC GOALS
 ===================================== */
 
-const goalChecks =
-    document.querySelectorAll(
-        ".goal-check"
+function getGoalStorage() {
+
+    return JSON.parse(
+        localStorage.getItem(
+            "careerGoalProgress"
+        )
+    ) || {};
+
+}
+
+
+
+function renderGoals() {
+
+    const container =
+        document.getElementById(
+            "goalsContainer"
+        );
+
+
+    const intro =
+        document.getElementById(
+            "goalsIntro"
+        );
+
+
+    const goals =
+        careerGoals[currentCareer];
+
+
+    intro.textContent =
+        "Goals for " +
+        careerRoadmaps[currentCareer].name;
+
+
+    container.innerHTML = "";
+
+
+    const storage =
+        getGoalStorage();
+
+
+    if (!storage[currentCareer]) {
+
+        storage[currentCareer] = {};
+
+    }
+
+
+    goals.forEach(
+        function(goal, index) {
+
+            const goalId =
+                "goal_" +
+                currentCareer +
+                "_" +
+                index;
+
+
+            if (
+                storage[currentCareer][goalId]
+                === undefined
+            ) {
+
+                storage[currentCareer][goalId] =
+                    false;
+
+            }
+
+
+            const label =
+                document.createElement("label");
+
+
+            label.innerHTML = `
+
+                <input
+                    type="checkbox"
+                    class="career-goal-check"
+                    data-goal="${goalId}">
+
+                ${goal}
+
+            `;
+
+
+            container.appendChild(label);
+
+        }
     );
+
+
+    localStorage.setItem(
+        "careerGoalProgress",
+        JSON.stringify(storage)
+    );
+
+
+    loadGoals();
+
+}
+
 
 
 function loadGoals() {
 
-    const savedGoals =
-        JSON.parse(
-            localStorage.getItem(
-                "careerGoals"
-            )
-        ) || [];
+    const storage =
+        getGoalStorage();
 
 
-    goalChecks.forEach(
+    const currentGoals =
+        storage[currentCareer] || {};
+
+
+    document.querySelectorAll(
+        ".career-goal-check"
+    ).forEach(
         function(checkbox) {
 
+            const id =
+                checkbox.dataset.goal;
+
+
             checkbox.checked =
-                savedGoals.includes(
-                    checkbox.value
-                );
+                currentGoals[id] === true;
 
         }
     );
+
+
+    document.querySelectorAll(
+        ".career-goal-check"
+    ).forEach(
+        function(checkbox) {
+
+            checkbox.addEventListener(
+                "change",
+                saveGoals
+            );
+
+        }
+    );
+
+
+    updateGoalProgress();
 
 }
 
@@ -1832,31 +2057,40 @@ function loadGoals() {
 
 function saveGoals() {
 
-    const selectedGoals = [];
+    const storage =
+        getGoalStorage();
 
 
-    goalChecks.forEach(
+    if (!storage[currentCareer]) {
+
+        storage[currentCareer] = {};
+
+    }
+
+
+    document.querySelectorAll(
+        ".career-goal-check"
+    ).forEach(
         function(checkbox) {
 
-            if (checkbox.checked) {
+            const id =
+                checkbox.dataset.goal;
 
-                selectedGoals.push(
-                    checkbox.value
-                );
 
-            }
+            storage[currentCareer][id] =
+                checkbox.checked;
 
         }
     );
 
 
     localStorage.setItem(
-        "careerGoals",
-        JSON.stringify(
-            selectedGoals
-        )
+        "careerGoalProgress",
+        JSON.stringify(storage)
     );
 
+
+    updateGoalProgress();
 
     updateSummary();
 
@@ -1864,25 +2098,25 @@ function saveGoals() {
 
 
 
-goalChecks.forEach(
-    function(checkbox) {
+function getGoalPercentage() {
 
-        checkbox.addEventListener(
-            "change",
-            saveGoals
+    const checks =
+        document.querySelectorAll(
+            ".career-goal-check"
         );
 
+
+    if (checks.length === 0) {
+
+        return 0;
+
     }
-);
 
-
-
-function getGoalPercentage() {
 
     let completed = 0;
 
 
-    goalChecks.forEach(
+    checks.forEach(
         function(checkbox) {
 
             if (checkbox.checked) {
@@ -1895,17 +2129,34 @@ function getGoalPercentage() {
     );
 
 
-    if (goalChecks.length === 0) {
-
-        return 0;
-
-    }
-
-
     return Math.round(
-        (completed /
-        goalChecks.length) * 100
+        completed /
+        checks.length *
+        100
     );
+
+}
+
+
+
+function updateGoalProgress() {
+
+    const percentage =
+        getGoalPercentage();
+
+
+    document.getElementById(
+        "goalProgressBar"
+    ).style.width =
+        percentage + "%";
+
+
+    document.getElementById(
+        "goalProgressText"
+    ).textContent =
+        "Goal Progress: " +
+        percentage +
+        "%";
 
 }
 
@@ -1950,17 +2201,15 @@ function loadCourses() {
 
 function saveCourses() {
 
-    const courseStatus = {};
+    const status = {};
 
 
     courseChecks.forEach(
         function(checkbox) {
 
-            const course =
-                checkbox.dataset.course;
-
-
-            courseStatus[course] =
+            status[
+                checkbox.dataset.course
+            ] =
                 checkbox.checked;
 
         }
@@ -1969,9 +2218,7 @@ function saveCourses() {
 
     localStorage.setItem(
         "courseProgress",
-        JSON.stringify(
-            courseStatus
-        )
+        JSON.stringify(status)
     );
 
 }
@@ -2020,7 +2267,7 @@ function getAverageProjectProgress() {
     }
 
 
-    let totalProgress = 0;
+    let total = 0;
 
 
     projects.forEach(
@@ -2032,7 +2279,8 @@ function getAverageProjectProgress() {
 
             if (
                 String(project.status)
-                    .toLowerCase() === "completed"
+                    .toLowerCase() ===
+                "completed"
             ) {
 
                 progress = 100;
@@ -2040,15 +2288,14 @@ function getAverageProjectProgress() {
             }
 
 
-            totalProgress += progress;
+            total += progress;
 
         }
     );
 
 
     return Math.round(
-        totalProgress /
-        projects.length
+        total / projects.length
     );
 
 }
@@ -2132,29 +2379,29 @@ function updateProjectSummary() {
 
 function updateSummary() {
 
-    const goalProgress =
+    const goals =
         getGoalPercentage();
 
 
-    const roadmapProgress =
+    const roadmap =
         getRoadmapPercentage();
 
 
-    const skillProgress =
+    const skills =
         getAverageSkill();
 
 
-    const projectProgress =
+    const projects =
         getAverageProjectProgress();
 
 
     const overall =
         Math.round(
             (
-                goalProgress +
-                roadmapProgress +
-                skillProgress +
-                projectProgress
+                goals +
+                roadmap +
+                skills +
+                projects
             ) / 4
         );
 
@@ -2168,13 +2415,13 @@ function updateSummary() {
     document.getElementById(
         "summaryRoadmap"
     ).textContent =
-        roadmapProgress + "%";
+        roadmap + "%";
 
 
     document.getElementById(
         "summarySkills"
     ).textContent =
-        skillProgress + "%";
+        skills + "%";
 
 
     updateProjectSummary();
@@ -2191,7 +2438,7 @@ renderRoadmap();
 
 renderSkills();
 
-loadGoals();
+renderGoals();
 
 loadCourses();
 
