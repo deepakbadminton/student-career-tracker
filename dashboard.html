@@ -7,22 +7,18 @@
     <title>Student Career Dashboard</title>
 
     <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
             background: #f4f7fb;
+            margin: 0;
+            padding: 0;
             color: #1f2937;
         }
 
         header {
             background: #2563eb;
             color: white;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
         }
 
@@ -30,2149 +26,1229 @@
             margin: 0;
         }
 
+        header p {
+            margin: 8px 0 0;
+        }
+
         .container {
             width: 90%;
             max-width: 1100px;
-            margin: 25px auto;
+            margin: 30px auto;
         }
 
         .card {
             background: white;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
             border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
-        .card h2 {
-            margin-top: 0;
+        h2 {
             color: #2563eb;
+            margin-top: 0;
+        }
+
+        h3 {
+            margin-bottom: 10px;
         }
 
         .profile-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-        }
-
-        .info-box {
-            background: #f8fafc;
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        .info-box strong {
-            display: block;
-            margin-bottom: 6px;
-        }
-
-        .career-box {
-            background: #eff6ff;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 15px;
-        }
-
-        .career-box h3 {
-            margin-top: 0;
-        }
-
-        .recommendations {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
+            line-height: 1.8;
         }
 
         .recommendation {
-            background: #f8fafc;
+            background: #eff6ff;
             padding: 15px;
-            border-radius: 10px;
-            border-left: 5px solid #2563eb;
-        }
-
-        .recommendation h3 {
-            margin-top: 0;
-        }
-
-        .roadmap {
-            margin-bottom: 15px;
-            padding: 15px;
-            background: #f8fafc;
-            border-radius: 10px;
-        }
-
-        .roadmap-title {
-            color: #2563eb;
-            margin-bottom: 5px;
-        }
-
-        .roadmap-description {
-            margin-top: 5px;
-        }
-
-        .roadmap-progress {
-            width: 100%;
-            height: 12px;
-            background: #e5e7eb;
-            border-radius: 10px;
-            margin-top: 8px;
-            overflow: hidden;
-        }
-
-        .roadmap-progress-bar {
-            height: 100%;
-            width: 0%;
-            background: #2563eb;
-            border-radius: 10px;
-            transition: width 0.3s;
-        }
-
-        .roadmap-check-label {
-            display: block;
-            margin-top: 15px;
-        }
-
-        /* SKILLS */
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .skill {
-            background: #f8fafc;
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        .skill h3 {
-            margin-top: 0;
-            color: #2563eb;
-        }
-
-        .skill select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 8px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
+            border-radius: 8px;
+            margin-top: 10px;
         }
 
         .progress-container {
-            width: 100%;
-            height: 12px;
             background: #e5e7eb;
+            height: 20px;
             border-radius: 10px;
-            margin-top: 10px;
             overflow: hidden;
+            margin: 10px 0;
         }
 
         .progress-bar {
             height: 100%;
             width: 0%;
             background: #2563eb;
-            border-radius: 10px;
             transition: width 0.3s;
         }
 
-        /* GOALS */
+        .progress-text {
+            font-weight: bold;
+        }
 
-        .goals label {
+        .roadmap-item {
+            margin-bottom: 15px;
+        }
+
+        .roadmap-item label {
             display: block;
-            padding: 12px;
-            background: #f8fafc;
-            margin-bottom: 8px;
-            border-radius: 8px;
+            margin-bottom: 5px;
         }
 
-        .goal-progress-container {
-            width: 100%;
-            height: 12px;
+        .roadmap-check {
+            margin-right: 8px;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-item select {
+            padding: 7px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        .skill-progress {
             background: #e5e7eb;
+            height: 12px;
             border-radius: 10px;
-            margin-top: 15px;
             overflow: hidden;
+            margin-top: 8px;
         }
 
-        .goal-progress-bar {
+        .skill-progress-bar {
             height: 100%;
             width: 0%;
-            background: #2563eb;
-            border-radius: 10px;
+            background: #16a34a;
             transition: width 0.3s;
         }
 
-        .goal-progress-text {
-            font-weight: bold;
-            margin-top: 10px;
+        .goal-item,
+        .course-item {
+            margin: 12px 0;
         }
 
-        /* COURSES */
-
-        .courses label {
-            display: block;
-            padding: 10px;
-            background: #f8fafc;
-            margin-bottom: 8px;
-            border-radius: 8px;
-        }
-
-        .courses a {
-            color: #2563eb;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .courses a:hover {
-            text-decoration: underline;
-        }
-
-        /* SUMMARY */
-
-        .summary-grid,
-        .project-summary {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-        }
-
-        .summary-box,
-        .project-stat {
-            background: #eff6ff;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-        }
-
-        .summary-box h3,
-        .project-stat h3 {
-            margin: 0;
-            font-size: 16px;
-        }
-
-        .summary-value,
-        .project-stat p {
-            font-size: 30px;
-            font-weight: bold;
-            color: #2563eb;
-            margin-top: 10px;
-            margin-bottom: 0;
+        .goal-item input,
+        .course-item input {
+            margin-right: 8px;
         }
 
         .button {
             display: inline-block;
+            text-decoration: none;
             background: #2563eb;
             color: white;
             padding: 12px 18px;
-            border-radius: 8px;
-            text-decoration: none;
-            margin-top: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
         }
 
         .button:hover {
             background: #1d4ed8;
         }
 
+        .project-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .project-box {
+            background: #f9fafb;
+            padding: 18px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+
+        .project-box h3 {
+            font-size: 28px;
+            color: #2563eb;
+            margin: 0;
+        }
+
+        .project-box p {
+            margin-bottom: 0;
+        }
+
+        .internship-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .internship-box {
+            background: #f9fafb;
+            padding: 18px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+
+        .internship-box h3 {
+            font-size: 28px;
+            color: #2563eb;
+            margin: 0;
+        }
+
+        .internship-box p {
+            margin-bottom: 0;
+        }
+
+        .summary-note {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 800px) {
+            .project-summary,
+            .internship-summary {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .project-summary,
+            .internship-summary {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
-
 
 <body>
 
 <header>
-
-    <h1>Student Career Dashboard</h1>
-
-    <p>
-        Track your skills, goals, projects and career progress
-    </p>
-
+    <h1>🎓 Student Career Dashboard</h1>
+    <p>Track your skills, goals, projects and career progress</p>
 </header>
-
 
 <div class="container">
 
-
     <!-- PROFILE -->
-
     <div class="card">
 
         <h2>👤 My Profile</h2>
 
         <div class="profile-info">
-
-            <div class="info-box">
-
-                <strong>Name</strong>
-
-                <span id="userName">
-                    Student
-                </span>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <strong>Branch</strong>
-
-                <span id="userBranch">
-                    Not provided
-                </span>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <strong>Year</strong>
-
-                <span id="userYear">
-                    Not provided
-                </span>
-
-            </div>
-
-
-            <div class="info-box">
-
-                <strong>Skills</strong>
-
-                <span id="userSkills">
-                    Not provided
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="career-box">
-
-            <h3>
-                🎯 Selected Career Path
-            </h3>
-
-            <p id="userCareerPath">
-                Not selected
+            <p>
+                <strong>Name:</strong>
+                <span id="studentName"></span>
             </p>
 
+            <p>
+                <strong>Branch:</strong>
+                <span id="studentBranch"></span>
+            </p>
+
+            <p>
+                <strong>Year:</strong>
+                <span id="studentYear"></span>
+            </p>
+
+            <p>
+                <strong>Skills:</strong>
+                <span id="studentSkills"></span>
+            </p>
+
+            <p>
+                <strong>Career:</strong>
+                <span id="studentCareer"></span>
+            </p>
         </div>
 
     </div>
 
 
-
-    <!-- CAREER RECOMMENDATIONS -->
-
+    <!-- CAREER RECOMMENDATION -->
     <div class="card">
 
-        <h2>
-            💡 Career Recommendations
-        </h2>
+        <h2>🎯 Career Recommendation</h2>
 
-        <div class="recommendations">
+        <div class="recommendation">
+            <h3 id="careerTitle"></h3>
 
-
-            <div class="recommendation">
-
-                <h3>
-                    💻 Software Developer
-                </h3>
-
-                <p>
-                    Learn programming, data structures,
-                    databases, GitHub and software development.
-                </p>
-
-            </div>
-
-
-            <div class="recommendation">
-
-                <h3>
-                    🤖 AI / ML
-                </h3>
-
-                <p>
-                    Learn Python, mathematics, machine learning,
-                    data analysis and AI tools.
-                </p>
-
-            </div>
-
-
-            <div class="recommendation">
-
-                <h3>
-                    🌐 Web Developer
-                </h3>
-
-                <p>
-                    Learn HTML, CSS, JavaScript, frontend development
-                    and backend technologies.
-                </p>
-
-            </div>
-
-
-            <div class="recommendation">
-
-                <h3>
-                    📊 Data Analyst
-                </h3>
-
-                <p>
-                    Learn Python, Excel, SQL, statistics,
-                    data visualization and Power BI.
-                </p>
-
-            </div>
-
-
-            <div class="recommendation">
-
-                <h3>
-                    🔐 Cybersecurity
-                </h3>
-
-                <p>
-                    Learn networking, Linux, security concepts,
-                    ethical hacking and cybersecurity tools.
-                </p>
-
-            </div>
-
+            <p id="careerDescription"></p>
         </div>
 
     </div>
-
 
 
     <!-- CAREER ROADMAP -->
-
     <div class="card">
 
-        <h2>
-            🗺️ Career Roadmap
-        </h2>
-
-        <p id="roadmapIntro">
-            Your roadmap will be based on your selected career path.
-        </p>
+        <h2>🗺️ Career Roadmap</h2>
 
         <div id="roadmapContainer"></div>
 
-    </div>
-
-
-
-    <!-- CAREER-SPECIFIC SKILLS -->
-
-    <div class="card">
-
-        <h2>
-            📚 Skills Progress
-        </h2>
-
-        <p id="skillsIntro">
-            Your skills will be based on your selected career path.
+        <p class="progress-text">
+            Roadmap Progress:
+            <span id="roadmapProgressText">0%</span>
         </p>
 
-        <div
-            class="skills-grid"
-            id="skillsContainer">
-        </div>
-
-    </div>
-
-
-
-    <!-- CAREER-SPECIFIC GOALS -->
-
-    <div class="card">
-
-        <h2>
-            🎯 Career Goals
-        </h2>
-
-        <p id="goalsIntro">
-            Your goals will be based on your selected career path.
-        </p>
-
-        <div
-            class="goals"
-            id="goalsContainer">
-        </div>
-
-
-        <div class="goal-progress-container">
-
+        <div class="progress-container">
             <div
-                class="goal-progress-bar"
+                class="progress-bar"
+                id="roadmapProgressBar">
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- CAREER SKILLS -->
+    <div class="card">
+
+        <h2>💻 Career Skills</h2>
+
+        <div id="skillsContainer"></div>
+
+        <p class="progress-text">
+            Average Skills Progress:
+            <span id="skillsProgressText">0%</span>
+        </p>
+
+        <div class="progress-container">
+            <div
+                class="progress-bar"
+                id="skillsProgressBar">
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- CAREER GOALS -->
+    <div class="card">
+
+        <h2>🎯 Career Goals</h2>
+
+        <div id="goalsContainer"></div>
+
+        <p class="progress-text">
+            Goals Progress:
+            <span id="goalProgressText">0%</span>
+        </p>
+
+        <div class="progress-container">
+            <div
+                class="progress-bar"
                 id="goalProgressBar">
             </div>
-
         </div>
 
-
-        <p
-            class="goal-progress-text"
-            id="goalProgressText">
-
-            Goal Progress: 0%
-
-        </p>
-
     </div>
-
 
 
     <!-- COURSES -->
-
     <div class="card">
 
-        <h2>
-            🎓 Learning Courses
-        </h2>
+        <h2>📚 Learning Courses</h2>
 
-        <div class="courses">
-
-
+        <div class="course-item">
             <label>
-
                 <input
                     type="checkbox"
                     class="course-check"
-                    data-course="python">
-
-                <a
-                    href="https://www.python.org/about/gettingstarted/"
-                    target="_blank">
-
-                    Learn Python
-
-                </a>
-
+                    value="python">
+                Learn Python
             </label>
 
+            <a
+                href="https://www.python.org/about/gettingstarted/"
+                target="_blank">
+                Learn →
+            </a>
+        </div>
 
+        <div class="course-item">
             <label>
-
                 <input
                     type="checkbox"
                     class="course-check"
-                    data-course="ai">
-
-                <a
-                    href="https://www.ibm.com/think/topics/artificial-intelligence"
-                    target="_blank">
-
-                    Learn Artificial Intelligence
-
-                </a>
-
+                    value="ai">
+                Learn Artificial Intelligence
             </label>
 
+            <a
+                href="https://www.ibm.com/think/topics/artificial-intelligence"
+                target="_blank">
+                Learn →
+            </a>
+        </div>
 
+        <div class="course-item">
             <label>
-
                 <input
                     type="checkbox"
                     class="course-check"
-                    data-course="web">
-
-                <a
-                    href="https://developer.mozilla.org/en-US/docs/Learn_web_development"
-                    target="_blank">
-
-                    Learn Web Development
-
-                </a>
-
+                    value="web">
+                Learn Web Development
             </label>
 
+            <a
+                href="https://developer.mozilla.org/en-US/docs/Learn_web_development"
+                target="_blank">
+                Learn →
+            </a>
         </div>
 
     </div>
-
 
 
     <!-- PROJECT SUMMARY -->
-
     <div class="card">
 
-        <h2>
-            🚀 Project Progress
-        </h2>
+        <h2>🚀 My Projects</h2>
 
         <div class="project-summary">
 
-
-            <div class="project-stat">
-
-                <h3>
-                    Total Projects
-                </h3>
-
-                <p id="totalProjects">
-                    0
-                </p>
-
+            <div class="project-box">
+                <h3 id="totalProjects">0</h3>
+                <p>Total Projects</p>
             </div>
 
-
-            <div class="project-stat">
-
-                <h3>
-                    Completed Projects
-                </h3>
-
-                <p id="completedProjects">
-                    0
-                </p>
-
+            <div class="project-box">
+                <h3 id="completedProjects">0</h3>
+                <p>Completed</p>
             </div>
 
-
-            <div class="project-stat">
-
-                <h3>
-                    Projects In Progress
-                </h3>
-
-                <p id="activeProjects">
-                    0
-                </p>
-
+            <div class="project-box">
+                <h3 id="inProgressProjects">0</h3>
+                <p>In Progress</p>
             </div>
 
-
-            <div class="project-stat">
-
-                <h3>
-                    Average Project Progress
-                </h3>
-
-                <p id="averageProjectProgress">
-                    0%
-                </p>
-
+            <div class="project-box">
+                <h3 id="averageProjectProgress">0%</h3>
+                <p>Average Progress</p>
             </div>
 
         </div>
 
-
         <a
             href="projects.html"
             class="button">
-
             🚀 Manage My Projects
-
         </a>
 
     </div>
 
+
+    <!-- INTERNSHIP SUMMARY -->
+    <div class="card">
+
+        <h2>💼 Internship Tracker</h2>
+
+        <p class="summary-note">
+            Track your internship applications and opportunities.
+        </p>
+
+        <div class="internship-summary">
+
+            <div class="internship-box">
+                <h3 id="totalInternships">0</h3>
+                <p>Total Applications</p>
+            </div>
+
+            <div class="internship-box">
+                <h3 id="appliedInternships">0</h3>
+                <p>Applied</p>
+            </div>
+
+            <div class="internship-box">
+                <h3 id="interviewInternships">0</h3>
+                <p>Interviews</p>
+            </div>
+
+            <div class="internship-box">
+                <h3 id="selectedInternships">0</h3>
+                <p>Selected</p>
+            </div>
+
+        </div>
+
+        <a
+            href="internships.html"
+            class="button">
+            💼 Manage Internships
+        </a>
+
+    </div>
 
 
     <!-- CAREER PROGRESS SUMMARY -->
-
     <div class="card">
 
-        <h2>
-            📈 Career Progress Summary
-        </h2>
-
-        <div class="summary-grid">
-
-
-            <div class="summary-box">
-
-                <h3>
-                    Overall Progress
-                </h3>
-
-                <div
-                    class="summary-value"
-                    id="summaryOverall">
-
-                    0%
-
-                </div>
-
-            </div>
-
-
-            <div class="summary-box">
-
-                <h3>
-                    Roadmap Progress
-                </h3>
-
-                <div
-                    class="summary-value"
-                    id="summaryRoadmap">
-
-                    0%
-
-                </div>
-
-            </div>
-
-
-            <div class="summary-box">
-
-                <h3>
-                    Average Skill Level
-                </h3>
-
-                <div
-                    class="summary-value"
-                    id="summarySkills">
-
-                    0%
-
-                </div>
-
-            </div>
-
-
-            <div class="summary-box">
-
-                <h3>
-                    Completed Projects
-                </h3>
-
-                <div
-                    class="summary-value"
-                    id="summaryProjects">
-
-                    0
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- MY PROJECTS -->
-
-    <div class="card">
-
-        <h2>
-            🚀 My Projects
-        </h2>
+        <h2>📊 Career Progress Summary</h2>
 
         <p>
-            Track the projects you are building
-            and monitor your progress.
+            Your overall progress is based on:
         </p>
 
-        <a
-            href="projects.html"
-            class="button">
+        <ul>
+            <li>Career Goals</li>
+            <li>Career Roadmap</li>
+            <li>Career Skills</li>
+            <li>Project Progress</li>
+        </ul>
 
-            Open My Projects
+        <div class="progress-container">
+            <div
+                class="progress-bar"
+                id="overallProgressBar">
+            </div>
+        </div>
 
-        </a>
+        <p class="progress-text">
+            Overall Career Progress:
+            <span id="overallProgressText">0%</span>
+        </p>
 
     </div>
 
 </div>
 
 
-
 <script>
 
+    /* ==============================
+       PROFILE DATA
+    ============================== */
 
-/* =====================================
-   PROFILE DATA
-===================================== */
+    const name =
+        localStorage.getItem("name") || "Student";
 
-const name =
-    localStorage.getItem("name");
+    const branch =
+        localStorage.getItem("branch") || "Not specified";
 
-const branch =
-    localStorage.getItem("branch");
+    const year =
+        localStorage.getItem("year") || "Not specified";
 
-const year =
-    localStorage.getItem("year");
+    const skills =
+        localStorage.getItem("skills") || "Not specified";
 
-const skills =
-    localStorage.getItem("skills");
-
-const careerPath =
-    localStorage.getItem("careerPath");
+    const careerPath =
+        localStorage.getItem("careerPath") || "Software Development";
 
 
-if (name) {
-
-    document.getElementById("userName")
+    document.getElementById("studentName")
         .textContent = name;
 
-}
-
-
-if (branch) {
-
-    document.getElementById("userBranch")
+    document.getElementById("studentBranch")
         .textContent = branch;
 
-}
-
-
-if (year) {
-
-    document.getElementById("userYear")
+    document.getElementById("studentYear")
         .textContent = year;
 
-}
-
-
-if (skills) {
-
-    document.getElementById("userSkills")
+    document.getElementById("studentSkills")
         .textContent = skills;
 
-}
-
-
-if (careerPath) {
-
-    document.getElementById("userCareerPath")
+    document.getElementById("studentCareer")
         .textContent = careerPath;
 
-}
 
+    /* ==============================
+       CAREER TYPE
+    ============================== */
 
+    function getCareerType() {
 
-/* =====================================
-   CAREER TYPE
-===================================== */
+        const career =
+            careerPath.toLowerCase();
 
-function getCareerType() {
+        if (
+            career.includes("web")
+        ) {
+            return "web";
+        }
 
-    const career =
-        String(careerPath || "")
-        .toLowerCase();
+        if (
+            career.includes("ai") ||
+            career.includes("machine")
+        ) {
+            return "ai";
+        }
 
+        if (
+            career.includes("data")
+        ) {
+            return "data";
+        }
 
-    if (
-        career.includes("web")
-    ) {
+        if (
+            career.includes("cyber") ||
+            career.includes("security")
+        ) {
+            return "cyber";
+        }
 
-        return "web";
-
+        return "software";
     }
 
 
-    if (
-        career.includes("ai") ||
-        career.includes("machine")
-    ) {
-
-        return "ai";
-
-    }
+    const careerType =
+        getCareerType();
 
 
-    if (
-        career.includes("data")
-    ) {
+    /* ==============================
+       CAREER RECOMMENDATION
+    ============================== */
 
-        return "data";
+    const careerDescriptions = {
 
-    }
+        software:
+            "Focus on programming, data structures, Git, databases and building real software projects.",
 
+        ai:
+            "Focus on Python, mathematics, data analysis and machine learning.",
 
-    if (
-        career.includes("cyber") ||
-        career.includes("security")
-    ) {
+        web:
+            "Focus on HTML, CSS, JavaScript, frontend development and backend development.",
 
-        return "cyber";
+        data:
+            "Focus on Python, SQL, Excel, Power BI and data analysis.",
 
-    }
+        cyber:
+            "Focus on networking, Linux, cybersecurity and ethical hacking."
 
-
-    return "software";
-
-}
-
-
-const currentCareer =
-    getCareerType();
+    };
 
 
+    document.getElementById("careerTitle")
+        .textContent = careerPath;
 
-/* =====================================
-   CAREER ROADMAP DATA
-===================================== */
+    document.getElementById("careerDescription")
+        .textContent =
+        careerDescriptions[careerType];
 
-const careerRoadmaps = {
 
-    software: {
+    /* ==============================
+       CAREER ROADMAP
+    ============================== */
 
-        name: "💻 Software Developer",
+    const careerRoadmaps = {
 
-        steps: [
+        software: [
+            "Learn Programming",
+            "Learn Data Structures & Algorithms",
+            "Learn Git & GitHub",
+            "Learn Databases",
+            "Build Real Projects",
+            "Apply for Software Internships"
+        ],
 
-            {
-                title: "Programming Fundamentals",
-                description:
-                    "Learn C, Python or Java and understand basic programming concepts."
-            },
+        ai: [
+            "Learn Python",
+            "Learn Mathematics",
+            "Learn Data Analysis",
+            "Learn Machine Learning",
+            "Build AI Projects",
+            "Apply for AI/ML Internships"
+        ],
 
-            {
-                title: "Data Structures & Algorithms",
-                description:
-                    "Learn arrays, strings, linked lists, stacks, queues and algorithms."
-            },
+        web: [
+            "Learn HTML & CSS",
+            "Learn JavaScript",
+            "Learn Frontend Development",
+            "Learn Backend Development",
+            "Build Websites",
+            "Apply for Web Development Internships"
+        ],
 
-            {
-                title: "Git & GitHub",
-                description:
-                    "Learn Git, GitHub and start uploading your projects."
-            },
+        data: [
+            "Learn Python",
+            "Learn SQL",
+            "Learn Excel",
+            "Learn Power BI",
+            "Build Data Projects",
+            "Apply for Data Internships"
+        ],
 
-            {
-                title: "Build Real Projects",
-                description:
-                    "Create useful projects and improve your problem-solving skills."
-            },
-
-            {
-                title: "Internship Preparation",
-                description:
-                    "Prepare your resume, LinkedIn, GitHub and technical interview skills."
-            }
-
+        cyber: [
+            "Learn Networking",
+            "Learn Linux",
+            "Learn Cybersecurity",
+            "Learn Ethical Hacking",
+            "Build Security Projects",
+            "Apply for Cybersecurity Internships"
         ]
 
-    },
+    };
 
 
-    ai: {
-
-        name: "🤖 AI / ML",
-
-        steps: [
-
-            {
-                title: "Learn Python",
-                description:
-                    "Learn Python programming, functions, lists, dictionaries and modules."
-            },
-
-            {
-                title: "Mathematics & Statistics",
-                description:
-                    "Learn basic statistics, probability and mathematics required for AI."
-            },
-
-            {
-                title: "Data Analysis",
-                description:
-                    "Learn NumPy, Pandas and data visualization."
-            },
-
-            {
-                title: "Machine Learning",
-                description:
-                    "Learn machine learning concepts and build simple ML models."
-            },
-
-            {
-                title: "AI Projects",
-                description:
-                    "Build AI projects and create a strong GitHub portfolio."
-            }
-
-        ]
-
-    },
+    const roadmap =
+        careerRoadmaps[careerType];
 
 
-    web: {
+    function renderRoadmap() {
 
-        name: "🌐 Web Developer",
+        const container =
+            document.getElementById("roadmapContainer");
 
-        steps: [
+        container.innerHTML = "";
 
-            {
-                title: "HTML & CSS",
-                description:
-                    "Learn how websites are structured and styled."
-            },
+        const savedProgress =
+            JSON.parse(
+                localStorage.getItem(
+                    "careerRoadmapProgress"
+                )
+            ) || {};
 
-            {
-                title: "JavaScript",
-                description:
-                    "Learn JavaScript and make websites interactive."
-            },
-
-            {
-                title: "Frontend Development",
-                description:
-                    "Learn responsive design and modern frontend development."
-            },
-
-            {
-                title: "Backend Development",
-                description:
-                    "Learn servers, APIs, databases and backend development."
-            },
-
-            {
-                title: "Build Web Projects",
-                description:
-                    "Create real websites and upload them to GitHub."
-            }
-
-        ]
-
-    },
-
-
-    data: {
-
-        name: "📊 Data Analyst",
-
-        steps: [
-
-            {
-                title: "Excel",
-                description:
-                    "Learn Excel formulas, tables, charts and data handling."
-            },
-
-            {
-                title: "SQL",
-                description:
-                    "Learn databases and SQL queries."
-            },
-
-            {
-                title: "Python for Data Analysis",
-                description:
-                    "Learn Python, Pandas, NumPy and data cleaning."
-            },
-
-            {
-                title: "Data Visualization",
-                description:
-                    "Learn charts, dashboards and tools such as Power BI."
-            },
-
-            {
-                title: "Data Analysis Projects",
-                description:
-                    "Build real data analysis projects for your portfolio."
-            }
-
-        ]
-
-    },
-
-
-    cyber: {
-
-        name: "🔐 Cybersecurity",
-
-        steps: [
-
-            {
-                title: "Computer & Networking Basics",
-                description:
-                    "Learn computers, networks, IP addresses and basic protocols."
-            },
-
-            {
-                title: "Linux",
-                description:
-                    "Learn Linux commands, files, permissions and system basics."
-            },
-
-            {
-                title: "Cybersecurity Fundamentals",
-                description:
-                    "Learn common attacks, security concepts and protection methods."
-            },
-
-            {
-                title: "Ethical Hacking",
-                description:
-                    "Learn ethical hacking concepts and security testing."
-            },
-
-            {
-                title: "Cybersecurity Projects",
-                description:
-                    "Build security-related projects and create a strong portfolio."
-            }
-
-        ]
-
-    }
-
-};
-
-
-
-/* =====================================
-   CAREER SKILLS DATA
-===================================== */
-
-const careerSkills = {
-
-    software: [
-
-        {
-            id: "programming",
-            name: "Programming",
-            default: 20
-        },
-
-        {
-            id: "dsa",
-            name: "Data Structures & Algorithms",
-            default: 20
-        },
-
-        {
-            id: "github",
-            name: "Git & GitHub",
-            default: 20
-        },
-
-        {
-            id: "databases",
-            name: "Databases",
-            default: 20
+        if (!savedProgress[careerType]) {
+            savedProgress[careerType] = [];
         }
 
-    ],
-
-
-    ai: [
-
-        {
-            id: "python",
-            name: "Python",
-            default: 20
-        },
-
-        {
-            id: "mathematics",
-            name: "Mathematics",
-            default: 20
-        },
-
-        {
-            id: "dataAnalysis",
-            name: "Data Analysis",
-            default: 20
-        },
-
-        {
-            id: "machineLearning",
-            name: "Machine Learning",
-            default: 20
-        }
-
-    ],
-
-
-    web: [
-
-        {
-            id: "htmlCss",
-            name: "HTML & CSS",
-            default: 20
-        },
-
-        {
-            id: "javascript",
-            name: "JavaScript",
-            default: 20
-        },
-
-        {
-            id: "frontend",
-            name: "Frontend Development",
-            default: 20
-        },
-
-        {
-            id: "backend",
-            name: "Backend Development",
-            default: 20
-        }
-
-    ],
-
-
-    data: [
-
-        {
-            id: "pythonData",
-            name: "Python",
-            default: 20
-        },
-
-        {
-            id: "sql",
-            name: "SQL",
-            default: 20
-        },
-
-        {
-            id: "excel",
-            name: "Excel",
-            default: 20
-        },
-
-        {
-            id: "powerbi",
-            name: "Power BI",
-            default: 20
-        }
-
-    ],
-
-
-    cyber: [
-
-        {
-            id: "networking",
-            name: "Networking",
-            default: 20
-        },
-
-        {
-            id: "linux",
-            name: "Linux",
-            default: 20
-        },
-
-        {
-            id: "security",
-            name: "Cybersecurity",
-            default: 20
-        },
-
-        {
-            id: "ethicalHacking",
-            name: "Ethical Hacking",
-            default: 20
-        }
-
-    ]
-
-};
-
-
-
-/* =====================================
-   CAREER-SPECIFIC GOALS DATA
-===================================== */
-
-const careerGoals = {
-
-    software: [
-
-        "Learn Programming",
-
-        "Learn Data Structures & Algorithms",
-
-        "Build a Real Project",
-
-        "Get a Software Internship"
-
-    ],
-
-
-    ai: [
-
-        "Learn Python",
-
-        "Learn Machine Learning",
-
-        "Build an AI Project",
-
-        "Get an AI/ML Internship"
-
-    ],
-
-
-    web: [
-
-        "Learn HTML & CSS",
-
-        "Learn JavaScript",
-
-        "Build a Website",
-
-        "Get a Web Development Internship"
-
-    ],
-
-
-    data: [
-
-        "Learn Python",
-
-        "Learn SQL",
-
-        "Learn Power BI",
-
-        "Build a Data Analysis Project"
-
-    ],
-
-
-    cyber: [
-
-        "Learn Networking",
-
-        "Learn Linux",
-
-        "Learn Cybersecurity",
-
-        "Build a Security Project"
-
-    ]
-
-};
-
-
-
-/* =====================================
-   ROADMAP
-===================================== */
-
-const currentRoadmap =
-    careerRoadmaps[currentCareer];
-
-
-function renderRoadmap() {
-
-    const container =
-        document.getElementById(
-            "roadmapContainer"
-        );
-
-
-    document.getElementById(
-        "roadmapIntro"
-    ).textContent =
-        "Roadmap for " +
-        currentRoadmap.name;
-
-
-    container.innerHTML = "";
-
-
-    currentRoadmap.steps.forEach(
-        function(step, index) {
-
-            const stepNumber =
-                index + 1;
-
-
-            const roadmapId =
-                "careerRoadmap_" +
-                currentCareer +
-                "_" +
-                stepNumber;
-
-
-            const roadmapDiv =
-                document.createElement("div");
-
-
-            roadmapDiv.className =
-                "roadmap";
-
-
-            roadmapDiv.innerHTML = `
-
-                <h3 class="roadmap-title">
-                    ${stepNumber}. ${step.title}
-                </h3>
-
-                <p class="roadmap-description">
-                    ${step.description}
-                </p>
-
-                <div class="roadmap-progress">
-
-                    <div
-                        class="roadmap-progress-bar"
-                        id="${roadmapId}">
-                    </div>
-
-                </div>
-
-                <label class="roadmap-check-label">
-
-                    <input
-                        type="checkbox"
-                        class="roadmap-check"
-                        data-roadmap="${roadmapId}">
-
-                    Completed
-
-                </label>
-
-            `;
-
-
-            container.appendChild(
-                roadmapDiv
-            );
-
-        }
-    );
-
-
-    loadRoadmap();
-
-}
-
-
-
-function getRoadmapStorage() {
-
-    return JSON.parse(
-        localStorage.getItem(
-            "careerRoadmapProgress"
-        )
-    ) || {};
-
-}
-
-
-
-function loadRoadmap() {
-
-    const storage =
-        getRoadmapStorage();
-
-
-    const progress =
-        storage[currentCareer] || {};
-
-
-    const checks =
-        document.querySelectorAll(
-            ".roadmap-check"
-        );
-
-
-    checks.forEach(
-        function(checkbox) {
-
-            const id =
-                checkbox.dataset.roadmap;
-
-
-            checkbox.checked =
-                progress[id] === true;
-
-
-            const bar =
-                document.getElementById(id);
-
-
-            if (bar) {
-
-                bar.style.width =
-                    checkbox.checked
-                        ? "100%"
-                        : "0%";
-
-            }
-
-        }
-    );
-
-
-    checks.forEach(
-        function(checkbox) {
-
-            checkbox.addEventListener(
-                "change",
-                saveRoadmap
-            );
-
-        }
-    );
-
-}
-
-
-
-function saveRoadmap() {
-
-    const storage =
-        getRoadmapStorage();
-
-
-    if (!storage[currentCareer]) {
-
-        storage[currentCareer] = {};
-
-    }
-
-
-    document.querySelectorAll(
-        ".roadmap-check"
-    ).forEach(
-        function(checkbox) {
-
-            const id =
-                checkbox.dataset.roadmap;
-
-
-            storage[currentCareer][id] =
-                checkbox.checked;
-
-
-            const bar =
-                document.getElementById(id);
-
-
-            if (bar) {
-
-                bar.style.width =
-                    checkbox.checked
-                        ? "100%"
-                        : "0%";
-
-            }
-
-        }
-    );
-
-
-    localStorage.setItem(
-        "careerRoadmapProgress",
-        JSON.stringify(storage)
-    );
-
-
-    updateSummary();
-
-}
-
-
-
-function getRoadmapPercentage() {
-
-    const checks =
-        document.querySelectorAll(
-            ".roadmap-check"
-        );
-
-
-    if (checks.length === 0) {
-
-        return 0;
-
-    }
-
-
-    let completed = 0;
-
-
-    checks.forEach(
-        function(checkbox) {
-
-            if (checkbox.checked) {
-
-                completed++;
-
-            }
-
-        }
-    );
-
-
-    return Math.round(
-        completed /
-        checks.length *
-        100
-    );
-
-}
-
-
-
-/* =====================================
-   SKILLS
-===================================== */
-
-function getSkillStorage() {
-
-    return JSON.parse(
-        localStorage.getItem(
-            "careerSkillProgress"
-        )
-    ) || {};
-
-}
-
-
-
-function renderSkills() {
-
-    const container =
-        document.getElementById(
-            "skillsContainer"
-        );
-
-
-    document.getElementById(
-        "skillsIntro"
-    ).textContent =
-        "Skills for " +
-        careerRoadmaps[currentCareer].name;
-
-
-    container.innerHTML = "";
-
-
-    const storage =
-        getSkillStorage();
-
-
-    if (!storage[currentCareer]) {
-
-        storage[currentCareer] = {};
-
-    }
-
-
-    careerSkills[currentCareer].forEach(
-        function(skill) {
-
-            if (
-                storage[currentCareer][skill.id]
-                === undefined
-            ) {
-
-                storage[currentCareer][skill.id] =
-                    skill.default;
-
-            }
-
+        roadmap.forEach(function(item, index) {
 
             const div =
                 document.createElement("div");
 
+            div.className = "roadmap-item";
 
-            div.className =
-                "skill";
-
+            const checked =
+                savedProgress[careerType][index] === true;
 
             div.innerHTML = `
+                <label>
+                    <input
+                        type="checkbox"
+                        class="roadmap-check"
+                        data-index="${index}"
+                        ${checked ? "checked" : ""}>
+                    ${item}
+                </label>
+            `;
 
-                <h3>
-                    ${skill.name}
-                </h3>
+            container.appendChild(div);
+
+        });
+
+        document
+            .querySelectorAll(".roadmap-check")
+            .forEach(function(check) {
+
+                check.addEventListener(
+                    "change",
+                    saveRoadmapProgress
+                );
+
+            });
+
+        updateRoadmapProgress();
+    }
+
+
+    function saveRoadmapProgress() {
+
+        const savedProgress =
+            JSON.parse(
+                localStorage.getItem(
+                    "careerRoadmapProgress"
+                )
+            ) || {};
+
+        if (!savedProgress[careerType]) {
+            savedProgress[careerType] = [];
+        }
+
+        document
+            .querySelectorAll(".roadmap-check")
+            .forEach(function(check) {
+
+                const index =
+                    Number(check.dataset.index);
+
+                savedProgress[careerType][index] =
+                    check.checked;
+
+            });
+
+        localStorage.setItem(
+            "careerRoadmapProgress",
+            JSON.stringify(savedProgress)
+        );
+
+        updateRoadmapProgress();
+    }
+
+
+    function getRoadmapPercentage() {
+
+        const checks =
+            document.querySelectorAll(
+                ".roadmap-check"
+            );
+
+        if (checks.length === 0) {
+            return 0;
+        }
+
+        let completed = 0;
+
+        checks.forEach(function(check) {
+
+            if (check.checked) {
+                completed++;
+            }
+
+        });
+
+        return Math.round(
+            (completed / checks.length) * 100
+        );
+    }
+
+
+    function updateRoadmapProgress() {
+
+        const percentage =
+            getRoadmapPercentage();
+
+        document.getElementById(
+            "roadmapProgressBar"
+        ).style.width =
+            percentage + "%";
+
+        document.getElementById(
+            "roadmapProgressText"
+        ).textContent =
+            percentage + "%";
+
+        updateOverallProgress();
+    }
+
+
+    /* ==============================
+       CAREER SKILLS
+    ============================== */
+
+    const careerSkills = {
+
+        software: [
+            "Programming",
+            "Data Structures & Algorithms",
+            "Git & GitHub",
+            "Databases"
+        ],
+
+        ai: [
+            "Python",
+            "Mathematics",
+            "Data Analysis",
+            "Machine Learning"
+        ],
+
+        web: [
+            "HTML & CSS",
+            "JavaScript",
+            "Frontend Development",
+            "Backend Development"
+        ],
+
+        data: [
+            "Python",
+            "SQL",
+            "Excel",
+            "Power BI"
+        ],
+
+        cyber: [
+            "Networking",
+            "Linux",
+            "Cybersecurity",
+            "Ethical Hacking"
+        ]
+
+    };
+
+
+    const skillsList =
+        careerSkills[careerType];
+
+
+    function renderSkills() {
+
+        const container =
+            document.getElementById("skillsContainer");
+
+        container.innerHTML = "";
+
+        const savedSkills =
+            JSON.parse(
+                localStorage.getItem(
+                    "careerSkillProgress"
+                )
+            ) || {};
+
+        if (!savedSkills[careerType]) {
+            savedSkills[careerType] = {};
+        }
+
+        skillsList.forEach(function(skill, index) {
+
+            const savedValue =
+                savedSkills[careerType][index] || 0;
+
+            const div =
+                document.createElement("div");
+
+            div.className = "skill-item";
+
+            div.innerHTML = `
+                <strong>${skill}</strong>
 
                 <select
                     class="skill-level"
-                    data-skill="${skill.id}">
+                    data-index="${index}">
 
-                    <option value="20">
-                        Beginner - 20%
+                    <option value="0"
+                        ${savedValue == 0 ? "selected" : ""}>
+                        Not Started
                     </option>
 
-                    <option value="50">
-                        Intermediate - 50%
+                    <option value="20"
+                        ${savedValue == 20 ? "selected" : ""}>
+                        20%
                     </option>
 
-                    <option value="80">
-                        Advanced - 80%
+                    <option value="50"
+                        ${savedValue == 50 ? "selected" : ""}>
+                        50%
                     </option>
 
-                    <option value="100">
-                        Expert - 100%
+                    <option value="80"
+                        ${savedValue == 80 ? "selected" : ""}>
+                        80%
+                    </option>
+
+                    <option value="100"
+                        ${savedValue == 100 ? "selected" : ""}>
+                        100%
                     </option>
 
                 </select>
 
-                <div class="progress-container">
-
+                <div class="skill-progress">
                     <div
-                        class="progress-bar"
-                        id="skillProgress_${skill.id}">
+                        class="skill-progress-bar"
+                        id="skillBar${index}"
+                        style="width:${savedValue}%">
                     </div>
-
                 </div>
-
             `;
-
 
             container.appendChild(div);
 
-        }
-    );
+        });
 
+        document
+            .querySelectorAll(".skill-level")
+            .forEach(function(select) {
 
-    localStorage.setItem(
-        "careerSkillProgress",
-        JSON.stringify(storage)
-    );
-
-
-    loadSkills();
-
-}
-
-
-
-function loadSkills() {
-
-    const storage =
-        getSkillStorage();
-
-
-    const currentSkills =
-        storage[currentCareer] || {};
-
-
-    document.querySelectorAll(
-        ".skill-level"
-    ).forEach(
-        function(select) {
-
-            const id =
-                select.dataset.skill;
-
-
-            const value =
-                Number(
-                    currentSkills[id] || 20
+                select.addEventListener(
+                    "change",
+                    saveSkillProgress
                 );
 
+            });
 
-            select.value =
-                value;
-
-
-            const bar =
-                document.getElementById(
-                    "skillProgress_" + id
-                );
+        updateSkillsProgress();
+    }
 
 
-            if (bar) {
+    function saveSkillProgress() {
 
-                bar.style.width =
-                    value + "%";
+        const savedSkills =
+            JSON.parse(
+                localStorage.getItem(
+                    "careerSkillProgress"
+                )
+            ) || {};
 
-            }
-
+        if (!savedSkills[careerType]) {
+            savedSkills[careerType] = {};
         }
-    );
+
+        document
+            .querySelectorAll(".skill-level")
+            .forEach(function(select) {
+
+                const index =
+                    Number(select.dataset.index);
+
+                savedSkills[careerType][index] =
+                    Number(select.value);
+
+                const bar =
+                    document.getElementById(
+                        "skillBar" + index
+                    );
+
+                if (bar) {
+                    bar.style.width =
+                        select.value + "%";
+                }
+
+            });
+
+        localStorage.setItem(
+            "careerSkillProgress",
+            JSON.stringify(savedSkills)
+        );
+
+        updateSkillsProgress();
+    }
 
 
-    document.querySelectorAll(
-        ".skill-level"
-    ).forEach(
-        function(select) {
+    function getSkillsPercentage() {
 
-            select.addEventListener(
-                "change",
-                saveSkills
+        const savedSkills =
+            JSON.parse(
+                localStorage.getItem(
+                    "careerSkillProgress"
+                )
+            ) || {};
+
+        if (!savedSkills[careerType]) {
+            return 0;
+        }
+
+        const values =
+            Object.values(
+                savedSkills[careerType]
             );
 
+        if (values.length === 0) {
+            return 0;
         }
-    );
 
-}
+        let total = 0;
 
+        values.forEach(function(value) {
+            total += Number(value);
+        });
 
-
-function saveSkills() {
-
-    const storage =
-        getSkillStorage();
-
-
-    if (!storage[currentCareer]) {
-
-        storage[currentCareer] = {};
-
+        return Math.round(
+            total / skillsList.length
+        );
     }
 
 
-    document.querySelectorAll(
-        ".skill-level"
-    ).forEach(
-        function(select) {
+    function updateSkillsProgress() {
 
-            const id =
-                select.dataset.skill;
+        const percentage =
+            getSkillsPercentage();
 
+        document.getElementById(
+            "skillsProgressBar"
+        ).style.width =
+            percentage + "%";
 
-            storage[currentCareer][id] =
-                Number(select.value);
+        document.getElementById(
+            "skillsProgressText"
+        ).textContent =
+            percentage + "%";
 
-
-            const bar =
-                document.getElementById(
-                    "skillProgress_" + id
-                );
-
-
-            if (bar) {
-
-                bar.style.width =
-                    select.value + "%";
-
-            }
-
-        }
-    );
-
-
-    localStorage.setItem(
-        "careerSkillProgress",
-        JSON.stringify(storage)
-    );
-
-
-    updateSummary();
-
-}
-
-
-
-function getAverageSkill() {
-
-    const storage =
-        getSkillStorage();
-
-
-    const currentSkills =
-        storage[currentCareer] || {};
-
-
-    const list =
-        careerSkills[currentCareer];
-
-
-    if (list.length === 0) {
-
-        return 0;
-
+        updateOverallProgress();
     }
 
 
-    let total = 0;
+    /* ==============================
+       CAREER GOALS
+    ============================== */
 
+    const careerGoals = {
 
-    list.forEach(
-        function(skill) {
+        software: [
+            "Learn Programming",
+            "Learn DSA",
+            "Build a Real Project",
+            "Get a Software Internship"
+        ],
 
-            total +=
-                Number(
-                    currentSkills[skill.id] || 20
-                );
+        ai: [
+            "Learn Python",
+            "Learn Machine Learning",
+            "Build an AI Project",
+            "Get an AI/ML Internship"
+        ],
 
-        }
-    );
+        web: [
+            "Learn HTML & CSS",
+            "Learn JavaScript",
+            "Build a Website",
+            "Get a Web Development Internship"
+        ],
 
+        data: [
+            "Learn Python",
+            "Learn SQL",
+            "Learn Power BI",
+            "Build a Data Analysis Project"
+        ],
 
-    return Math.round(
-        total / list.length
-    );
+        cyber: [
+            "Learn Networking",
+            "Learn Linux",
+            "Learn Cybersecurity",
+            "Build a Security Project"
+        ]
 
-}
-
-
-
-/* =====================================
-   CAREER-SPECIFIC GOALS
-===================================== */
-
-function getGoalStorage() {
-
-    return JSON.parse(
-        localStorage.getItem(
-            "careerGoalProgress"
-        )
-    ) || {};
-
-}
-
-
-
-function renderGoals() {
-
-    const container =
-        document.getElementById(
-            "goalsContainer"
-        );
-
-
-    const intro =
-        document.getElementById(
-            "goalsIntro"
-        );
+    };
 
 
     const goals =
-        careerGoals[currentCareer];
+        careerGoals[careerType];
 
 
-    intro.textContent =
-        "Goals for " +
-        careerRoadmaps[currentCareer].name;
+    function renderGoals() {
 
+        const container =
+            document.getElementById("goalsContainer");
 
-    container.innerHTML = "";
+        container.innerHTML = "";
 
+        const savedGoals =
+            JSON.parse(
+                localStorage.getItem(
+                    "careerGoalProgress"
+                )
+            ) || {};
 
-    const storage =
-        getGoalStorage();
+        if (!savedGoals[careerType]) {
+            savedGoals[careerType] = [];
+        }
 
+        goals.forEach(function(goal, index) {
 
-    if (!storage[currentCareer]) {
+            const checked =
+                savedGoals[careerType][index] === true;
 
-        storage[currentCareer] = {};
+            const div =
+                document.createElement("div");
 
-    }
+            div.className = "goal-item";
 
-
-    goals.forEach(
-        function(goal, index) {
-
-            const goalId =
-                "goal_" +
-                currentCareer +
-                "_" +
-                index;
-
-
-            if (
-                storage[currentCareer][goalId]
-                === undefined
-            ) {
-
-                storage[currentCareer][goalId] =
-                    false;
-
-            }
-
-
-            const label =
-                document.createElement("label");
-
-
-            label.innerHTML = `
-
-                <input
-                    type="checkbox"
-                    class="career-goal-check"
-                    data-goal="${goalId}">
-
-                ${goal}
-
+            div.innerHTML = `
+                <label>
+                    <input
+                        type="checkbox"
+                        class="career-goal-check"
+                        data-index="${index}"
+                        ${checked ? "checked" : ""}>
+                    ${goal}
+                </label>
             `;
 
+            container.appendChild(div);
 
-            container.appendChild(label);
+        });
 
-        }
-    );
+        document
+            .querySelectorAll(".career-goal-check")
+            .forEach(function(check) {
 
+                check.addEventListener(
+                    "change",
+                    saveGoalProgress
+                );
 
-    localStorage.setItem(
-        "careerGoalProgress",
-        JSON.stringify(storage)
-    );
+            });
 
-
-    loadGoals();
-
-}
-
-
-
-function loadGoals() {
-
-    const storage =
-        getGoalStorage();
-
-
-    const currentGoals =
-        storage[currentCareer] || {};
-
-
-    document.querySelectorAll(
-        ".career-goal-check"
-    ).forEach(
-        function(checkbox) {
-
-            const id =
-                checkbox.dataset.goal;
-
-
-            checkbox.checked =
-                currentGoals[id] === true;
-
-        }
-    );
-
-
-    document.querySelectorAll(
-        ".career-goal-check"
-    ).forEach(
-        function(checkbox) {
-
-            checkbox.addEventListener(
-                "change",
-                saveGoals
-            );
-
-        }
-    );
-
-
-    updateGoalProgress();
-
-}
-
-
-
-function saveGoals() {
-
-    const storage =
-        getGoalStorage();
-
-
-    if (!storage[currentCareer]) {
-
-        storage[currentCareer] = {};
-
+        updateGoalProgress();
     }
 
 
-    document.querySelectorAll(
-        ".career-goal-check"
-    ).forEach(
-        function(checkbox) {
+    function saveGoalProgress() {
 
-            const id =
-                checkbox.dataset.goal;
+        const savedGoals =
+            JSON.parse(
+                localStorage.getItem(
+                    "careerGoalProgress"
+                )
+            ) || {};
 
-
-            storage[currentCareer][id] =
-                checkbox.checked;
-
+        if (!savedGoals[careerType]) {
+            savedGoals[careerType] = [];
         }
-    );
 
+        document
+            .querySelectorAll(".career-goal-check")
+            .forEach(function(check) {
 
-    localStorage.setItem(
-        "careerGoalProgress",
-        JSON.stringify(storage)
-    );
+                const index =
+                    Number(check.dataset.index);
 
+                savedGoals[careerType][index] =
+                    check.checked;
 
-    updateGoalProgress();
+            });
 
-    updateSummary();
-
-}
-
-
-
-function getGoalPercentage() {
-
-    const checks =
-        document.querySelectorAll(
-            ".career-goal-check"
+        localStorage.setItem(
+            "careerGoalProgress",
+            JSON.stringify(savedGoals)
         );
 
-
-    if (checks.length === 0) {
-
-        return 0;
-
+        updateGoalProgress();
     }
 
 
-    let completed = 0;
+    function getGoalPercentage() {
 
+        const checks =
+            document.querySelectorAll(
+                ".career-goal-check"
+            );
 
-    checks.forEach(
-        function(checkbox) {
+        if (checks.length === 0) {
+            return 0;
+        }
 
-            if (checkbox.checked) {
+        let completed = 0;
 
+        checks.forEach(function(check) {
+
+            if (check.checked) {
                 completed++;
-
             }
 
-        }
-    );
+        });
+
+        return Math.round(
+            (completed / checks.length) * 100
+        );
+    }
 
 
-    return Math.round(
-        completed /
-        checks.length *
-        100
-    );
+    function updateGoalProgress() {
 
-}
+        const percentage =
+            getGoalPercentage();
 
+        document.getElementById(
+            "goalProgressBar"
+        ).style.width =
+            percentage + "%";
 
+        document.getElementById(
+            "goalProgressText"
+        ).textContent =
+            percentage + "%";
 
-function updateGoalProgress() {
-
-    const percentage =
-        getGoalPercentage();
-
-
-    document.getElementById(
-        "goalProgressBar"
-    ).style.width =
-        percentage + "%";
+        updateOverallProgress();
+    }
 
 
-    document.getElementById(
-        "goalProgressText"
-    ).textContent =
-        "Goal Progress: " +
-        percentage +
-        "%";
+    /* ==============================
+       COURSES
+    ============================== */
 
-}
+    const courseChecks =
+        document.querySelectorAll(
+            ".course-check"
+        );
 
-
-
-/* =====================================
-   COURSES
-===================================== */
-
-const courseChecks =
-    document.querySelectorAll(
-        ".course-check"
-    );
-
-
-function loadCourses() {
 
     const savedCourses =
         JSON.parse(
@@ -2182,270 +1258,271 @@ function loadCourses() {
         ) || {};
 
 
-    courseChecks.forEach(
-        function(checkbox) {
+    courseChecks.forEach(function(check) {
 
-            const course =
-                checkbox.dataset.course;
-
-
-            checkbox.checked =
-                savedCourses[course] === true;
-
+        if (savedCourses[check.value]) {
+            check.checked = true;
         }
-    );
 
-}
-
-
-
-function saveCourses() {
-
-    const status = {};
-
-
-    courseChecks.forEach(
-        function(checkbox) {
-
-            status[
-                checkbox.dataset.course
-            ] =
-                checkbox.checked;
-
-        }
-    );
-
-
-    localStorage.setItem(
-        "courseProgress",
-        JSON.stringify(status)
-    );
-
-}
-
-
-
-courseChecks.forEach(
-    function(checkbox) {
-
-        checkbox.addEventListener(
+        check.addEventListener(
             "change",
-            saveCourses
+            function() {
+
+                savedCourses[check.value] =
+                    check.checked;
+
+                localStorage.setItem(
+                    "courseProgress",
+                    JSON.stringify(savedCourses)
+                );
+
+            }
         );
 
-    }
-);
+    });
 
 
+    /* ==============================
+       PROJECT SUMMARY
+    ============================== */
 
-/* =====================================
-   PROJECTS
-===================================== */
+    function updateProjectSummary() {
 
-function getProjects() {
+        const projects =
+            JSON.parse(
+                localStorage.getItem(
+                    "studentProjects"
+                )
+            ) || [];
 
-    return JSON.parse(
-        localStorage.getItem(
-            "studentProjects"
-        )
-    ) || [];
+        const total =
+            projects.length;
 
-}
+        let completed = 0;
+        let inProgress = 0;
+        let progressTotal = 0;
 
-
-
-function getAverageProjectProgress() {
-
-    const projects =
-        getProjects();
-
-
-    if (projects.length === 0) {
-
-        return 0;
-
-    }
-
-
-    let total = 0;
-
-
-    projects.forEach(
-        function(project) {
-
-            let progress =
-                Number(project.progress) || 0;
-
+        projects.forEach(function(project) {
 
             if (
-                String(project.status)
-                    .toLowerCase() ===
-                "completed"
+                project.status === "Completed"
             ) {
-
-                progress = 100;
-
+                completed++;
             }
 
+            if (
+                project.status === "In Progress"
+            ) {
+                inProgress++;
+            }
 
-            total += progress;
+            let progress =
+                Number(project.progress);
+
+            if (isNaN(progress)) {
+                progress = 0;
+            }
+
+            progressTotal += progress;
+
+        });
+
+
+        let average = 0;
+
+        if (total > 0) {
+            average =
+                Math.round(
+                    progressTotal / total
+                );
+        }
+
+
+        document.getElementById(
+            "totalProjects"
+        ).textContent = total;
+
+        document.getElementById(
+            "completedProjects"
+        ).textContent = completed;
+
+        document.getElementById(
+            "inProgressProjects"
+        ).textContent = inProgress;
+
+        document.getElementById(
+            "averageProjectProgress"
+        ).textContent =
+            average + "%";
+
+
+        updateOverallProgress();
+    }
+
+
+    /* ==============================
+       INTERNSHIP SUMMARY
+    ============================== */
+
+    function updateInternshipSummary() {
+
+        const internships =
+            JSON.parse(
+                localStorage.getItem(
+                    "internships"
+                )
+            ) || [];
+
+
+        const total =
+            internships.length;
+
+
+        const applied =
+            internships.filter(
+                function(internship) {
+
+                    return internship.status ===
+                        "Applied";
+
+                }
+            ).length;
+
+
+        const interviews =
+            internships.filter(
+                function(internship) {
+
+                    return internship.status ===
+                        "Interview";
+
+                }
+            ).length;
+
+
+        const selected =
+            internships.filter(
+                function(internship) {
+
+                    return internship.status ===
+                        "Selected";
+
+                }
+            ).length;
+
+
+        document.getElementById(
+            "totalInternships"
+        ).textContent = total;
+
+        document.getElementById(
+            "appliedInternships"
+        ).textContent = applied;
+
+        document.getElementById(
+            "interviewInternships"
+        ).textContent = interviews;
+
+        document.getElementById(
+            "selectedInternships"
+        ).textContent = selected;
+
+    }
+
+
+    /* ==============================
+       OVERALL CAREER PROGRESS
+    ============================== */
+
+    function updateOverallProgress() {
+
+        const goalsProgress =
+            getGoalPercentage();
+
+        const roadmapProgress =
+            getRoadmapPercentage();
+
+        const skillsProgress =
+            getSkillsPercentage();
+
+
+        const projects =
+            JSON.parse(
+                localStorage.getItem(
+                    "studentProjects"
+                )
+            ) || [];
+
+
+        let projectProgress = 0;
+
+
+        if (projects.length > 0) {
+
+            let total = 0;
+
+            projects.forEach(
+                function(project) {
+
+                    let progress =
+                        Number(project.progress);
+
+                    if (isNaN(progress)) {
+                        progress = 0;
+                    }
+
+                    total += progress;
+
+                }
+            );
+
+            projectProgress =
+                Math.round(
+                    total / projects.length
+                );
 
         }
-    );
 
 
-    return Math.round(
-        total / projects.length
-    );
-
-}
-
-
-
-function updateProjectSummary() {
-
-    const projects =
-        getProjects();
+        const overall =
+            Math.round(
+                (
+                    goalsProgress +
+                    roadmapProgress +
+                    skillsProgress +
+                    projectProgress
+                ) / 4
+            );
 
 
-    const total =
-        projects.length;
+        document.getElementById(
+            "overallProgressBar"
+        ).style.width =
+            overall + "%";
+
+        document.getElementById(
+            "overallProgressText"
+        ).textContent =
+            overall + "%";
+
+    }
 
 
-    const completed =
-        projects.filter(
-            function(project) {
+    /* ==============================
+       INITIAL LOAD
+    ============================== */
 
-                return String(project.status)
-                    .toLowerCase() ===
-                    "completed";
+    renderRoadmap();
 
-            }
-        ).length;
+    renderSkills();
 
-
-    const inProgress =
-        projects.filter(
-            function(project) {
-
-                return String(project.status)
-                    .toLowerCase() ===
-                    "in progress";
-
-            }
-        ).length;
-
-
-    const average =
-        getAverageProjectProgress();
-
-
-    document.getElementById(
-        "totalProjects"
-    ).textContent =
-        total;
-
-
-    document.getElementById(
-        "completedProjects"
-    ).textContent =
-        completed;
-
-
-    document.getElementById(
-        "activeProjects"
-    ).textContent =
-        inProgress;
-
-
-    document.getElementById(
-        "averageProjectProgress"
-    ).textContent =
-        average + "%";
-
-
-    document.getElementById(
-        "summaryProjects"
-    ).textContent =
-        completed;
-
-}
-
-
-
-/* =====================================
-   OVERALL SUMMARY
-===================================== */
-
-function updateSummary() {
-
-    const goals =
-        getGoalPercentage();
-
-
-    const roadmap =
-        getRoadmapPercentage();
-
-
-    const skills =
-        getAverageSkill();
-
-
-    const projects =
-        getAverageProjectProgress();
-
-
-    const overall =
-        Math.round(
-            (
-                goals +
-                roadmap +
-                skills +
-                projects
-            ) / 4
-        );
-
-
-    document.getElementById(
-        "summaryOverall"
-    ).textContent =
-        overall + "%";
-
-
-    document.getElementById(
-        "summaryRoadmap"
-    ).textContent =
-        roadmap + "%";
-
-
-    document.getElementById(
-        "summarySkills"
-    ).textContent =
-        skills + "%";
-
+    renderGoals();
 
     updateProjectSummary();
 
-}
+    updateInternshipSummary();
 
-
-
-/* =====================================
-   INITIAL LOAD
-===================================== */
-
-renderRoadmap();
-
-renderSkills();
-
-renderGoals();
-
-loadCourses();
-
-updateProjectSummary();
-
-updateSummary();
-
+    updateOverallProgress();
 
 </script>
 
