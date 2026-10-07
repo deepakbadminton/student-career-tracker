@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Internship Tracker | Student Career Tracker</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            color: #1f2937;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header p {
+            margin: 8px 0 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #2563eb;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 11px;
+            margin-top: 6px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            background: #2563eb;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .summary-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .summary-box h3 {
+            margin: 0;
+            font-size: 28px;
+            color: #2563eb;
+        }
+
+        .summary-box p {
+            margin-bottom: 0;
+        }
+
+        .internship {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .internship h3 {
+            margin-top: 0;
+            color: #111827;
+        }
+
+        .internship p {
+            margin: 7px 0;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .delete-btn {
+            background: #dc2626;
+            margin-top: 10px;
+        }
+
+        .delete-btn:hover {
+            background: #b91c1c;
+        }
+
+        .back-btn {
+            background: #6b7280;
+        }
+
+        .back-btn:hover {
+            background: #4b5563;
+        }
+
+        @media (max-width: 700px) {
+            .summary {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 450px) {
+            .summary {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>💼 Internship Tracker</h1>
+    <p>Track your internship applications and progress</p>
+</header>
+
+<div class="container">
+
+    <!-- SUMMARY -->
+    <div class="summary">
+
+        <div class="summary-box">
+            <h3 id="totalApplications">0</h3>
+            <p>Total Applications</p>
+        </div>
+
+        <div class="summary-box">
+            <h3 id="appliedCount">0</h3>
+            <p>Applied</p>
+        </div>
+
+        <div class="summary-box">
+            <h3 id="interviewCount">0</h3>
+            <p>Interviews</p>
+        </div>
+
+        <div class="summary-box">
+            <h3 id="selectedCount">0</h3>
+            <p>Selected</p>
+        </div>
+
+    </div>
+
+    <!-- ADD INTERNSHIP -->
+    <div class="card">
+
+        <h2>➕ Add Internship</h2>
+
+        <label for="company">Company Name</label>
+        <input
+            type="text"
+            id="company"
+            placeholder="Example: Google"
+        >
+
+        <label for="role">Job / Internship Role</label>
+        <input
+            type="text"
+            id="role"
+            placeholder="Example: Software Developer Intern"
+        >
+
+        <label for="applicationDate">Application Date</label>
+        <input
+            type="date"
+            id="applicationDate"
+        >
+
+        <label for="applicationLink">Application Link</label>
+        <input
+            type="url"
+            id="applicationLink"
+            placeholder="https://example.com"
+        >
+
+        <label for="status">Status</label>
+        <select id="status">
+            <option value="Applied">Applied</option>
+            <option value="Interview">Interview</option>
+            <option value="Selected">Selected</option>
+            <option value="Rejected">Rejected</option>
+        </select>
+
+        <button onclick="addInternship()">
+            Add Internship 🚀
+        </button>
+
+    </div>
+
+    <!-- INTERNSHIPS -->
+    <div class="card">
+
+        <h2>📋 My Applications</h2>
+
+        <div id="internshipList"></div>
+
+    </div>
+
+    <button class="back-btn" onclick="goBack()">
+        ← Back to Dashboard
+    </button>
+
+</div>
+
+<script>
+
+    let internships =
+        JSON.parse(localStorage.getItem("internships")) || [];
+
+    function addInternship() {
+
+        const company =
+            document.getElementById("company").value.trim();
+
+        const role =
+            document.getElementById("role").value.trim();
+
+        const applicationDate =
+            document.getElementById("applicationDate").value;
+
+        const applicationLink =
+            document.getElementById("applicationLink").value.trim();
+
+        const status =
+            document.getElementById("status").value;
+
+        if (
+            company === "" ||
+            role === "" ||
+            applicationDate === ""
+        ) {
+            alert("Please fill in Company, Role and Application Date.");
+            return;
+        }
+
+        const internship = {
+            id: Date.now(),
+            company: company,
+            role: role,
+            applicationDate: applicationDate,
+            applicationLink: applicationLink,
+            status: status
+        };
+
+        internships.push(internship);
+
+        localStorage.setItem(
+            "internships",
+            JSON.stringify(internships)
+        );
+
+        document.getElementById("company").value = "";
+        document.getElementById("role").value = "";
+        document.getElementById("applicationDate").value = "";
+        document.getElementById("applicationLink").value = "";
+        document.getElementById("status").value = "Applied";
+
+        displayInternships();
+    }
+
+
+    function displayInternships() {
+
+        const list =
+            document.getElementById("internshipList");
+
+        list.innerHTML = "";
+
+        if (internships.length === 0) {
+
+            list.innerHTML =
+                "<p>No internship applications added yet.</p>";
+
+            updateSummary();
+
+            return;
+        }
+
+        internships.forEach(function(internship) {
+
+            const div =
+                document.createElement("div");
+
+            div.className = "internship";
+
+            let linkHTML = "";
+
+            if (internship.applicationLink !== "") {
+
+                linkHTML =
+                    `<p>
+                        🔗
+                        <a href="${internship.applicationLink}"
+                           target="_blank">
+                            Open Application
+                        </a>
+                    </p>`;
+            }
+
+            div.innerHTML = `
+                <h3>🏢 ${internship.company}</h3>
+
+                <p>
+                    💼 <strong>Role:</strong>
+                    ${internship.role}
+                </p>
+
+                <p>
+                    📅 <strong>Applied:</strong>
+                    ${internship.applicationDate}
+                </p>
+
+                <p>
+                    📌 <strong>Status:</strong>
+                    <span class="status">
+                        ${internship.status}
+                    </span>
+                </p>
+
+                ${linkHTML}
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteInternship(${internship.id})">
+                    🗑️ Delete
+                </button>
+            `;
+
+            list.appendChild(div);
+
+        });
+
+        updateSummary();
+    }
+
+
+    function deleteInternship(id) {
+
+        internships =
+            internships.filter(function(internship) {
+                return internship.id !== id;
+            });
+
+        localStorage.setItem(
+            "internships",
+            JSON.stringify(internships)
+        );
+
+        displayInternships();
+    }
+
+
+    function updateSummary() {
+
+        const total =
+            internships.length;
+
+        const applied =
+            internships.filter(function(internship) {
+                return internship.status === "Applied";
+            }).length;
+
+        const interviews =
+            internships.filter(function(internship) {
+                return internship.status === "Interview";
+            }).length;
+
+        const selected =
+            internships.filter(function(internship) {
+                return internship.status === "Selected";
+            }).length;
+
+        document.getElementById("totalApplications")
+            .textContent = total;
+
+        document.getElementById("appliedCount")
+            .textContent = applied;
+
+        document.getElementById("interviewCount")
+            .textContent = interviews;
+
+        document.getElementById("selectedCount")
+            .textContent = selected;
+    }
+
+
+    function goBack() {
+
+        window.location.href = "dashboard.html";
+
+    }
+
+
+    displayInternships();
+
+</script>
+
+</body>
+</html>
