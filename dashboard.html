@@ -7,6 +7,7 @@
     <title>Student Career Dashboard</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -118,6 +119,12 @@
             width: 0%;
             background: #2563eb;
             border-radius: 10px;
+            transition: width 0.3s;
+        }
+
+        .roadmap-check-label {
+            display: block;
+            margin-top: 15px;
         }
 
         .skills-grid {
@@ -222,20 +229,38 @@
         ul {
             line-height: 1.8;
         }
+
+        .roadmap-title {
+            color: #2563eb;
+            margin-bottom: 5px;
+        }
+
+        .roadmap-description {
+            margin-top: 5px;
+        }
+
     </style>
 </head>
+
 
 <body>
 
 <header>
+
     <h1>Student Career Dashboard</h1>
-    <p>Track your skills, goals, projects and career progress</p>
+
+    <p>
+        Track your skills, goals, projects and career progress
+    </p>
+
 </header>
 
 
 <div class="container">
 
+
     <!-- PROFILE -->
+
     <div class="card">
 
         <h2>👤 My Profile</h2>
@@ -243,23 +268,46 @@
         <div class="profile-info">
 
             <div class="info-box">
+
                 <strong>Name</strong>
-                <span id="userName">Student</span>
+
+                <span id="userName">
+                    Student
+                </span>
+
             </div>
 
+
             <div class="info-box">
+
                 <strong>Branch</strong>
-                <span id="userBranch">Not provided</span>
+
+                <span id="userBranch">
+                    Not provided
+                </span>
+
             </div>
 
+
             <div class="info-box">
+
                 <strong>Year</strong>
-                <span id="userYear">Not provided</span>
+
+                <span id="userYear">
+                    Not provided
+                </span>
+
             </div>
 
+
             <div class="info-box">
+
                 <strong>Skills</strong>
-                <span id="userSkills">Not provided</span>
+
+                <span id="userSkills">
+                    Not provided
+                </span>
+
             </div>
 
         </div>
@@ -267,60 +315,98 @@
 
         <div class="career-box">
 
-            <h3>🎯 Selected Career Path</h3>
+            <h3>
+                🎯 Selected Career Path
+            </h3>
 
-            <p id="userCareerPath">Not selected</p>
+            <p id="userCareerPath">
+                Not selected
+            </p>
 
         </div>
 
     </div>
 
 
+
     <!-- CAREER RECOMMENDATIONS -->
+
     <div class="card">
 
-        <h2>💡 Career Recommendations</h2>
+        <h2>
+            💡 Career Recommendations
+        </h2>
 
         <div class="recommendations">
 
-            <div class="recommendation">
-                <h3>💻 Software Developer</h3>
-                <p>
-                    Learn programming, data structures, databases,
-                    GitHub and software development.
-                </p>
-            </div>
 
             <div class="recommendation">
-                <h3>🤖 AI / ML</h3>
+
+                <h3>
+                    💻 Software Developer
+                </h3>
+
+                <p>
+                    Learn programming, data structures,
+                    databases, GitHub and software development.
+                </p>
+
+            </div>
+
+
+            <div class="recommendation">
+
+                <h3>
+                    🤖 AI / ML
+                </h3>
+
                 <p>
                     Learn Python, mathematics, machine learning,
                     data analysis and AI tools.
                 </p>
+
             </div>
 
+
             <div class="recommendation">
-                <h3>🌐 Web Developer</h3>
+
+                <h3>
+                    🌐 Web Developer
+                </h3>
+
                 <p>
                     Learn HTML, CSS, JavaScript, frontend development
                     and backend technologies.
                 </p>
+
             </div>
 
+
             <div class="recommendation">
-                <h3>📊 Data Analyst</h3>
+
+                <h3>
+                    📊 Data Analyst
+                </h3>
+
                 <p>
                     Learn Python, Excel, SQL, statistics,
                     data visualization and Power BI.
                 </p>
+
             </div>
 
+
             <div class="recommendation">
-                <h3>🔐 Cybersecurity</h3>
+
+                <h3>
+                    🔐 Cybersecurity
+                </h3>
+
                 <p>
                     Learn networking, Linux, security concepts,
                     ethical hacking and cybersecurity tools.
                 </p>
+
             </div>
 
         </div>
@@ -328,143 +414,41 @@
     </div>
 
 
-    <!-- CAREER ROADMAP -->
+
+    <!-- CAREER-SPECIFIC ROADMAP -->
+
     <div class="card">
 
-        <h2>🗺️ Career Roadmap</h2>
+        <h2>
+            🗺️ Career Roadmap
+        </h2>
 
+        <p id="roadmapIntro">
+            Your roadmap will be based on your selected career path.
+        </p>
 
-        <div class="roadmap">
-
-            <label>Programming Fundamentals</label>
-
-            <p>
-                Learn basic programming concepts and problem solving.
-            </p>
-
-            <div class="roadmap-progress">
-                <div
-                    class="roadmap-progress-bar"
-                    id="roadmap1">
-                </div>
-            </div>
-
-            <label style="display:block; margin-top:15px;">
-
-                <input
-                    type="checkbox"
-                    class="roadmap-check"
-                    data-roadmap="roadmap1">
-
-                Completed
-
-            </label>
-
-        </div>
-
-
-        <div class="roadmap">
-
-            <label>Data Structures & Algorithms</label>
-
-            <p>
-                Learn arrays, strings, linked lists,
-                stacks, queues and algorithms.
-            </p>
-
-            <div class="roadmap-progress">
-                <div
-                    class="roadmap-progress-bar"
-                    id="roadmap2">
-                </div>
-            </div>
-
-            <label style="display:block; margin-top:15px;">
-
-                <input
-                    type="checkbox"
-                    class="roadmap-check"
-                    data-roadmap="roadmap2">
-
-                Completed
-
-            </label>
-
-        </div>
-
-
-        <div class="roadmap">
-
-            <label>Build Projects</label>
-
-            <p>
-                Create real projects and upload them to GitHub.
-            </p>
-
-            <div class="roadmap-progress">
-                <div
-                    class="roadmap-progress-bar"
-                    id="roadmap3">
-                </div>
-            </div>
-
-            <label style="display:block; margin-top:15px;">
-
-                <input
-                    type="checkbox"
-                    class="roadmap-check"
-                    data-roadmap="roadmap3">
-
-                Completed
-
-            </label>
-
-        </div>
-
-
-        <div class="roadmap">
-
-            <label>Internship Preparation</label>
-
-            <p>
-                Prepare your resume, GitHub, LinkedIn
-                and technical skills.
-            </p>
-
-            <div class="roadmap-progress">
-                <div
-                    class="roadmap-progress-bar"
-                    id="roadmap4">
-                </div>
-            </div>
-
-            <label style="display:block; margin-top:15px;">
-
-                <input
-                    type="checkbox"
-                    class="roadmap-check"
-                    data-roadmap="roadmap4">
-
-                Completed
-
-            </label>
-
-        </div>
+        <div id="roadmapContainer"></div>
 
     </div>
+
 
 
     <!-- SKILLS -->
+
     <div class="card">
 
-        <h2>📚 Skills Progress</h2>
+        <h2>
+            📚 Skills Progress
+        </h2>
 
         <div class="skills-grid">
 
 
             <div class="skill">
 
-                <strong>Python</strong>
+                <strong>
+                    Python
+                </strong>
 
                 <select id="pythonLevel">
 
@@ -498,9 +482,12 @@
             </div>
 
 
+
             <div class="skill">
 
-                <strong>C</strong>
+                <strong>
+                    C
+                </strong>
 
                 <select id="cLevel">
 
@@ -534,9 +521,12 @@
             </div>
 
 
+
             <div class="skill">
 
-                <strong>Java</strong>
+                <strong>
+                    Java
+                </strong>
 
                 <select id="javaLevel">
 
@@ -574,12 +564,17 @@
     </div>
 
 
+
     <!-- CAREER GOALS -->
+
     <div class="card">
 
-        <h2>🎯 Career Goals</h2>
+        <h2>
+            🎯 Career Goals
+        </h2>
 
         <div class="goals">
+
 
             <label>
 
@@ -633,10 +628,14 @@
     </div>
 
 
+
     <!-- COURSES -->
+
     <div class="card">
 
-        <h2>🎓 Learning Courses</h2>
+        <h2>
+            🎓 Learning Courses
+        </h2>
 
         <div class="courses">
 
@@ -699,44 +698,62 @@
     </div>
 
 
+
     <!-- PROJECT SUMMARY -->
+
     <div class="card">
 
-        <h2>🚀 Project Progress</h2>
+        <h2>
+            🚀 Project Progress
+        </h2>
 
         <div class="project-summary">
 
 
             <div class="project-stat">
 
-                <h3>Total Projects</h3>
+                <h3>
+                    Total Projects
+                </h3>
 
-                <p id="totalProjects">0</p>
-
-            </div>
-
-
-            <div class="project-stat">
-
-                <h3>Completed Projects</h3>
-
-                <p id="completedProjects">0</p>
+                <p id="totalProjects">
+                    0
+                </p>
 
             </div>
 
 
             <div class="project-stat">
 
-                <h3>Projects In Progress</h3>
+                <h3>
+                    Completed Projects
+                </h3>
 
-                <p id="activeProjects">0</p>
+                <p id="completedProjects">
+                    0
+                </p>
 
             </div>
 
 
             <div class="project-stat">
 
-                <h3>Average Project Progress</h3>
+                <h3>
+                    Projects In Progress
+                </h3>
+
+                <p id="activeProjects">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="project-stat">
+
+                <h3>
+                    Average Project Progress
+                </h3>
 
                 <p id="averageProjectProgress">
                     0%
@@ -758,17 +775,23 @@
     </div>
 
 
+
     <!-- CAREER PROGRESS SUMMARY -->
+
     <div class="card">
 
-        <h2>📈 Career Progress Summary</h2>
+        <h2>
+            📈 Career Progress Summary
+        </h2>
 
         <div class="summary-grid">
 
 
             <div class="summary-box">
 
-                <h3>Overall Progress</h3>
+                <h3>
+                    Overall Progress
+                </h3>
 
                 <div
                     class="summary-value"
@@ -783,7 +806,9 @@
 
             <div class="summary-box">
 
-                <h3>Roadmap Progress</h3>
+                <h3>
+                    Roadmap Progress
+                </h3>
 
                 <div
                     class="summary-value"
@@ -798,7 +823,9 @@
 
             <div class="summary-box">
 
-                <h3>Average Skill Level</h3>
+                <h3>
+                    Average Skill Level
+                </h3>
 
                 <div
                     class="summary-value"
@@ -813,7 +840,9 @@
 
             <div class="summary-box">
 
-                <h3>Completed Projects</h3>
+                <h3>
+                    Completed Projects
+                </h3>
 
                 <div
                     class="summary-value"
@@ -830,10 +859,14 @@
     </div>
 
 
+
     <!-- MY PROJECTS -->
+
     <div class="card">
 
-        <h2>🚀 My Projects</h2>
+        <h2>
+            🚀 My Projects
+        </h2>
 
         <p>
             Track the projects you are building
@@ -851,6 +884,7 @@
     </div>
 
 </div>
+
 
 
 <script>
@@ -912,6 +946,581 @@ if (careerPath) {
 }
 
 
+
+/* =====================================
+   CAREER ROADMAP DATA
+===================================== */
+
+const careerRoadmaps = {
+
+    software: {
+
+        name: "💻 Software Developer",
+
+        steps: [
+
+            {
+                title: "Programming Fundamentals",
+                description:
+                    "Learn C, Python or Java and understand basic programming concepts."
+            },
+
+            {
+                title: "Data Structures & Algorithms",
+                description:
+                    "Learn arrays, strings, linked lists, stacks, queues and algorithms."
+            },
+
+            {
+                title: "Git & GitHub",
+                description:
+                    "Learn Git, GitHub and start uploading your projects."
+            },
+
+            {
+                title: "Build Real Projects",
+                description:
+                    "Create useful projects and improve your problem-solving skills."
+            },
+
+            {
+                title: "Internship Preparation",
+                description:
+                    "Prepare your resume, LinkedIn, GitHub and technical interview skills."
+            }
+
+        ]
+
+    },
+
+
+    ai: {
+
+        name: "🤖 AI / ML",
+
+        steps: [
+
+            {
+                title: "Learn Python",
+                description:
+                    "Learn Python programming, functions, lists, dictionaries and modules."
+            },
+
+            {
+                title: "Mathematics & Statistics",
+                description:
+                    "Learn basic statistics, probability and mathematics required for AI."
+            },
+
+            {
+                title: "Data Analysis",
+                description:
+                    "Learn NumPy, Pandas and data visualization."
+            },
+
+            {
+                title: "Machine Learning",
+                description:
+                    "Learn machine learning concepts and build simple ML models."
+            },
+
+            {
+                title: "AI Projects",
+                description:
+                    "Build AI projects and create a strong GitHub portfolio."
+            }
+
+        ]
+
+    },
+
+
+    web: {
+
+        name: "🌐 Web Developer",
+
+        steps: [
+
+            {
+                title: "HTML & CSS",
+                description:
+                    "Learn how websites are structured and styled."
+            },
+
+            {
+                title: "JavaScript",
+                description:
+                    "Learn JavaScript and make websites interactive."
+            },
+
+            {
+                title: "Frontend Development",
+                description:
+                    "Learn responsive design and modern frontend development."
+            },
+
+            {
+                title: "Backend Development",
+                description:
+                    "Learn servers, APIs, databases and backend development."
+            },
+
+            {
+                title: "Build Web Projects",
+                description:
+                    "Create real websites and upload them to GitHub."
+            }
+
+        ]
+
+    },
+
+
+    data: {
+
+        name: "📊 Data Analyst",
+
+        steps: [
+
+            {
+                title: "Excel",
+                description:
+                    "Learn Excel formulas, tables, charts and data handling."
+            },
+
+            {
+                title: "SQL",
+                description:
+                    "Learn databases and SQL queries."
+            },
+
+            {
+                title: "Python for Data Analysis",
+                description:
+                    "Learn Python, Pandas, NumPy and data cleaning."
+            },
+
+            {
+                title: "Data Visualization",
+                description:
+                    "Learn charts, dashboards and tools such as Power BI."
+            },
+
+            {
+                title: "Data Analysis Projects",
+                description:
+                    "Build real data analysis projects for your portfolio."
+            }
+
+        ]
+
+    },
+
+
+    cyber: {
+
+        name: "🔐 Cybersecurity",
+
+        steps: [
+
+            {
+                title: "Computer & Networking Basics",
+                description:
+                    "Learn computers, networks, IP addresses and basic protocols."
+            },
+
+            {
+                title: "Linux",
+                description:
+                    "Learn Linux commands, files, permissions and system basics."
+            },
+
+            {
+                title: "Cybersecurity Fundamentals",
+                description:
+                    "Learn common attacks, security concepts and protection methods."
+            },
+
+            {
+                title: "Ethical Hacking",
+                description:
+                    "Learn ethical hacking concepts and security testing."
+            },
+
+            {
+                title: "Cybersecurity Projects",
+                description:
+                    "Build security-related projects and create a strong portfolio."
+            }
+
+        ]
+
+    }
+
+};
+
+
+
+/* =====================================
+   FIND CAREER TYPE
+===================================== */
+
+function getCareerType() {
+
+    const career =
+        String(careerPath || "")
+            .toLowerCase();
+
+
+    if (
+        career.includes("software") ||
+        career.includes("developer")
+    ) {
+
+        if (career.includes("web")) {
+
+            return "web";
+
+        }
+
+        return "software";
+
+    }
+
+
+    if (
+        career.includes("ai") ||
+        career.includes("machine")
+    ) {
+
+        return "ai";
+
+    }
+
+
+    if (
+        career.includes("data")
+    ) {
+
+        return "data";
+
+    }
+
+
+    if (
+        career.includes("cyber") ||
+        career.includes("security")
+    ) {
+
+        return "cyber";
+
+    }
+
+
+    return "software";
+
+}
+
+
+
+/* =====================================
+   CURRENT CAREER
+===================================== */
+
+const currentCareer =
+    getCareerType();
+
+
+const currentRoadmap =
+    careerRoadmaps[currentCareer];
+
+
+
+/* =====================================
+   RENDER ROADMAP
+===================================== */
+
+function renderRoadmap() {
+
+    const container =
+        document.getElementById(
+            "roadmapContainer"
+        );
+
+
+    const intro =
+        document.getElementById(
+            "roadmapIntro"
+        );
+
+
+    intro.textContent =
+        "Roadmap for " +
+        currentRoadmap.name;
+
+
+    container.innerHTML = "";
+
+
+    currentRoadmap.steps.forEach(
+        function(step, index) {
+
+
+            const stepNumber =
+                index + 1;
+
+
+            const roadmapId =
+                "careerRoadmap_" +
+                currentCareer +
+                "_" +
+                stepNumber;
+
+
+            const roadmapDiv =
+                document.createElement("div");
+
+
+            roadmapDiv.className =
+                "roadmap";
+
+
+            roadmapDiv.innerHTML = `
+
+                <h3 class="roadmap-title">
+                    ${stepNumber}. ${step.title}
+                </h3>
+
+                <p class="roadmap-description">
+                    ${step.description}
+                </p>
+
+                <div class="roadmap-progress">
+
+                    <div
+                        class="roadmap-progress-bar"
+                        id="${roadmapId}">
+                    </div>
+
+                </div>
+
+                <label class="roadmap-check-label">
+
+                    <input
+                        type="checkbox"
+                        class="roadmap-check"
+                        data-roadmap="${roadmapId}">
+
+                    Completed
+
+                </label>
+
+            `;
+
+
+            container.appendChild(
+                roadmapDiv
+            );
+
+        }
+    );
+
+
+    loadRoadmap();
+
+}
+
+
+
+/* =====================================
+   ROADMAP STORAGE
+===================================== */
+
+function getRoadmapStorage() {
+
+    return JSON.parse(
+        localStorage.getItem(
+            "careerRoadmapProgress"
+        )
+    ) || {};
+
+}
+
+
+
+function loadRoadmap() {
+
+    const savedRoadmap =
+        getRoadmapStorage();
+
+
+    const careerProgress =
+        savedRoadmap[currentCareer] || {};
+
+
+    const roadmapChecks =
+        document.querySelectorAll(
+            ".roadmap-check"
+        );
+
+
+    roadmapChecks.forEach(
+        function(checkbox) {
+
+            const roadmapId =
+                checkbox.dataset.roadmap;
+
+
+            const completed =
+                careerProgress[roadmapId] === true;
+
+
+            checkbox.checked =
+                completed;
+
+
+            const progressBar =
+                document.getElementById(
+                    roadmapId
+                );
+
+
+            if (progressBar) {
+
+                progressBar.style.width =
+                    completed
+                        ? "100%"
+                        : "0%";
+
+            }
+
+        }
+    );
+
+
+    roadmapChecks.forEach(
+        function(checkbox) {
+
+            checkbox.addEventListener(
+                "change",
+                saveRoadmap
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =====================================
+   SAVE ROADMAP
+===================================== */
+
+function saveRoadmap() {
+
+    const savedRoadmap =
+        getRoadmapStorage();
+
+
+    if (!savedRoadmap[currentCareer]) {
+
+        savedRoadmap[currentCareer] = {};
+
+    }
+
+
+    const roadmapChecks =
+        document.querySelectorAll(
+            ".roadmap-check"
+        );
+
+
+    roadmapChecks.forEach(
+        function(checkbox) {
+
+            const roadmapId =
+                checkbox.dataset.roadmap;
+
+
+            savedRoadmap[currentCareer][roadmapId] =
+                checkbox.checked;
+
+
+            const progressBar =
+                document.getElementById(
+                    roadmapId
+                );
+
+
+            if (progressBar) {
+
+                progressBar.style.width =
+                    checkbox.checked
+                        ? "100%"
+                        : "0%";
+
+            }
+
+        }
+    );
+
+
+    localStorage.setItem(
+        "careerRoadmapProgress",
+        JSON.stringify(savedRoadmap)
+    );
+
+
+    updateSummary();
+
+}
+
+
+
+/* =====================================
+   ROADMAP PERCENTAGE
+===================================== */
+
+function getRoadmapPercentage() {
+
+    const roadmapChecks =
+        document.querySelectorAll(
+            ".roadmap-check"
+        );
+
+
+    if (roadmapChecks.length === 0) {
+
+        return 0;
+
+    }
+
+
+    let completed = 0;
+
+
+    roadmapChecks.forEach(
+        function(checkbox) {
+
+            if (checkbox.checked) {
+
+                completed++;
+
+            }
+
+        }
+    );
+
+
+    return Math.round(
+        (completed / roadmapChecks.length) * 100
+    );
+
+}
+
+
+
 /* =====================================
    SKILLS
 ===================================== */
@@ -926,6 +1535,7 @@ let skillLevels =
         java: 20
 
     };
+
 
 
 function updateSkills() {
@@ -944,15 +1554,18 @@ function updateSkills() {
         .style.width =
         skillLevels.python + "%";
 
+
     document.getElementById("cProgress")
         .style.width =
         skillLevels.c + "%";
+
 
     document.getElementById("javaProgress")
         .style.width =
         skillLevels.java + "%";
 
 }
+
 
 
 function saveSkills() {
@@ -962,6 +1575,7 @@ function saveSkills() {
         JSON.stringify(skillLevels)
     );
 
+
     updateSkills();
 
     updateSummary();
@@ -969,37 +1583,50 @@ function saveSkills() {
 }
 
 
+
 document.getElementById("pythonLevel")
-    .addEventListener("change", function() {
+    .addEventListener(
+        "change",
+        function() {
 
-        skillLevels.python =
-            Number(this.value);
+            skillLevels.python =
+                Number(this.value);
 
-        saveSkills();
+            saveSkills();
 
-    });
+        }
+    );
+
 
 
 document.getElementById("cLevel")
-    .addEventListener("change", function() {
+    .addEventListener(
+        "change",
+        function() {
 
-        skillLevels.c =
-            Number(this.value);
+            skillLevels.c =
+                Number(this.value);
 
-        saveSkills();
+            saveSkills();
 
-    });
+        }
+    );
+
 
 
 document.getElementById("javaLevel")
-    .addEventListener("change", function() {
+    .addEventListener(
+        "change",
+        function() {
 
-        skillLevels.java =
-            Number(this.value);
+            skillLevels.java =
+                Number(this.value);
 
-        saveSkills();
+            saveSkills();
 
-    });
+        }
+    );
+
 
 
 function getAverageSkill() {
@@ -1009,9 +1636,13 @@ function getAverageSkill() {
         Number(skillLevels.c) +
         Number(skillLevels.java);
 
-    return Math.round(total / 3);
+
+    return Math.round(
+        total / 3
+    );
 
 }
+
 
 
 /* =====================================
@@ -1019,27 +1650,35 @@ function getAverageSkill() {
 ===================================== */
 
 const goalChecks =
-    document.querySelectorAll(".goal-check");
+    document.querySelectorAll(
+        ".goal-check"
+    );
+
 
 
 function loadGoals() {
 
     const savedGoals =
         JSON.parse(
-            localStorage.getItem("careerGoals")
+            localStorage.getItem(
+                "careerGoals"
+            )
         ) || [];
 
 
-    goalChecks.forEach(function(checkbox) {
+    goalChecks.forEach(
+        function(checkbox) {
 
-        checkbox.checked =
-            savedGoals.includes(
-                checkbox.value
-            );
+            checkbox.checked =
+                savedGoals.includes(
+                    checkbox.value
+                );
 
-    });
+        }
+    );
 
 }
+
 
 
 function saveGoals() {
@@ -1047,22 +1686,26 @@ function saveGoals() {
     const selectedGoals = [];
 
 
-    goalChecks.forEach(function(checkbox) {
+    goalChecks.forEach(
+        function(checkbox) {
 
-        if (checkbox.checked) {
+            if (checkbox.checked) {
 
-            selectedGoals.push(
-                checkbox.value
-            );
+                selectedGoals.push(
+                    checkbox.value
+                );
+
+            }
 
         }
-
-    });
+    );
 
 
     localStorage.setItem(
         "careerGoals",
-        JSON.stringify(selectedGoals)
+        JSON.stringify(
+            selectedGoals
+        )
     );
 
 
@@ -1071,14 +1714,18 @@ function saveGoals() {
 }
 
 
-goalChecks.forEach(function(checkbox) {
 
-    checkbox.addEventListener(
-        "change",
-        saveGoals
-    );
+goalChecks.forEach(
+    function(checkbox) {
 
-});
+        checkbox.addEventListener(
+            "change",
+            saveGoals
+        );
+
+    }
+);
+
 
 
 function getGoalPercentage() {
@@ -1086,15 +1733,17 @@ function getGoalPercentage() {
     let completed = 0;
 
 
-    goalChecks.forEach(function(checkbox) {
+    goalChecks.forEach(
+        function(checkbox) {
 
-        if (checkbox.checked) {
+            if (checkbox.checked) {
 
-            completed++;
+                completed++;
+
+            }
 
         }
-
-    });
+    );
 
 
     if (goalChecks.length === 0) {
@@ -1111,148 +1760,43 @@ function getGoalPercentage() {
 }
 
 
-/* =====================================
-   ROADMAP
-===================================== */
-
-const roadmapChecks =
-    document.querySelectorAll(".roadmap-check");
-
-
-function loadRoadmap() {
-
-    const savedRoadmap =
-        JSON.parse(
-            localStorage.getItem("roadmapProgress")
-        ) || {};
-
-
-    roadmapChecks.forEach(function(checkbox) {
-
-        const roadmapId =
-            checkbox.dataset.roadmap;
-
-
-        const completed =
-            savedRoadmap[roadmapId] === true;
-
-
-        checkbox.checked =
-            completed;
-
-
-        document.getElementById(roadmapId)
-            .style.width =
-            completed ? "100%" : "0%";
-
-    });
-
-}
-
-
-function saveRoadmap() {
-
-    const roadmapStatus = {};
-
-
-    roadmapChecks.forEach(function(checkbox) {
-
-        const roadmapId =
-            checkbox.dataset.roadmap;
-
-
-        roadmapStatus[roadmapId] =
-            checkbox.checked;
-
-
-        document.getElementById(roadmapId)
-            .style.width =
-            checkbox.checked
-                ? "100%"
-                : "0%";
-
-    });
-
-
-    localStorage.setItem(
-        "roadmapProgress",
-        JSON.stringify(roadmapStatus)
-    );
-
-
-    updateSummary();
-
-}
-
-
-roadmapChecks.forEach(function(checkbox) {
-
-    checkbox.addEventListener(
-        "change",
-        saveRoadmap
-    );
-
-});
-
-
-function getRoadmapPercentage() {
-
-    let completed = 0;
-
-
-    roadmapChecks.forEach(function(checkbox) {
-
-        if (checkbox.checked) {
-
-            completed++;
-
-        }
-
-    });
-
-
-    if (roadmapChecks.length === 0) {
-
-        return 0;
-
-    }
-
-
-    return Math.round(
-        (completed / roadmapChecks.length) * 100
-    );
-
-}
-
 
 /* =====================================
    COURSE CHECKBOXES
 ===================================== */
 
 const courseChecks =
-    document.querySelectorAll(".course-check");
+    document.querySelectorAll(
+        ".course-check"
+    );
+
 
 
 function loadCourses() {
 
     const savedCourses =
         JSON.parse(
-            localStorage.getItem("courseProgress")
+            localStorage.getItem(
+                "courseProgress"
+            )
         ) || {};
 
 
-    courseChecks.forEach(function(checkbox) {
+    courseChecks.forEach(
+        function(checkbox) {
 
-        const course =
-            checkbox.dataset.course;
+            const course =
+                checkbox.dataset.course;
 
 
-        checkbox.checked =
-            savedCourses[course] === true;
+            checkbox.checked =
+                savedCourses[course] === true;
 
-    });
+        }
+    );
 
 }
+
 
 
 function saveCourses() {
@@ -1260,34 +1804,42 @@ function saveCourses() {
     const courseStatus = {};
 
 
-    courseChecks.forEach(function(checkbox) {
+    courseChecks.forEach(
+        function(checkbox) {
 
-        const course =
-            checkbox.dataset.course;
+            const course =
+                checkbox.dataset.course;
 
 
-        courseStatus[course] =
-            checkbox.checked;
+            courseStatus[course] =
+                checkbox.checked;
 
-    });
+        }
+    );
 
 
     localStorage.setItem(
         "courseProgress",
-        JSON.stringify(courseStatus)
+        JSON.stringify(
+            courseStatus
+        )
     );
 
 }
 
 
-courseChecks.forEach(function(checkbox) {
 
-    checkbox.addEventListener(
-        "change",
-        saveCourses
-    );
+courseChecks.forEach(
+    function(checkbox) {
 
-});
+        checkbox.addEventListener(
+            "change",
+            saveCourses
+        );
+
+    }
+);
+
 
 
 /* =====================================
@@ -1303,6 +1855,7 @@ function getProjects() {
     ) || [];
 
 }
+
 
 
 function getAverageProjectProgress() {
@@ -1321,25 +1874,27 @@ function getAverageProjectProgress() {
     let totalProgress = 0;
 
 
-    projects.forEach(function(project) {
+    projects.forEach(
+        function(project) {
 
-        let progress =
-            Number(project.progress) || 0;
+            let progress =
+                Number(project.progress) || 0;
 
 
-        if (
-            String(project.status)
-                .toLowerCase() === "completed"
-        ) {
+            if (
+                String(project.status)
+                    .toLowerCase() === "completed"
+            ) {
 
-            progress = 100;
+                progress = 100;
+
+            }
+
+
+            totalProgress += progress;
 
         }
-
-
-        totalProgress += progress;
-
-    });
+    );
 
 
     return Math.round(
@@ -1347,6 +1902,7 @@ function getAverageProjectProgress() {
     );
 
 }
+
 
 
 function updateProjectSummary() {
@@ -1360,47 +1916,59 @@ function updateProjectSummary() {
 
 
     const completed =
-        projects.filter(function(project) {
+        projects.filter(
+            function(project) {
 
-            return String(project.status)
-                .toLowerCase() === "completed";
+                return String(project.status)
+                    .toLowerCase() === "completed";
 
-        }).length;
+            }
+        ).length;
 
 
     const inProgress =
-        projects.filter(function(project) {
+        projects.filter(
+            function(project) {
 
-            return String(project.status)
-                .toLowerCase() === "in progress";
+                return String(project.status)
+                    .toLowerCase() === "in progress";
 
-        }).length;
+            }
+        ).length;
 
 
     const average =
         getAverageProjectProgress();
 
 
-    document.getElementById("totalProjects")
-        .textContent = total;
+    document.getElementById(
+        "totalProjects"
+    ).textContent = total;
 
 
-    document.getElementById("completedProjects")
-        .textContent = completed;
+    document.getElementById(
+        "completedProjects"
+    ).textContent = completed;
 
 
-    document.getElementById("activeProjects")
-        .textContent = inProgress;
+    document.getElementById(
+        "activeProjects"
+    ).textContent = inProgress;
 
 
-    document.getElementById("averageProjectProgress")
-        .textContent = average + "%";
+    document.getElementById(
+        "averageProjectProgress"
+    ).textContent =
+        average + "%";
 
 
-    document.getElementById("summaryProjects")
-        .textContent = completed;
+    document.getElementById(
+        "summaryProjects"
+    ).textContent =
+        completed;
 
 }
+
 
 
 /* =====================================
@@ -1436,18 +2004,21 @@ function updateSummary() {
         );
 
 
-    document.getElementById("summaryOverall")
-        .textContent =
+    document.getElementById(
+        "summaryOverall"
+    ).textContent =
         overall + "%";
 
 
-    document.getElementById("summaryRoadmap")
-        .textContent =
+    document.getElementById(
+        "summaryRoadmap"
+    ).textContent =
         roadmapProgress + "%";
 
 
-    document.getElementById("summarySkills")
-        .textContent =
+    document.getElementById(
+        "summarySkills"
+    ).textContent =
         skillProgress + "%";
 
 
@@ -1456,13 +2027,14 @@ function updateSummary() {
 }
 
 
+
 /* =====================================
    INITIAL LOAD
 ===================================== */
 
-loadGoals();
+renderRoadmap();
 
-loadRoadmap();
+loadGoals();
 
 loadCourses();
 
